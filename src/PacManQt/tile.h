@@ -9,11 +9,22 @@ class Tile
 public:
     Tile();
 
-    QPixmap *pixmap;
-    QGraphicsPixmapItem *pixmapItem;
-    setLocation(int x, int y);
+    void setLocation(void);
+
+    QPixmap *getPixmap() const;
+    void setPixmap(QPixmap *value);
+
+    QGraphicsPixmapItem *getPixmapItem() const;
+
+    int getXPos() const;
+    void setXPos(int value);
+
+    int getYPos() const;
+    void setYPos(int value);
 
 private:
+    QPixmap *pixmap;
+    QGraphicsPixmapItem *pixmapItem;
     int xPos;
     int yPos;
 };

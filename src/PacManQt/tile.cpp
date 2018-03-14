@@ -2,13 +2,46 @@
 
 Tile::Tile()
 {
-    pixmap = new QPixmap(":/Images/rosekane_4.png");
+}
+
+void Tile::setLocation()
+{
+
+    pixmapItem->setPos(xPos, yPos);
+}
+
+QPixmap *Tile::getPixmap() const
+{
+    return pixmap;
+}
+
+void Tile::setPixmap(QPixmap *value)
+{
+    pixmap = value;
     pixmapItem = new QGraphicsPixmapItem(*pixmap);
 }
 
-Tile::setLocation(int x, int y)
+QGraphicsPixmapItem *Tile::getPixmapItem() const
 {
-    xPos = x;
-    yPos = y;
-    pixmapItem->setPos(xPos, yPos);
+    return pixmapItem;
+}
+
+int Tile::getXPos() const
+{
+    return xPos;
+}
+
+void Tile::setXPos(int value)
+{
+    xPos = value;
+}
+
+int Tile::getYPos() const
+{
+    return yPos;
+}
+
+void Tile::setYPos(int value)
+{
+    yPos = value;
 }

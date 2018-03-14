@@ -31,9 +31,31 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
 
+    QPixmap *dotPixmap = new QPixmap(":/Images/rosekane_4.png");
+
     Tile superDot;
-    scene->addItem(superDot.pixmapItem);
-    superDot.setLocation(100, 100);
+    superDot.setPixmap(dotPixmap);
+    superDot.setXPos(100);
+    superDot.setYPos(100);
+    superDot.setLocation();
+
+    Tile superDot2;
+    superDot2.setPixmap(dotPixmap);
+    superDot2.setXPos(105);
+    superDot2.setYPos(105);
+    superDot2.setLocation();
+
+    Tile superDot3;
+    superDot3.setPixmap(dotPixmap);
+    superDot3.setXPos(200);
+    superDot3.setYPos(200);
+    superDot3.setLocation();
+
+
+    scene->addItem(superDot.getPixmapItem());
+    scene->addItem(superDot2.getPixmapItem());
+    scene->addItem(superDot3.getPixmapItem());
+
 //    superDot.pixmapItem->setPos(0, 0);
 
 }
