@@ -6,7 +6,12 @@
 #include <QtGui>
 #include <QGraphicsScene>
 #include <QImage>
+#include <QGraphicsItem>
+#include <QPainter>
+#include <QDebug>
+#include <QPixmap>
 #include <QGraphicsPixmapItem>
+#include "tile.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,15 +23,20 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+
+    int tileWidth;
+    int tileHeight;
+    int screenWidth;
+    int screenHeight;
+
     ~MainWindow();
 
 private:
     Ui::MainWindow *ui;
+
+protected:
     QGraphicsScene *scene;
-    QGraphicsRectItem *rectangle;
-    QGraphicsEllipseItem *ellipse;
-    QImage *image;
-    QGraphicsPixmapItem *item;
+    QRectF *sceneBound;
 };
 
 #endif // MAINWINDOW_H

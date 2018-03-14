@@ -30,12 +30,12 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(400, 300);
+        MainWindow->resize(463, 390);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         graphicsView = new QGraphicsView(centralWidget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(20, 20, 351, 261));
+        graphicsView->setGeometry(QRect(20, 20, 411, 331));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);

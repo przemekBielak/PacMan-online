@@ -1,33 +1,46 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "tile.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     scene = new QGraphicsScene(this);
     ui->graphicsView->setScene(scene);
 
-    QBrush blueBrush(Qt::blue);
-    QBrush greenBrush(Qt::green);
-    QPen blackPen(Qt::black);
-    blackPen.setWidth(6);
+//    sceneBound = new QRectF(0, 0, 600, 600);
+    scene->setSceneRect(0, 0, 600, 600);
 
-//    ellipse = scene->addEllipse(10, 10, 100, 100, blackPen, blueBrush);
-    //rectangle = scene->addRect(-100, -100, 50, 50, blackPen, greenBrush);
+    tileWidth = 20;
+    tileHeight = 20;
+    screenWidth = scene->sceneRect().width();
+    screenHeight = scene->sceneRect().height();
+    qDebug() << screenHeight;
+    qDebug() << screenWidth;
 
-    image = new QImage("rosekane_0.png");
-    item = new QGraphicsPixmapItem();
-//    item->setPixmap(QPixmap::fromImage(*image));
+    int mapArrWidth = screenWidth/tileWidth;
+    int mapArrHeight = screenHeight/tileHeight;
+
+    int mapArr[mapArrWidth * mapArrHeight];
+
+    for(int i = 0; i < mapArrWidth * mapArrHeight; i++)
+    {
+        mapArr[i] = 1;
+    }
 
 
-    item->setVisible(true);
-    item = scene->addPixmap(QPixmap::fromImage(*image));
+    Tile superDot;
+    scene->addItem(superDot.pixmapItem);
+    superDot.setLocation(100, 100);
+//    superDot.pixmapItem->setPos(0, 0);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+
+
 }
