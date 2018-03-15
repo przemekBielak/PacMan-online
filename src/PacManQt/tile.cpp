@@ -29,7 +29,7 @@ void Tile::setPixmap(QPixmap *value)
     pixmapItem = new QGraphicsPixmapItem(*pixmap);
 }
 
-QGraphicsPixmapItem *Tile::getPixmapItem() const
+QGraphicsPixmapItem *Tile::getPixmapItem() const    
 {
     return pixmapItem;
 }

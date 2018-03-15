@@ -36,7 +36,6 @@ private:
 
 protected:
     QGraphicsScene *scene;
-    QRectF *sceneBound;
 };
 
 #endif // MAINWINDOW_H
