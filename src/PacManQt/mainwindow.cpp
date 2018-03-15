@@ -30,8 +30,8 @@ MainWindow::MainWindow(QWidget *parent) :
         mapArr[i] = 1;
     }
 
-
-    QPixmap *dotPixmap = new QPixmap(":/Images/rosekane_4.png");
+    QString pathImage = ":/Images/rosekane_4.png";
+    QPixmap *dotPixmap = new QPixmap(pathImage);
 
     Tile superDot;
     superDot.setPixmap(dotPixmap);
@@ -51,10 +51,12 @@ MainWindow::MainWindow(QWidget *parent) :
     superDot3.setYPos(200);
     superDot3.setLocation();
 
+    Tile superDot4(pathImage, 0, 0);
 
     scene->addItem(superDot.getPixmapItem());
     scene->addItem(superDot2.getPixmapItem());
     scene->addItem(superDot3.getPixmapItem());
+    scene->addItem(superDot4.getPixmapItem());
 
 //    superDot.pixmapItem->setPos(0, 0);
 

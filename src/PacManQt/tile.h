@@ -7,6 +7,8 @@
 class Tile
 {
 public:
+    Tile(QString pixmapPath, int x, int y);
+
     Tile();
 
     void setLocation(void);
@@ -15,12 +17,14 @@ public:
     void setPixmap(QPixmap *value);
 
     QGraphicsPixmapItem *getPixmapItem() const;
+    void setPixmapItem(QGraphicsPixmapItem *value);
 
     int getXPos() const;
     void setXPos(int value);
 
     int getYPos() const;
     void setYPos(int value);
+
 
 private:
     QPixmap *pixmap;
