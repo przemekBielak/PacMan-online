@@ -2,5 +2,24 @@
     <qresource prefix="/">
         <file>Images/rosekane_0.png</file>
         <file>Images/rosekane_23.png</file>
+        <file>Images/wall1.png</file>
+        <file>Images/wall3.png</file>
+        <file>Images/wall4.png</file>
+        <file>Images/wall6.png</file>
+        <file>Images/wall2.png</file>
+        <file>Images/wall5.png</file>
+        <file>Images/ground.png</file>
+        <file>Images/wall7.png</file>
+        <file>Images/wall8.png</file>
+        <file>Images/wall9.png</file>
+        <file>Images/wall10.png</file>
+        <file>Images/wall11.png</file>
+        <file>Images/wall12.png</file>
+        <file>Images/wall13.png</file>
+        <file>Images/wall14.png</file>
+        <file>Images/wall15.png</file>
+        <file>Images/fence.png</file>
+        <file>Images/ground2.png</file>
+        <file>Images/white.png</file>
     </qresource>
 </RCC>
