@@ -21,5 +21,6 @@
         <file>Images/fence.png</file>
         <file>Images/ground2.png</file>
         <file>Images/white.png</file>
+        <file>Images/ghostYellowRight.png</file>
     </qresource>
 </RCC>

@@ -26,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    tile.cpp
+    tile.cpp \
+    actor.cpp
 
 HEADERS += \
         mainwindow.h \
-    tile.h
+    tile.h \
+    actor.h
 
 FORMS += \
         mainwindow.ui

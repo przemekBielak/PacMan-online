@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "tile.h"
-#include <cmath>
+#include "actor.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -116,6 +116,10 @@ MainWindow::MainWindow(QWidget *parent) :
         Tile superDot(pathImage, x * tileWidth, y * tileWidth);
         scene->addItem(superDot.getPixmapItem());
     }
+
+    QString ghostImagePath = ":/Images/ghostYellowRight.png";
+    Actor ghost(ghostImagePath, 20, 20);
+    scene->addItem(ghost.getPixmapItem());
 }
 
 
