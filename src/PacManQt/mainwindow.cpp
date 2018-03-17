@@ -118,14 +118,40 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     QString ghostImagePath = ":/Images/ghostYellowRight.png";
-    Actor ghost(ghostImagePath, 20, 20);
-    scene->addItem(ghost.getPixmapItem());
+    ghost = new Actor(ghostImagePath, 20, 20);
+    scene->addItem(ghost->getPixmapItem());
 }
 
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
 
-
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    if(event->key() == Qt::Key_W)
+    {
+        ghost->setLocation(ghost->getXPos(), ghost->getYPos() - 1);
+        scene->update();
+        qDebug() << "Up pressed";
+    }
+    else if(event->key() == Qt::Key_A)
+    {
+        ghost->setLocation(ghost->getXPos() - 1, ghost->getYPos());
+        scene->update();
+        qDebug() << "Left pressed";
+    }
+    else if(event->key() == Qt::Key_S)
+    {
+        ghost->setLocation(ghost->getXPos(), ghost->getYPos() + 1);
+        scene->update();
+        qDebug() << "Down pressed";
+    }
+    else if(event->key() == Qt::Key_D)
+    {
+        ghost->setLocation(ghost->getXPos() + 1, ghost->getYPos());
+        scene->update();
+        qDebug() << "Right pressed";
+    }
 }

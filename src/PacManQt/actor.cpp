@@ -9,8 +9,10 @@ Actor::Actor(QString pixmapPath, int x, int y)
     pixmapItem->setPos(xPos, yPos);
 }
 
-void Actor::setLocation()
+void Actor::setLocation(int x, int y)
 {
+    xPos = x;
+    yPos = y;
     pixmapItem->setPos(xPos, yPos);
 }
 

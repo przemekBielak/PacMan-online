@@ -10,7 +10,7 @@ public:
     Actor();
     Actor(QString pixmapPath, int x, int y);
 
-    void setLocation(void);
+    void setLocation(int x, int y);
 
     QPixmap *getPixmap() const;
     void setPixmap(QPixmap *value);

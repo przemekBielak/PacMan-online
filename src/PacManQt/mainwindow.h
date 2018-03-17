@@ -11,6 +11,9 @@
 #include <QDebug>
 #include <QPixmap>
 #include <QGraphicsPixmapItem>
+#include <QKeyEvent>
+
+#include "actor.h"
 #include "tile.h"
 
 namespace Ui {
@@ -33,6 +36,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    void keyPressEvent(QKeyEvent *event);
+    Actor *ghost;
 
 protected:
     QGraphicsScene *scene;
