@@ -22,5 +22,9 @@
         <file>Images/ground2.png</file>
         <file>Images/white.png</file>
         <file>Images/ghostYellowRight.png</file>
+        <file>Images/pacmanUp.png</file>
+        <file>Images/pacmanLeft.png</file>
+        <file>Images/pacmanDown.png</file>
+        <file>Images/pacmanRight.png</file>
     </qresource>
 </RCC>

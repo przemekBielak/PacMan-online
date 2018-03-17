@@ -13,10 +13,9 @@ public:
     void setLocation(int x, int y);
 
     QPixmap *getPixmap() const;
-    void setPixmap(QPixmap *value);
+    void setPixmap(QString value);
 
     QGraphicsPixmapItem *getPixmapItem() const;
-    void setPixmapItem(QGraphicsPixmapItem *value);
 
     int getXPos() const;
     void setXPos(int value);

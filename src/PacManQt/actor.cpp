@@ -21,20 +21,16 @@ QPixmap *Actor::getPixmap() const
     return pixmap;
 }
 
-void Actor::setPixmap(QPixmap *value)
+void Actor::setPixmap(QString value)
 {
-    pixmap = value;
-    pixmapItem = new QGraphicsPixmapItem(*pixmap);
+    QPixmap *pix = new QPixmap(value);
+    pixmap = pix;
+    pixmapItem->setPixmap(*pix);
 }
 
 QGraphicsPixmapItem *Actor::getPixmapItem() const
 {
     return pixmapItem;
-}
-
-void Actor::setPixmapItem(QGraphicsPixmapItem *value)
-{
-    pixmapItem = value;
 }
 
 int Actor::getXPos() const

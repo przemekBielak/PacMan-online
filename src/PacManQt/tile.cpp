@@ -23,20 +23,16 @@ QPixmap *Tile::getPixmap() const
     return pixmap;
 }
 
-void Tile::setPixmap(QPixmap *value)
+void Tile::setPixmap(QString value)
 {
-    pixmap = value;
-    pixmapItem = new QGraphicsPixmapItem(*pixmap);
+    QPixmap *pix = new QPixmap(value);
+    pixmap = pix;
+    pixmapItem->setPixmap(*pix);
 }
 
 QGraphicsPixmapItem *Tile::getPixmapItem() const    
 {
     return pixmapItem;
-}
-
-void Tile::setPixmapItem(QGraphicsPixmapItem *value)
-{
-    pixmapItem = value;
 }
 
 int Tile::getXPos() const

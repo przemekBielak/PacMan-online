@@ -37,7 +37,11 @@ public:
 private:
     Ui::MainWindow *ui;
     void keyPressEvent(QKeyEvent *event);
-    Actor *ghost;
+    Actor *ghostRed;
+    Actor *ghostYellow;
+    Actor *ghostGreen;
+    Actor *ghostBlue;
+    Actor *pacman;
 
 protected:
     QGraphicsScene *scene;

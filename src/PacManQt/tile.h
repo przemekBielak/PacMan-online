@@ -7,24 +7,21 @@
 class Tile
 {
 public:
-    Tile(QString pixmapPath, int x, int y);
-
     Tile();
+    Tile(QString pixmapPath, int x, int y);
 
     void setLocation(void);
 
     QPixmap *getPixmap() const;
-    void setPixmap(QPixmap *value);
+    void setPixmap(QString value);
 
     QGraphicsPixmapItem *getPixmapItem() const;
-    void setPixmapItem(QGraphicsPixmapItem *value);
 
     int getXPos() const;
     void setXPos(int value);
 
     int getYPos() const;
     void setYPos(int value);
-
 
 private:
     QPixmap *pixmap;
