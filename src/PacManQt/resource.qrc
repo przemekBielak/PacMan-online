@@ -26,5 +26,8 @@
         <file>Images/pacmanLeft.png</file>
         <file>Images/pacmanDown.png</file>
         <file>Images/pacmanRight.png</file>
+        <file>Images/ghostBlueRight.png</file>
+        <file>Images/ghostRedRight.png</file>
+        <file>Images/ghostGreenRight.png</file>
     </qresource>
 </RCC>

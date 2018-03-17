@@ -13,8 +13,10 @@
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 
-#include "actor.h"
 #include "tile.h"
+#include "actor.h"
+#include "pacman.h"
+#include "ghost.h"
 
 namespace Ui {
 class MainWindow;
@@ -37,11 +39,11 @@ public:
 private:
     Ui::MainWindow *ui;
     void keyPressEvent(QKeyEvent *event);
-    Actor *ghostRed;
-    Actor *ghostYellow;
-    Actor *ghostGreen;
-    Actor *ghostBlue;
-    Actor *pacman;
+    Ghost *ghostRed;
+    Ghost *ghostYellow;
+    Ghost *ghostGreen;
+    Ghost *ghostBlue;
+    Pacman *pacman;
 
 protected:
     QGraphicsScene *scene;

@@ -28,13 +28,17 @@ SOURCES += \
         mainwindow.cpp \
     tile.cpp \
     actor.cpp \
-    painter.cpp
+    painter.cpp \
+    pacman.cpp \
+    ghost.cpp
 
 HEADERS += \
         mainwindow.h \
     tile.h \
     actor.h \
-    painter.h
+    painter.h \
+    pacman.h \
+    ghost.h
 
 FORMS += \
         mainwindow.ui

@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "tile.h"
-#include "actor.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -112,13 +110,24 @@ MainWindow::MainWindow(QWidget *parent) :
 
         int x = i % mapArrWidth;
         int y = i / mapArrWidth;
-        qDebug() << "x = " << x << " y = " << y;
         Tile superDot(pathImage, x * tileWidth, y * tileWidth);
         scene->addItem(superDot.getPixmapItem());
     }
 
-    pacman = new Actor(":/Images/pacmanRight.png", 20, 20);
+    pacman = new Pacman(":/Images/pacmanRight.png", 20, 20);
     scene->addItem(pacman->getPixmapItem());
+
+    ghostRed = new Ghost(":/Images/ghostRedRight.png", 400, 400);
+    scene->addItem(ghostRed->getPixmapItem());
+
+    ghostBlue = new Ghost(":/Images/ghostBlueRight.png", 200, 400);
+    scene->addItem(ghostBlue->getPixmapItem());
+
+    ghostYellow = new Ghost(":/Images/ghostYellowRight.png", 400, 100);
+    scene->addItem(ghostYellow->getPixmapItem());
+
+    ghostGreen = new Ghost(":/Images/ghostGreenRight.png", 400, 100);
+    scene->addItem(ghostGreen->getPixmapItem());
 }
 
 
