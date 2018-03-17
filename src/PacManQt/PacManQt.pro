@@ -27,12 +27,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     tile.cpp \
-    actor.cpp
+    actor.cpp \
+    painter.cpp
 
 HEADERS += \
         mainwindow.h \
     tile.h \
-    actor.h
+    actor.h \
+    painter.h
 
 FORMS += \
         mainwindow.ui
