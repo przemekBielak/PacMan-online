@@ -14,6 +14,11 @@ Painter::Painter(QString pixmapPath, int x, int y)
     pixmapItem->setPos(xPos, yPos);
 }
 
+void Painter::updatePos(void)
+{
+    pixmapItem->setPos(xPos, yPos);
+}
+
 void Painter::setLocation(int x, int y)
 {
     xPos = x;

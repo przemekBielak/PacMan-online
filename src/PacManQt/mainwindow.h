@@ -33,6 +33,8 @@ public:
     int tileHeight;
     int screenWidth;
     int screenHeight;
+    int mapArrWidth;
+    int mapArrHeight;
 
     ~MainWindow();
 

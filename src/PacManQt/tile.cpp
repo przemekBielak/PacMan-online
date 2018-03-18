@@ -13,3 +13,13 @@ Tile::Tile(QString pixmapPath, int x, int y)
     yPos = y;
     pixmapItem->setPos(xPos, yPos);
 }
+
+int Tile::getTileType() const
+{
+    return tileType;
+}
+
+void Tile::setTileType(int value)
+{
+    tileType = value;
+}

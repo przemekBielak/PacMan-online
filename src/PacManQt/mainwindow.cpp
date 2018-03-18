@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+/* tileArr is storing all tiles */
+Tile tileArr[27 * 27];
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -16,9 +19,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     scene->setSceneRect(0, 0, screenWidth, screenHeight);
 
-    int mapArrWidth = screenWidth/tileWidth;
-    int mapArrHeight = screenHeight/tileHeight;
+    mapArrWidth = screenWidth/tileWidth;
+    mapArrHeight = screenHeight/tileHeight;
 
+
+    /* mapArr is storing types of all tiles */
     int mapArr[mapArrWidth * mapArrHeight]
            = {1 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 13, 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 3 ,
               4 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 4 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 4 ,
@@ -110,14 +115,22 @@ MainWindow::MainWindow(QWidget *parent) :
 
         int x = i % mapArrWidth;
         int y = i / mapArrWidth;
-        Tile superDot(pathImage, x * tileWidth, y * tileWidth);
-        scene->addItem(superDot.getPixmapItem());
+        Tile currTile(pathImage, x * tileWidth, y * tileWidth);
+        currTile.setTileType(mapArr[i]);
+        tileArr[i] = currTile;
+        scene->addItem(currTile.getPixmapItem());
     }
+
+    qDebug() << tileArr[0].getTileType();
+    qDebug() << tileArr[0].getXPos();
+    qDebug() << tileArr[0].getYPos();
+
+
 
     pacman = new Pacman(":/Images/pacmanRight.png", 20, 20);
     scene->addItem(pacman->getPixmapItem());
 
-    ghostRed = new Ghost(":/Images/ghostRedRight.png", 400, 400);
+    ghostRed = new Ghost(":/Images/ghostRedRight.png", 30, 20);
     scene->addItem(ghostRed->getPixmapItem());
 
     ghostBlue = new Ghost(":/Images/ghostBlueRight.png", 200, 400);
@@ -138,32 +151,51 @@ MainWindow::~MainWindow()
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
+    pacman->updateCurrTile();
+
     if(event->key() == Qt::Key_W)
     {
         pacman->setPixmap(":/Images/pacmanUp.png");
-        pacman->setLocation(pacman->getXPos(), pacman->getYPos() - 1);
-        scene->update();
-        qDebug() << "Up pressed";
+        if(tileArr[pacman->getTileIndexUp()].getTileType() == 0)
+        {
+            pacman->moveUp();
+            scene->update();
+            qDebug() << "Up pressed";
+        }
     }
     else if(event->key() == Qt::Key_A)
     {
         pacman->setPixmap(":/Images/pacmanLeft.png");
-        pacman->setLocation(pacman->getXPos() - 1, pacman->getYPos());
-        scene->update();
-        qDebug() << "Left pressed";
+        if(tileArr[pacman->getTileIndexLeft()].getTileType() == 0)
+        {
+            pacman->moveLeft();
+            scene->update();
+            qDebug() << "Left pressed";
+        }
     }
     else if(event->key() == Qt::Key_S)
     {
         pacman->setPixmap(":/Images/pacmanDown.png");
-        pacman->setLocation(pacman->getXPos(), pacman->getYPos() + 1);
-        scene->update();
-        qDebug() << "Down pressed";
+        if(tileArr[pacman->getTileIndexDown()].getTileType() == 0)
+        {
+            pacman->moveDown();
+            scene->update();
+            qDebug() << "Down pressed";
+        }
     }
     else if(event->key() == Qt::Key_D)
     {
         pacman->setPixmap(":/Images/pacmanRight.png");
-        pacman->setLocation(pacman->getXPos() + 1, pacman->getYPos());
-        scene->update();
-        qDebug() << "Right pressed";
+        if(tileArr[pacman->getTileIndexRight()].getTileType() == 0)
+        {
+            pacman->moveRight();
+            scene->update();
+            qDebug() << "Right pressed";
+        }
     }
+
+    qDebug() << "Up: " << tileArr[pacman->getTileIndexUp()].getTileType();
+    qDebug() << "Down: " << tileArr[pacman->getTileIndexDown()].getTileType();
+    qDebug() << "Left: " << tileArr[pacman->getTileIndexLeft()].getTileType();
+    qDebug() << "Right: " << tileArr[pacman->getTileIndexRight()].getTileType();
 }
