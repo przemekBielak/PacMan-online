@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 
 /* tileArr is storing all tiles */
-Tile tileArr[27 * 27];
+Tile tileArr[MAP_TILES_WIDTH * MAP_TILES_HEIGHT];
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -12,19 +12,10 @@ MainWindow::MainWindow(QWidget *parent) :
     scene = new QGraphicsScene(this);
     ui->graphicsView->setScene(scene);
 
-    tileWidth = 20;
-    tileHeight = 20;
-    screenWidth = 540;
-    screenHeight = 540;
-
-    scene->setSceneRect(0, 0, screenWidth, screenHeight);
-
-    mapArrWidth = screenWidth/tileWidth;
-    mapArrHeight = screenHeight/tileHeight;
-
+    scene->setSceneRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
     /* mapArr is storing types of all tiles */
-    int mapArr[mapArrWidth * mapArrHeight]
+    int mapArr[MAP_TILES_WIDTH * MAP_TILES_HEIGHT]
            = {1 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 13, 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 2 , 3 ,
               4 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 4 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 4 ,
               4 , 0 , 1 , 2 , 2 , 3 , 0 , 1 , 2 , 2 , 2 , 3 , 0 , 4 , 0 , 1 , 2 , 2 , 2 , 3 , 0 , 1 , 2 , 2 , 3 , 0 , 4 ,
@@ -56,7 +47,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     QString pathImage;
-    for(int i = 0; i < mapArrWidth * mapArrHeight; i++)
+    for(int i = 0; i < MAP_TILES_WIDTH * MAP_TILES_HEIGHT; i++)
     {
         switch(mapArr[i])
         {
@@ -113,9 +104,9 @@ MainWindow::MainWindow(QWidget *parent) :
               break;
         }
 
-        int x = i % mapArrWidth;
-        int y = i / mapArrWidth;
-        Tile currTile(pathImage, x * tileWidth, y * tileWidth);
+        int x = i % MAP_TILES_WIDTH;
+        int y = i / MAP_TILES_WIDTH;
+        Tile currTile(pathImage, x * TILE_WIDTH, y * TILE_WIDTH);
         currTile.setTileType(mapArr[i]);
         tileArr[i] = currTile;
         scene->addItem(currTile.getPixmapItem());
@@ -152,6 +143,8 @@ MainWindow::~MainWindow()
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     pacman->updateCurrTile();
+    ui->label_lifes_num->setText(QString::number(pacman->getNumOfLifes()));
+    ui->label_points->setText(QString::number(pacman->getPoints()));
 
     if(event->key() == Qt::Key_W)
     {
@@ -198,4 +191,5 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     qDebug() << "Down: " << tileArr[pacman->getTileIndexDown()].getTileType();
     qDebug() << "Left: " << tileArr[pacman->getTileIndexLeft()].getTileType();
     qDebug() << "Right: " << tileArr[pacman->getTileIndexRight()].getTileType();
+    qDebug() << "Lifes " << pacman->getNumOfLifes();
 }

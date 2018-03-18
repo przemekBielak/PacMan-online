@@ -5,6 +5,8 @@
 #include <QPixmap>
 #include <QWidget>
 
+#include "game_cfg.h"
+
 class Painter
 {
 public:

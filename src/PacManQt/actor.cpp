@@ -21,33 +21,33 @@ int Actor::getCurrTile() const
 
 void Actor::updateCurrTile(void)
 {
-    currTile = xPos/20 + 27 * (yPos/20);
+    currTile = xPos/TILE_WIDTH + MAP_TILES_WIDTH * (yPos/TILE_HEIGHT);
 }
 
 void Actor::moveLeft()
 {
-    xPos -= 20;
+    xPos -= TILE_WIDTH;
     updatePos();
     updateCurrTile();
 }
 
 void Actor::moveRight()
 {
-    xPos += 20;
+    xPos += TILE_WIDTH;
     updatePos();
     updateCurrTile();
 }
 
 void Actor::moveUp()
 {
-    yPos -= 20;
+    yPos -= TILE_HEIGHT;
     updatePos();
     updateCurrTile();
 }
 
 void Actor::moveDown()
 {
-    yPos += 20;
+    yPos += TILE_HEIGHT;
     updatePos();
     updateCurrTile();
 }
@@ -64,12 +64,12 @@ int Actor::getTileIndexRight() const
 
 int Actor::getTileIndexUp() const
 {
-    return currTile - 27;
+    return currTile - MAP_TILES_WIDTH;
 }
 
 int Actor::getTileIndexDown() const
 {
-    return currTile + 27;
+    return currTile + MAP_TILES_WIDTH;
 }
 
 

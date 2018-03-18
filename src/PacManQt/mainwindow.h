@@ -13,6 +13,7 @@
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 
+#include "game_cfg.h"
 #include "tile.h"
 #include "actor.h"
 #include "pacman.h"
@@ -28,13 +29,6 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-
-    int tileWidth;
-    int tileHeight;
-    int screenWidth;
-    int screenHeight;
-    int mapArrWidth;
-    int mapArrHeight;
 
     ~MainWindow();
 

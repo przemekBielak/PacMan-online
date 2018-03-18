@@ -15,8 +15,8 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -26,7 +26,10 @@ class Ui_MainWindow
 public:
     QWidget *centralWidget;
     QGraphicsView *graphicsView;
-    QPushButton *pushButton;
+    QLabel *label_lifes_text;
+    QLabel *label_lifes_num;
+    QLabel *label_points_text;
+    QLabel *label_points;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -38,9 +41,18 @@ public:
         graphicsView = new QGraphicsView(centralWidget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
         graphicsView->setGeometry(QRect(20, 20, 620, 620));
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(650, 40, 75, 23));
+        label_lifes_text = new QLabel(centralWidget);
+        label_lifes_text->setObjectName(QStringLiteral("label_lifes_text"));
+        label_lifes_text->setGeometry(QRect(650, 70, 26, 16));
+        label_lifes_num = new QLabel(centralWidget);
+        label_lifes_num->setObjectName(QStringLiteral("label_lifes_num"));
+        label_lifes_num->setGeometry(QRect(680, 70, 47, 16));
+        label_points_text = new QLabel(centralWidget);
+        label_points_text->setObjectName(QStringLiteral("label_points_text"));
+        label_points_text->setGeometry(QRect(650, 90, 47, 16));
+        label_points = new QLabel(centralWidget);
+        label_points->setObjectName(QStringLiteral("label_points"));
+        label_points->setGeometry(QRect(680, 90, 47, 16));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -51,7 +63,10 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushButton->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
+        label_lifes_text->setText(QApplication::translate("MainWindow", "Lifes:", nullptr));
+        label_lifes_num->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        label_points_text->setText(QApplication::translate("MainWindow", "Lifes:", nullptr));
+        label_points->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
     } // retranslateUi
 
 };

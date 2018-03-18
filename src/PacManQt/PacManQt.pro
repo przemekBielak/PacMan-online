@@ -38,7 +38,8 @@ HEADERS += \
     actor.h \
     painter.h \
     pacman.h \
-    ghost.h
+    ghost.h \
+    game_cfg.h
 
 FORMS += \
         mainwindow.ui

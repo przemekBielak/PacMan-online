@@ -4,6 +4,7 @@
 #include <QPixmap>
 #include <QWidget>
 
+#include "game_cfg.h"
 #include "painter.h"
 
 class Tile : public Painter

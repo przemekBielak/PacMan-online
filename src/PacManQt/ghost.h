@@ -5,6 +5,7 @@
 #include <QPixmap>
 #include <QWidget>
 
+#include "game_cfg.h"
 #include "actor.h"
 
 class Ghost : public Actor
