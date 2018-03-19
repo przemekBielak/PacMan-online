@@ -46,13 +46,13 @@ public:
         label_lifes_text->setGeometry(QRect(650, 70, 26, 16));
         label_lifes_num = new QLabel(centralWidget);
         label_lifes_num->setObjectName(QStringLiteral("label_lifes_num"));
-        label_lifes_num->setGeometry(QRect(680, 70, 47, 16));
+        label_lifes_num->setGeometry(QRect(700, 70, 47, 16));
         label_points_text = new QLabel(centralWidget);
         label_points_text->setObjectName(QStringLiteral("label_points_text"));
         label_points_text->setGeometry(QRect(650, 90, 47, 16));
         label_points = new QLabel(centralWidget);
         label_points->setObjectName(QStringLiteral("label_points"));
-        label_points->setGeometry(QRect(680, 90, 47, 16));
+        label_points->setGeometry(QRect(700, 90, 47, 16));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -65,7 +65,7 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         label_lifes_text->setText(QApplication::translate("MainWindow", "Lifes:", nullptr));
         label_lifes_num->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        label_points_text->setText(QApplication::translate("MainWindow", "Lifes:", nullptr));
+        label_points_text->setText(QApplication::translate("MainWindow", "Points:", nullptr));
         label_points->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
     } // retranslateUi
 

@@ -20,6 +20,14 @@
 #include "pacman.h"
 #include "ghost.h"
 
+typedef enum directionType_
+{
+        DIRECTION_LEFT = 0
+    ,   DIRECTION_RIGHT
+    ,   DIRECTION_UP
+    ,   DIRECTION_DOWN
+}directionType;
+
 namespace Ui {
 class MainWindow;
 }
@@ -40,6 +48,8 @@ public slots:
 private:
     Ui::MainWindow *ui;
     void keyPressEvent(QKeyEvent *event);
+    int checkIfMoveIsPossible(Actor *act, directionType direction);
+
     Ghost *ghostRed;
     Ghost *ghostYellow;
     Ghost *ghostGreen;
@@ -49,5 +59,7 @@ private:
 protected:
     QGraphicsScene *scene;
 };
+
+
 
 #endif // MAINWINDOW_H

@@ -147,49 +147,72 @@ MainWindow::~MainWindow()
 
 void MainWindow::keyPressEvent(QKeyEvent *event)
 {
-    if(event->key() == Qt::Key_W)
-    {
-        pacman->setPixmap(":/Images/pacmanUp.png");
-        int currentTile = tileArr[pacman->getTileIndexUp()].getTileType();
-        int *found = std::find(std::begin(nonWalkableMapTiles), std::end(nonWalkableMapTiles), currentTile);
-        if(found == std::end(nonWalkableMapTiles))
-        {
-            pacman->moveUp();
-            scene->update();
-        }
-    }
-    else if(event->key() == Qt::Key_A)
+    if(event->key() == Qt::Key_A)
     {
         pacman->setPixmap(":/Images/pacmanLeft.png");
-        int currentTile = tileArr[pacman->getTileIndexLeft()].getTileType();
-        int *found = std::find(std::begin(nonWalkableMapTiles), std::end(nonWalkableMapTiles), currentTile);
-        if(found == std::end(nonWalkableMapTiles))
+        if(checkIfMoveIsPossible(pacman, DIRECTION_LEFT))
         {
             pacman->moveLeft();
-            scene->update();
-        }
-    }
-    else if(event->key() == Qt::Key_S)
-    {
-        pacman->setPixmap(":/Images/pacmanDown.png");
-        int currentTile = tileArr[pacman->getTileIndexDown()].getTileType();
-        int *found = std::find(std::begin(nonWalkableMapTiles), std::end(nonWalkableMapTiles), currentTile);
-        if(found == std::end(nonWalkableMapTiles))
-        {
-            pacman->moveDown();
             scene->update();
         }
     }
     else if(event->key() == Qt::Key_D)
     {
         pacman->setPixmap(":/Images/pacmanRight.png");
-        int currentTile = tileArr[pacman->getTileIndexRight()].getTileType();
-        int *found = std::find(std::begin(nonWalkableMapTiles), std::end(nonWalkableMapTiles), currentTile);
-        if(found == std::end(nonWalkableMapTiles))
+        if(checkIfMoveIsPossible(pacman, DIRECTION_RIGHT))
         {
             pacman->moveRight();
             scene->update();
         }
+    }
+    else if(event->key() == Qt::Key_W)
+    {
+        pacman->setPixmap(":/Images/pacmanUp.png");
+        if(checkIfMoveIsPossible(pacman, DIRECTION_UP))
+        {
+            pacman->moveUp();
+            scene->update();
+        }
+    }
+    else if(event->key() == Qt::Key_S)
+    {
+        pacman->setPixmap(":/Images/pacmanDown.png");
+        if(checkIfMoveIsPossible(pacman, DIRECTION_DOWN))
+        {
+            pacman->moveDown();
+            scene->update();
+        }
+    }
+
+}
+
+int MainWindow::checkIfMoveIsPossible(Actor *act, directionType direction)
+{
+    int currentTile;
+    int *found;
+    switch(direction)
+    {
+        case DIRECTION_LEFT:
+            currentTile = tileArr[act->getTileIndexLeft()].getTileType();
+            break;
+        case DIRECTION_RIGHT:
+            currentTile = tileArr[act->getTileIndexRight()].getTileType();
+            break;
+        case DIRECTION_UP:
+            currentTile = tileArr[act->getTileIndexUp()].getTileType();
+            break;
+        case DIRECTION_DOWN:
+            currentTile = tileArr[act->getTileIndexDown()].getTileType();
+            break;
+    }
+    found = std::find(std::begin(nonWalkableMapTiles), std::end(nonWalkableMapTiles), currentTile);
+    if(found == std::end(nonWalkableMapTiles))
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
     }
 }
 
@@ -206,58 +229,70 @@ void MainWindow::gameLoop(void)
     ui->label_lifes_num->setText(QString::number(pacman->getNumOfLifes()));
     ui->label_points->setText(QString::number(pacman->getPoints()));
 
-
-    if(pacman->getCurrTile() == ghostBlue->getCurrTile())
+    /* Check ghost tile */
+    if(pacman->getCurrTile() == ghostRed->getCurrTile())
     {
-        qDebug() << "DEAD";
         pacman->setNumOfLifes(pacman->getNumOfLifes() - 1);
         pacman->setLocation(20, 20);
     }
 
+    /* Check points tile */
     if( (tileArr[pacman->getCurrTile()].getTileType() == 17) && (lastTile != pacman->getCurrTile()) )
     {
         pacman->setPoints(pacman->getPoints() + 1);
     }
 
-    qDebug() << ghostRed->getCurrTile();
-    qDebug() << pacman->getCurrTile();
-
+    /* Set ghost direction */
     if(ghostRed->getYPos() == pacman->getYPos())
     {
         if(ghostRed->getXPos() > pacman->getXPos())
         {
-            ghostRed->setDirection(1);
+            ghostRed->setDirection(DIRECTION_LEFT);
         }
         else
         {
-            ghostRed->setDirection(2);
+            ghostRed->setDirection(DIRECTION_RIGHT);
         }
     }
     else if(ghostRed->getXPos() == pacman->getXPos())
     {
         if(ghostRed->getYPos() > pacman->getYPos())
         {
-            ghostRed->setDirection(3);
+            ghostRed->setDirection(DIRECTION_UP);
         }
         else
         {
-            ghostRed->setDirection(4);
+            ghostRed->setDirection(DIRECTION_DOWN);
         }
     }
 
+    /* Move ghost */
     switch(ghostRed->getDirection())
     {
-        case 1:
-            ghostRed->moveLeft();
+        case DIRECTION_LEFT:
+           if(checkIfMoveIsPossible(ghostRed, DIRECTION_LEFT))
+            {
+                ghostRed->moveLeft();
+                scene->update();
+            }
             break;
-        case 2:
-            ghostRed->moveRight();
+        case DIRECTION_RIGHT:
+            if(checkIfMoveIsPossible(ghostRed, DIRECTION_RIGHT))
+            {
+                ghostRed->moveRight();
+            }
             break;
-        case 3:
-            ghostRed->moveUp();
+        case DIRECTION_UP:
+            if(checkIfMoveIsPossible(ghostRed, DIRECTION_UP))
+            {
+                ghostRed->moveUp();
+            }
             break;
-        case 4:
-            ghostRed->moveDown();
+        case DIRECTION_DOWN:
+            if(checkIfMoveIsPossible(ghostRed, DIRECTION_DOWN))
+            {
+                ghostRed->moveDown();
+            }
             break;
     }
 

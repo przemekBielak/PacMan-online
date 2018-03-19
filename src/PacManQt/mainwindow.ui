@@ -40,7 +40,7 @@
    <widget class="QLabel" name="label_lifes_num">
     <property name="geometry">
      <rect>
-      <x>680</x>
+      <x>700</x>
       <y>70</y>
       <width>47</width>
       <height>16</height>
@@ -60,13 +60,13 @@
      </rect>
     </property>
     <property name="text">
-     <string>Lifes:</string>
+     <string>Points:</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_points">
     <property name="geometry">
      <rect>
-      <x>680</x>
+      <x>700</x>
       <y>90</y>
       <width>47</width>
       <height>16</height>
