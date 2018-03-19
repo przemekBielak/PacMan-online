@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     gameLoopTimer = new QTimer(this);
     connect(gameLoopTimer, SIGNAL(timeout()), this, SLOT(gameLoop()));
-    gameLoopTimer->start(10);
+    gameLoopTimer->start(500);
 
     scene->setSceneRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
@@ -219,6 +219,49 @@ void MainWindow::gameLoop(void)
         pacman->setPoints(pacman->getPoints() + 1);
     }
 
+    qDebug() << ghostRed->getCurrTile();
+    qDebug() << pacman->getCurrTile();
+
+    if(ghostRed->getYPos() == pacman->getYPos())
+    {
+        if(ghostRed->getXPos() > pacman->getXPos())
+        {
+            ghostRed->setDirection(1);
+        }
+        else
+        {
+            ghostRed->setDirection(2);
+        }
+    }
+    else if(ghostRed->getXPos() == pacman->getXPos())
+    {
+        if(ghostRed->getYPos() > pacman->getYPos())
+        {
+            ghostRed->setDirection(3);
+        }
+        else
+        {
+            ghostRed->setDirection(4);
+        }
+    }
+
+    switch(ghostRed->getDirection())
+    {
+        case 1:
+            ghostRed->moveLeft();
+            break;
+        case 2:
+            ghostRed->moveRight();
+            break;
+        case 3:
+            ghostRed->moveUp();
+            break;
+        case 4:
+            ghostRed->moveDown();
+            break;
+    }
+
+    /* Save last position of pacman */
     lastTile = pacman->getCurrTile();
     lastTileType = tileArr[pacman->getCurrTile()].getTileType();
 

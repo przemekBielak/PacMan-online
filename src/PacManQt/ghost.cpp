@@ -13,3 +13,13 @@ Ghost::Ghost(QString pixmapPath, int x, int y)
     yPos = y;
     pixmapItem->setPos(xPos, yPos);
 }
+
+int Ghost::getDirection() const
+{
+    return direction;
+}
+
+void Ghost::setDirection(int value)
+{
+    direction = value;
+}
