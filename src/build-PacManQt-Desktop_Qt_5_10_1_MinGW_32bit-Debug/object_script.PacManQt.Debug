@@ -1,0 +1,12 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\tile.o
+./debug\actor.o
+./debug\painter.o
+./debug\pacman.o
+./debug\ghost.o
+./debug\gametimer.o
+./debug\qrc_resource.o
+./debug\moc_mainwindow.o
+);

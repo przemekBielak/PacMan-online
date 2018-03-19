@@ -12,6 +12,7 @@
 #include <QPixmap>
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
+#include <QTimer>
 
 #include "game_cfg.h"
 #include "tile.h"
@@ -29,8 +30,12 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
-
     ~MainWindow();
+
+    QTimer *gameLoopTimer;
+
+public slots:
+    void gameLoop(void);
 
 private:
     Ui::MainWindow *ui;

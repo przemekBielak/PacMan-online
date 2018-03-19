@@ -26,11 +26,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    tile.cpp \
     actor.cpp \
     painter.cpp \
     pacman.cpp \
-    ghost.cpp
+    ghost.cpp \
+    tile.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,7 +39,8 @@ HEADERS += \
     painter.h \
     pacman.h \
     ghost.h \
-    game_cfg.h
+    game_cfg.h \
+    gametimer.h
 
 FORMS += \
         mainwindow.ui
