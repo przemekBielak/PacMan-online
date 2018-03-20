@@ -144,6 +144,8 @@ MainWindow::MainWindow(QWidget *parent) :
     pacman->setSpeed(10);
     pacman2->setSpeed(10);
     ghostBlue->setSpeed(30);
+
+    ui->label_game_level_num->setText(QString::number(1));
 }
 
 
@@ -287,6 +289,25 @@ void MainWindow::checkSuperDot(Pacman *pac)
     }
 }
 
+void MainWindow::checkLevelFinish()
+{
+    int endCounter = 0;
+    for(int i = 0; i < MAP_TILES_WIDTH * MAP_TILES_HEIGHT; i++)
+    {
+        if(tileArr[i].getTileType() == 17)
+        {
+            /* Still dots left to be collected */
+            endCounter ++;
+        }
+    }
+
+    if(endCounter == 0)
+    {
+        ui->label_game_level_num->setText(QString::number(ui->label_game_level_num->text().toInt() + 1));
+        endCounter == 0;
+    }
+}
+
 void MainWindow::checkIfDead(Pacman *pac)
 {
     if( (pac->getCurrTile() == ghostRed->getCurrTile() ) ||
@@ -367,6 +388,13 @@ void MainWindow::gameLoop(void)
         moveActor(ghostYellow);
         gameLoopCounterGhost = 0;
     }
+
+    checkLevelFinish();
+    /*
+     * TODO:
+     * [] reset game state - reinitialize the map
+    */
+
 
     scene->update();
 

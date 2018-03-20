@@ -55,6 +55,7 @@ private:
     void checkIfDead(Pacman *pac);
     void checkDot(Pacman *pac);
     void checkSuperDot(Pacman *pac);
+    void checkLevelFinish(void);
 
     Ghost *ghostRed;
     Ghost *ghostYellow;
@@ -65,6 +66,7 @@ private:
     int gameLoopCounterGhost;
     int gameLoopCounterPacman;
     int gameLoopCounterPacman2;
+    int gameLevel;
 
 protected:
     QGraphicsScene *scene;

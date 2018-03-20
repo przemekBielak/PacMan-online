@@ -36,6 +36,8 @@ public:
     QLabel *label_lifes_num_2;
     QLabel *label_player1;
     QLabel *label_lifes_text_4;
+    QLabel *label_game_level;
+    QLabel *label_game_level_num;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -77,6 +79,12 @@ public:
         label_lifes_text_4 = new QLabel(centralWidget);
         label_lifes_text_4->setObjectName(QStringLiteral("label_lifes_text_4"));
         label_lifes_text_4->setGeometry(QRect(680, 110, 41, 16));
+        label_game_level = new QLabel(centralWidget);
+        label_game_level->setObjectName(QStringLiteral("label_game_level"));
+        label_game_level->setGeometry(QRect(650, 180, 61, 16));
+        label_game_level_num = new QLabel(centralWidget);
+        label_game_level_num->setObjectName(QStringLiteral("label_game_level_num"));
+        label_game_level_num->setGeometry(QRect(720, 180, 47, 16));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -97,6 +105,8 @@ public:
         label_lifes_num_2->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         label_player1->setText(QApplication::translate("MainWindow", "Player 1", nullptr));
         label_lifes_text_4->setText(QApplication::translate("MainWindow", "Player 2", nullptr));
+        label_game_level->setText(QApplication::translate("MainWindow", "Game Level:", nullptr));
+        label_game_level_num->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
     } // retranslateUi
 
 };
