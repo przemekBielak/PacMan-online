@@ -29,5 +29,6 @@
         <file>Images/ghostBlueRight.png</file>
         <file>Images/ghostRedRight.png</file>
         <file>Images/ghostGreenRight.png</file>
+        <file>Images/superDot.png</file>
     </qresource>
 </RCC>

@@ -54,6 +54,7 @@ private:
     void moveActor(Actor *ghost);
     void checkIfDead(Pacman *pac);
     void checkDot(Pacman *pac);
+    void checkSuperDot(Pacman *pac);
 
     Ghost *ghostRed;
     Ghost *ghostYellow;
