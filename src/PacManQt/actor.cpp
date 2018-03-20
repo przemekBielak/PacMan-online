@@ -28,28 +28,24 @@ void Actor::moveLeft()
 {
     xPos -= TILE_WIDTH;
     updatePos();
-    updateCurrTile();
 }
 
 void Actor::moveRight()
 {
     xPos += TILE_WIDTH;
     updatePos();
-    updateCurrTile();
 }
 
 void Actor::moveUp()
 {
     yPos -= TILE_HEIGHT;
     updatePos();
-    updateCurrTile();
 }
 
 void Actor::moveDown()
 {
     yPos += TILE_HEIGHT;
     updatePos();
-    updateCurrTile();
 }
 
 int Actor::getTileIndexLeft() const
@@ -70,6 +66,36 @@ int Actor::getTileIndexUp() const
 int Actor::getTileIndexDown() const
 {
     return currTile + MAP_TILES_WIDTH;
+}
+
+int Actor::getLastTile() const
+{
+    return lastTile;
+}
+
+void Actor::setLastTile(int value)
+{
+    lastTile = value;
+}
+
+int Actor::getSpeed() const
+{
+    return speed;
+}
+
+void Actor::setSpeed(int value)
+{
+    speed = value;
+}
+
+int Actor::getDirection() const
+{
+    return direction;
+}
+
+void Actor::setDirection(int value)
+{
+    direction = value;
 }
 
 

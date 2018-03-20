@@ -26,6 +26,7 @@ typedef enum directionType_
     ,   DIRECTION_RIGHT
     ,   DIRECTION_UP
     ,   DIRECTION_DOWN
+    ,   DONT_MOVE
 }directionType;
 
 namespace Ui {
@@ -49,12 +50,20 @@ private:
     Ui::MainWindow *ui;
     void keyPressEvent(QKeyEvent *event);
     int checkIfMoveIsPossible(Actor *act, directionType direction);
+    void setGhostDirection(Ghost *ghost);
+    void moveActor(Actor *ghost);
+    void checkIfDead(Pacman *pac);
+    void checkDot(Pacman *pac);
 
     Ghost *ghostRed;
     Ghost *ghostYellow;
     Ghost *ghostGreen;
     Ghost *ghostBlue;
     Pacman *pacman;
+    Pacman *pacman2;
+    int gameLoopCounterGhost;
+    int gameLoopCounterPacman;
+    int gameLoopCounterPacman2;
 
 protected:
     QGraphicsScene *scene;
