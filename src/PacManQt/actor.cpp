@@ -27,25 +27,21 @@ void Actor::updateCurrTile(void)
 void Actor::moveLeft()
 {
     xPos -= TILE_WIDTH;
-    updatePos();
 }
 
 void Actor::moveRight()
 {
     xPos += TILE_WIDTH;
-    updatePos();
 }
 
 void Actor::moveUp()
 {
     yPos -= TILE_HEIGHT;
-    updatePos();
 }
 
 void Actor::moveDown()
 {
     yPos += TILE_HEIGHT;
-    updatePos();
 }
 
 int Actor::getTileIndexLeft() const

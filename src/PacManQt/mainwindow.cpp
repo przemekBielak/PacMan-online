@@ -135,7 +135,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ghostBlue = new Ghost(":/Images/ghostBlueRight.png", 200, 400);
     scene->addItem(ghostBlue->getPixmapItem());
 
-    ghostYellow = new Ghost(":/Images/ghostYellowRight.png", 400, 100);
+    ghostYellow = new Ghost(":/Images/ghostYellowRight.png", 20, 80);
     scene->addItem(ghostYellow->getPixmapItem());
 
     ghostGreen = new Ghost(":/Images/ghostGreenRight.png", 400, 100);
@@ -376,6 +376,7 @@ void MainWindow::gameLoop(void)
     if(gameLoopCounterPacman > pacman->getSpeed())
     {
         moveActor(pacman);
+        pacman->updatePos();
         pacman->setDirection(DONT_MOVE);
         pacman->setLastTile(pacman->getCurrTile());
         gameLoopCounterPacman = 0;
@@ -386,6 +387,7 @@ void MainWindow::gameLoop(void)
     {
         moveActor(pacman2);
         pacman2->setDirection(DONT_MOVE);
+        pacman2->updatePos();
         pacman2->setLastTile(pacman->getCurrTile());
         gameLoopCounterPacman2 = 0;
     }
@@ -404,6 +406,10 @@ void MainWindow::gameLoop(void)
         moveActor(ghostBlue);
         moveActor(ghostGreen);
         moveActor(ghostYellow);
+        ghostRed->updatePos();
+        ghostBlue->updatePos();
+        ghostGreen->updatePos();
+        ghostYellow->updatePos();
         gameLoopCounterGhost = 0;
     }
 

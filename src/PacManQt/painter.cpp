@@ -23,7 +23,6 @@ void Painter::setLocation(int x, int y)
 {
     xPos = x;
     yPos = y;
-    pixmapItem->setPos(xPos, yPos);
 }
 
 QPixmap *Painter::getPixmap() const
