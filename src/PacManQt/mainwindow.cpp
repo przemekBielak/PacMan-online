@@ -158,25 +158,40 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
 {
     if(event->key() == Qt::Key_A)
     {
-        pacman->setPixmap(":/Images/pacmanLeft.png");
         pacman->setDirection(DIRECTION_LEFT);
     }
     else if(event->key() == Qt::Key_D)
     {
-        pacman->setPixmap(":/Images/pacmanRight.png");
         pacman->setDirection(DIRECTION_RIGHT);
     }
     else if(event->key() == Qt::Key_W)
     {
-        pacman->setPixmap(":/Images/pacmanUp.png");
         pacman->setDirection(DIRECTION_UP);
     }
     else if(event->key() == Qt::Key_S)
     {
-        pacman->setPixmap(":/Images/pacmanDown.png");
         pacman->setDirection(DIRECTION_DOWN);
     }
+}
 
+void MainWindow::rotateImage(Actor *act)
+{
+    if(act->getDirection() == DIRECTION_LEFT)
+    {
+        pacman->setPixmap(":/Images/pacmanLeft.png");
+    }
+    else if(act->getDirection() == DIRECTION_RIGHT)
+    {
+        pacman->setPixmap(":/Images/pacmanRight.png");
+    }
+    else if(act->getDirection() == DIRECTION_UP)
+    {
+        pacman->setPixmap(":/Images/pacmanUp.png");
+    }
+    else if(act->getDirection() == DIRECTION_DOWN)
+    {
+        pacman->setPixmap(":/Images/pacmanDown.png");
+    }
 }
 
 int MainWindow::checkIfMoveIsPossible(Actor *act, directionType direction)
@@ -354,6 +369,9 @@ void MainWindow::gameLoop(void)
     checkSuperDot(pacman);
     checkSuperDot(pacman2);
 
+    rotateImage(pacman);
+    rotateImage(pacman2);
+
     /* Pacman game loop */
     if(gameLoopCounterPacman > pacman->getSpeed())
     {
@@ -393,7 +411,7 @@ void MainWindow::gameLoop(void)
     /*
      * TODO:
      * [] reset game state - reinitialize the map
-    */
+     */
 
 
     scene->update();

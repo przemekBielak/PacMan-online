@@ -51,6 +51,7 @@ private:
     void keyPressEvent(QKeyEvent *event);
     int checkIfMoveIsPossible(Actor *act, directionType direction);
     void setGhostDirection(Ghost *ghost);
+    void rotateImage(Actor *act);
     void moveActor(Actor *ghost);
     void checkIfDead(Pacman *pac);
     void checkDot(Pacman *pac);
