@@ -13,9 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QWidget>
 
@@ -25,66 +23,14 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QGraphicsView *graphicsView;
-    QLabel *label_lifes_text;
-    QLabel *label_lifes_num;
-    QLabel *label_points_text;
-    QLabel *label_points;
-    QLabel *label_points_text_2;
-    QLabel *label_lifes_text_2;
-    QLabel *label_points_2;
-    QLabel *label_lifes_num_2;
-    QLabel *label_player1;
-    QLabel *label_lifes_text_4;
-    QLabel *label_game_level;
-    QLabel *label_game_level_num;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(778, 712);
+        MainWindow->resize(770, 640);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        graphicsView = new QGraphicsView(centralWidget);
-        graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(20, 20, 620, 620));
-        label_lifes_text = new QLabel(centralWidget);
-        label_lifes_text->setObjectName(QStringLiteral("label_lifes_text"));
-        label_lifes_text->setGeometry(QRect(650, 70, 26, 16));
-        label_lifes_num = new QLabel(centralWidget);
-        label_lifes_num->setObjectName(QStringLiteral("label_lifes_num"));
-        label_lifes_num->setGeometry(QRect(700, 70, 47, 16));
-        label_points_text = new QLabel(centralWidget);
-        label_points_text->setObjectName(QStringLiteral("label_points_text"));
-        label_points_text->setGeometry(QRect(650, 90, 47, 16));
-        label_points = new QLabel(centralWidget);
-        label_points->setObjectName(QStringLiteral("label_points"));
-        label_points->setGeometry(QRect(700, 90, 47, 16));
-        label_points_text_2 = new QLabel(centralWidget);
-        label_points_text_2->setObjectName(QStringLiteral("label_points_text_2"));
-        label_points_text_2->setGeometry(QRect(650, 150, 47, 16));
-        label_lifes_text_2 = new QLabel(centralWidget);
-        label_lifes_text_2->setObjectName(QStringLiteral("label_lifes_text_2"));
-        label_lifes_text_2->setGeometry(QRect(650, 130, 26, 16));
-        label_points_2 = new QLabel(centralWidget);
-        label_points_2->setObjectName(QStringLiteral("label_points_2"));
-        label_points_2->setGeometry(QRect(700, 150, 47, 16));
-        label_lifes_num_2 = new QLabel(centralWidget);
-        label_lifes_num_2->setObjectName(QStringLiteral("label_lifes_num_2"));
-        label_lifes_num_2->setGeometry(QRect(700, 130, 47, 16));
-        label_player1 = new QLabel(centralWidget);
-        label_player1->setObjectName(QStringLiteral("label_player1"));
-        label_player1->setGeometry(QRect(680, 50, 41, 16));
-        label_lifes_text_4 = new QLabel(centralWidget);
-        label_lifes_text_4->setObjectName(QStringLiteral("label_lifes_text_4"));
-        label_lifes_text_4->setGeometry(QRect(680, 110, 41, 16));
-        label_game_level = new QLabel(centralWidget);
-        label_game_level->setObjectName(QStringLiteral("label_game_level"));
-        label_game_level->setGeometry(QRect(650, 180, 61, 16));
-        label_game_level_num = new QLabel(centralWidget);
-        label_game_level_num->setObjectName(QStringLiteral("label_game_level_num"));
-        label_game_level_num->setGeometry(QRect(720, 180, 47, 16));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -95,18 +41,6 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        label_lifes_text->setText(QApplication::translate("MainWindow", "Lifes:", nullptr));
-        label_lifes_num->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        label_points_text->setText(QApplication::translate("MainWindow", "Points:", nullptr));
-        label_points->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        label_points_text_2->setText(QApplication::translate("MainWindow", "Points:", nullptr));
-        label_lifes_text_2->setText(QApplication::translate("MainWindow", "Lifes:", nullptr));
-        label_points_2->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        label_lifes_num_2->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        label_player1->setText(QApplication::translate("MainWindow", "Player 1", nullptr));
-        label_lifes_text_4->setText(QApplication::translate("MainWindow", "Player 2", nullptr));
-        label_game_level->setText(QApplication::translate("MainWindow", "Game Level:", nullptr));
-        label_game_level_num->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
     } // retranslateUi
 
 };

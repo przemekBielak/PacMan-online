@@ -1,12 +1,15 @@
 INPUT(
 ./release\main.o
 ./release\mainwindow.o
-./release\tile.o
 ./release\actor.o
 ./release\painter.o
 ./release\pacman.o
 ./release\ghost.o
-./release\gametimer.o
+./release\tile.o
+./release\gameoptions.o
+./release\gamewindow.o
 ./release\qrc_resource.o
 ./release\moc_mainwindow.o
+./release\moc_gameoptions.o
+./release\moc_gamewindow.o
 );

@@ -13,21 +13,11 @@
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include <QTimer>
+#include <QStackedWidget>
+#include <QComboBox>
 
-#include "game_cfg.h"
-#include "tile.h"
-#include "actor.h"
-#include "pacman.h"
-#include "ghost.h"
-
-typedef enum directionType_
-{
-        DIRECTION_LEFT = 0
-    ,   DIRECTION_RIGHT
-    ,   DIRECTION_UP
-    ,   DIRECTION_DOWN
-    ,   DONT_MOVE
-}directionType;
+#include "gameoptions.h"
+#include "gamewindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -41,36 +31,11 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    QTimer *gameLoopTimer;
-
-public slots:
-    void gameLoop(void);
 
 private:
     Ui::MainWindow *ui;
-    void keyPressEvent(QKeyEvent *event);
-    int checkIfMoveIsPossible(Actor *act, directionType direction);
-    void setGhostDirection(Ghost *ghost);
-    void rotateImage(Actor *act);
-    void moveActor(Actor *ghost);
-    void checkIfDead(Pacman *pac);
-    void checkDot(Pacman *pac);
-    void checkSuperDot(Pacman *pac);
-    void checkLevelFinish(void);
+    QStackedWidget *stackedWidget;
 
-    Ghost *ghostRed;
-    Ghost *ghostYellow;
-    Ghost *ghostGreen;
-    Ghost *ghostBlue;
-    Pacman *pacman;
-    Pacman *pacman2;
-    int gameLoopCounterGhost;
-    int gameLoopCounterPacman;
-    int gameLoopCounterPacman2;
-    int gameLevel;
-
-protected:
-    QGraphicsScene *scene;
 };
 
 

@@ -30,7 +30,9 @@ SOURCES += \
     painter.cpp \
     pacman.cpp \
     ghost.cpp \
-    tile.cpp
+    tile.cpp \
+    gameoptions.cpp \
+    gamewindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,10 +42,13 @@ HEADERS += \
     pacman.h \
     ghost.h \
     game_cfg.h \
-    gametimer.h
+    gameoptions.h \
+    gamewindow.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    gameoptions.ui \
+    gamewindow.ui
 
 RESOURCES += \
     resource.qrc
