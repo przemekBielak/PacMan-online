@@ -18,6 +18,7 @@
 
 #include "gameoptions.h"
 #include "gamewindow.h"
+#include "globaltypes.h"
 
 namespace Ui {
 class MainWindow;
@@ -31,10 +32,11 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+    static QStackedWidget *stackedWidget;
+
 
 private:
     Ui::MainWindow *ui;
-    QStackedWidget *stackedWidget;
 
 };
 

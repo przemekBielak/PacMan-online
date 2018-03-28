@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "gameoptions.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -8,16 +9,17 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     /* Create all game view widgets */
-    gameWindow *gameWindowWidget = new gameWindow;
     gameOptions *gameOptionsWidget = new gameOptions;
+    gameWindow *gameWindowWidget = new gameWindow;
 
     QStackedWidget *stackedWidget = new QStackedWidget;
     stackedWidget->addWidget(gameOptionsWidget);
     stackedWidget->addWidget(gameWindowWidget);
 
     setCentralWidget(stackedWidget);
-    stackedWidget->setCurrentIndex(0);
+    stackedWidget->setCurrentIndex(GAME_OPTION_WIDGET);
 
+    connect(gameOptionsWidget, SIGNAL(setActiveWidget(int)), stackedWidget, SLOT(setCurrentIndex(int)));
 
 }
 
@@ -26,3 +28,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
+

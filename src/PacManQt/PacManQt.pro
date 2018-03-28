@@ -43,7 +43,8 @@ HEADERS += \
     ghost.h \
     game_cfg.h \
     gameoptions.h \
-    gamewindow.h
+    gamewindow.h \
+    globaltypes.h
 
 FORMS += \
         mainwindow.ui \

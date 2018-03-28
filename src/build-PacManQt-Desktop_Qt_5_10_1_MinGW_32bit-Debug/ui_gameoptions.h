@@ -25,8 +25,8 @@ class Ui_gameOptions
 public:
     QWidget *widget;
     QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton;
+    QPushButton *pushButtonClient;
+    QPushButton *pushButtonServer;
 
     void setupUi(QWidget *gameOptions)
     {
@@ -39,15 +39,15 @@ public:
         horizontalLayout = new QHBoxLayout(widget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        pushButton_2 = new QPushButton(widget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButtonClient = new QPushButton(widget);
+        pushButtonClient->setObjectName(QStringLiteral("pushButtonClient"));
 
-        horizontalLayout->addWidget(pushButton_2);
+        horizontalLayout->addWidget(pushButtonClient);
 
-        pushButton = new QPushButton(widget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButtonServer = new QPushButton(widget);
+        pushButtonServer->setObjectName(QStringLiteral("pushButtonServer"));
 
-        horizontalLayout->addWidget(pushButton);
+        horizontalLayout->addWidget(pushButtonServer);
 
 
         retranslateUi(gameOptions);
@@ -58,8 +58,8 @@ public:
     void retranslateUi(QWidget *gameOptions)
     {
         gameOptions->setWindowTitle(QApplication::translate("gameOptions", "Form", nullptr));
-        pushButton_2->setText(QApplication::translate("gameOptions", "Client", nullptr));
-        pushButton->setText(QApplication::translate("gameOptions", "Server", nullptr));
+        pushButtonClient->setText(QApplication::translate("gameOptions", "Client", nullptr));
+        pushButtonServer->setText(QApplication::translate("gameOptions", "Server", nullptr));
     } // retranslateUi
 
 };

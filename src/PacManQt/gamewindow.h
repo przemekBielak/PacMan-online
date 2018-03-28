@@ -20,7 +20,7 @@
 #include "actor.h"
 #include "pacman.h"
 #include "ghost.h"
-#include "gameoptions.h"
+#include "globaltypes.h"
 
 typedef enum directionType_
 {
