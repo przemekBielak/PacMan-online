@@ -32,11 +32,9 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    static QStackedWidget *stackedWidget;
-
-
 private:
     Ui::MainWindow *ui;
+    QStackedWidget *stackedWidget;
 
 };
 
