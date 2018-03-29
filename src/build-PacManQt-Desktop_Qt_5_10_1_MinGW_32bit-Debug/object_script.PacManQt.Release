@@ -8,8 +8,12 @@ INPUT(
 ./release\tile.o
 ./release\gameoptions.o
 ./release\gamewindow.o
+./release\serverwindow.o
+./release\clientwindow.o
 ./release\qrc_resource.o
 ./release\moc_mainwindow.o
 ./release\moc_gameoptions.o
 ./release\moc_gamewindow.o
+./release\moc_serverwindow.o
+./release\moc_clientwindow.o
 );

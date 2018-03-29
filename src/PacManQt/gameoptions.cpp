@@ -21,10 +21,10 @@ gameOptions::~gameOptions()
 
 void gameOptions::on_pushButtonClient_clicked()
 {
-    emit setActiveWidget(GAME_OPTION_WIDGET);
+    emit setActiveWidget(CLIENT_WIDGET);
 }
 
 void gameOptions::on_pushButtonServer_clicked()
 {
-    emit setActiveWidget(GAME_WIDGET);
+    emit setActiveWidget(SERVER_WIDGET);
 }

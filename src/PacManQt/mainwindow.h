@@ -17,7 +17,6 @@
 #include <QComboBox>
 
 #include "gameoptions.h"
-#include "gamewindow.h"
 #include "globaltypes.h"
 
 namespace Ui {

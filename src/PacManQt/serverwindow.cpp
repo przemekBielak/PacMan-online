@@ -12,3 +12,8 @@ serverWindow::~serverWindow()
 {
     delete ui;
 }
+
+void serverWindow::on_pushButton_clicked()
+{
+    emit setActiveWidget(GAME_WIDGET);
+}
