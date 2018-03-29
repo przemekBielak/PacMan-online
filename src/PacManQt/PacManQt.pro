@@ -32,7 +32,9 @@ SOURCES += \
     ghost.cpp \
     tile.cpp \
     gameoptions.cpp \
-    gamewindow.cpp
+    gamewindow.cpp \
+    serverwindow.cpp \
+    clientwindow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -44,12 +46,16 @@ HEADERS += \
     game_cfg.h \
     gameoptions.h \
     gamewindow.h \
-    globaltypes.h
+    globaltypes.h \
+    serverwindow.h \
+    clientwindow.h
 
 FORMS += \
         mainwindow.ui \
     gameoptions.ui \
-    gamewindow.ui
+    gamewindow.ui \
+    serverwindow.ui \
+    clientwindow.ui
 
 RESOURCES += \
     resource.qrc
