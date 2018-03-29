@@ -12,11 +12,6 @@ gameWindow::gameWindow(QWidget *parent) :
     ui->setupUi(this);
     scene = new QGraphicsScene(this);
     ui->graphicsView->setScene(scene);
-
-    gameLoopTimer = new QTimer(this);
-    connect(gameLoopTimer, SIGNAL(timeout()), this, SLOT(gameLoop()));
-    gameLoopTimer->start(10);
-
     scene->setSceneRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
     /* mapArr is storing types of all tiles */
@@ -146,6 +141,19 @@ gameWindow::gameWindow(QWidget *parent) :
     ghostBlue->setSpeed(30);
 
     ui->label_game_level_num->setText(QString::number(1));
+
+}
+
+
+void gameWindow::startGame()
+{
+    /* Setup game timer */
+    gameLoopTimer = new QTimer(this);
+    connect(gameLoopTimer, SIGNAL(timeout()), this, SLOT(gameLoop()));
+
+    /* Start game timer */
+    gameLoopTimer->start(10);
+
 }
 
 
@@ -322,6 +330,8 @@ void gameWindow::checkLevelFinish()
         endCounter == 0;
     }
 }
+
+
 
 void gameWindow::checkIfDead(Pacman *pac)
 {

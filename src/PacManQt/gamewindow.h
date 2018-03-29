@@ -44,8 +44,8 @@ class gameWindow : public QWidget
 public:
     explicit gameWindow(QWidget *parent = 0);
     ~gameWindow();
+    void startGame(void);
 
-    QTimer *gameLoopTimer;
 
 public slots:
     void gameLoop(void);
@@ -62,6 +62,8 @@ private:
     void checkDot(Pacman *pac);
     void checkSuperDot(Pacman *pac);
     void checkLevelFinish(void);
+
+    QTimer *gameLoopTimer;
 
     Ghost *ghostRed;
     Ghost *ghostYellow;

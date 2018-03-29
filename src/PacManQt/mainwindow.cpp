@@ -1,12 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "gameoptions.h"
-#include "serverwindow.h"
-#include "clientwindow.h"
-#include "gamewindow.h"
-
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -14,10 +8,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     /* Create all game view widgets */
-    gameOptions *gameOptionsWidget = new gameOptions;
-    gameWindow *gameWindowWidget = new gameWindow;
-    serverWindow *serverWindowWidget = new serverWindow;
-    clientwindow *clientwindowWidget = new clientwindow;
+    gameOptionsWidget = new gameOptions;
+    gameWindowWidget = new gameWindow;
+    serverWindowWidget = new serverWindow;
+    clientwindowWidget = new clientwindow;
 
     QStackedWidget *stackedWidget = new QStackedWidget;
     stackedWidget->addWidget(gameOptionsWidget);
@@ -28,16 +22,27 @@ MainWindow::MainWindow(QWidget *parent) :
     setCentralWidget(stackedWidget);
     stackedWidget->setCurrentIndex(GAME_OPTION_WIDGET);
 
+    /* connect signals/slots for window change */
     connect(gameOptionsWidget, SIGNAL(setActiveWidget(int)), stackedWidget, SLOT(setCurrentIndex(int)));
     connect(clientwindowWidget, SIGNAL(setActiveWidget(int)), stackedWidget, SLOT(setCurrentIndex(int)));
     connect(serverWindowWidget, SIGNAL(setActiveWidget(int)), stackedWidget, SLOT(setCurrentIndex(int)));
 
+    /* execute code when window changed */
+    connect(stackedWidget, SIGNAL(currentChanged(int)), this, SLOT(stackedWidgetChanged(int)));
 }
 
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::stackedWidgetChanged(int widget)
+{
+    if (widget == GAME_WIDGET)
+    {
+        gameWindowWidget->startGame();
+    }
 }
 
 

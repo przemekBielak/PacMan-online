@@ -2,22 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QtCore>
 #include <QtGui>
-#include <QGraphicsScene>
-#include <QImage>
-#include <QGraphicsItem>
-#include <QPainter>
-#include <QDebug>
-#include <QPixmap>
-#include <QGraphicsPixmapItem>
-#include <QKeyEvent>
-#include <QTimer>
 #include <QStackedWidget>
-#include <QComboBox>
+
+#include "globaltypes.h"
 
 #include "gameoptions.h"
-#include "globaltypes.h"
+#include "serverwindow.h"
+#include "clientwindow.h"
+#include "gamewindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -31,9 +24,17 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void stackedWidgetChanged(int widget);
+
 private:
     Ui::MainWindow *ui;
     QStackedWidget *stackedWidget;
+
+    gameOptions *gameOptionsWidget;
+    gameWindow *gameWindowWidget;
+    serverWindow *serverWindowWidget;
+    clientwindow *clientwindowWidget;
 
 };
 

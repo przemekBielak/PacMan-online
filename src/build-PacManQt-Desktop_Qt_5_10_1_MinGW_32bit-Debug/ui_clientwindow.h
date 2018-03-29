@@ -25,7 +25,6 @@ class Ui_clientwindow
 public:
     QLabel *label;
     QPushButton *pushButton;
-    QPushButton *pushButton_2;
 
     void setupUi(QWidget *clientwindow)
     {
@@ -38,9 +37,6 @@ public:
         pushButton = new QPushButton(clientwindow);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         pushButton->setGeometry(QRect(160, 190, 75, 23));
-        pushButton_2 = new QPushButton(clientwindow);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(0, 0, 75, 23));
 
         retranslateUi(clientwindow);
 
@@ -52,7 +48,6 @@ public:
         clientwindow->setWindowTitle(QApplication::translate("clientwindow", "Form", nullptr));
         label->setText(QApplication::translate("clientwindow", "Client Widget", nullptr));
         pushButton->setText(QApplication::translate("clientwindow", "Start Game", nullptr));
-        pushButton_2->setText(QApplication::translate("clientwindow", "Start Game", nullptr));
     } // retranslateUi
 
 };
