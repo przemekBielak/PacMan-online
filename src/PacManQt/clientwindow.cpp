@@ -6,6 +6,7 @@ clientwindow::clientwindow(QWidget *parent) :
     ui(new Ui::clientwindow)
 {
     ui->setupUi(this);
+    ui->label_StatusText->setText("Not Connected");
 }
 
 clientwindow::~clientwindow()
@@ -21,9 +22,12 @@ void clientwindow::on_pushButton_Join_clicked()
 
 void clientwindow::connect()
 {
-    qDebug() << "Connecting...";
+    ui->label_StatusText->setText("Connecting");
     tcpClient = new QTcpSocket(this);
-    tcpClient->connectToHost("127.0.0.1", 1234);
+
+    QString hostAddress = ui->lineEdit_HostAddressText->text();
+    qint16 hostPort = (ui->lineEdit_HostPortText->text()).toInt();
+    tcpClient->connectToHost(hostAddress, hostPort);
 
     if(tcpClient->waitForConnected(3000))
     {
@@ -34,6 +38,7 @@ void clientwindow::connect()
     else
     {
         qDebug() << "Not connected!";
+        ui->label_StatusText->setText("Not Connected");
     }
 
 }

@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -25,10 +26,15 @@ QT_BEGIN_NAMESPACE
 class Ui_clientwindow
 {
 public:
-    QWidget *layoutWidget;
+    QWidget *widget;
     QVBoxLayout *verticalLayout;
-    QLabel *label;
-    QLineEdit *lineEdit;
+    QLabel *label_JoinGame;
+    QHBoxLayout *horizontalLayout;
+    QLabel *label_HostAddress;
+    QLineEdit *lineEdit_HostAddressText;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_HostPort;
+    QLineEdit *lineEdit_HostPortText;
     QPushButton *pushButton_Join;
     QLabel *label_Status;
     QLabel *label_StatusText;
@@ -38,33 +44,58 @@ public:
         if (clientwindow->objectName().isEmpty())
             clientwindow->setObjectName(QStringLiteral("clientwindow"));
         clientwindow->resize(400, 300);
-        layoutWidget = new QWidget(clientwindow);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(120, 100, 135, 108));
-        verticalLayout = new QVBoxLayout(layoutWidget);
+        widget = new QWidget(clientwindow);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(30, 101, 207, 138));
+        verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(layoutWidget);
-        label->setObjectName(QStringLiteral("label"));
+        label_JoinGame = new QLabel(widget);
+        label_JoinGame->setObjectName(QStringLiteral("label_JoinGame"));
 
-        verticalLayout->addWidget(label);
+        verticalLayout->addWidget(label_JoinGame);
 
-        lineEdit = new QLineEdit(layoutWidget);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        label_HostAddress = new QLabel(widget);
+        label_HostAddress->setObjectName(QStringLiteral("label_HostAddress"));
 
-        verticalLayout->addWidget(lineEdit);
+        horizontalLayout->addWidget(label_HostAddress);
 
-        pushButton_Join = new QPushButton(layoutWidget);
+        lineEdit_HostAddressText = new QLineEdit(widget);
+        lineEdit_HostAddressText->setObjectName(QStringLiteral("lineEdit_HostAddressText"));
+
+        horizontalLayout->addWidget(lineEdit_HostAddressText);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        label_HostPort = new QLabel(widget);
+        label_HostPort->setObjectName(QStringLiteral("label_HostPort"));
+
+        horizontalLayout_2->addWidget(label_HostPort);
+
+        lineEdit_HostPortText = new QLineEdit(widget);
+        lineEdit_HostPortText->setObjectName(QStringLiteral("lineEdit_HostPortText"));
+
+        horizontalLayout_2->addWidget(lineEdit_HostPortText);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
+        pushButton_Join = new QPushButton(widget);
         pushButton_Join->setObjectName(QStringLiteral("pushButton_Join"));
 
         verticalLayout->addWidget(pushButton_Join);
 
-        label_Status = new QLabel(layoutWidget);
+        label_Status = new QLabel(widget);
         label_Status->setObjectName(QStringLiteral("label_Status"));
 
         verticalLayout->addWidget(label_Status);
 
-        label_StatusText = new QLabel(layoutWidget);
+        label_StatusText = new QLabel(widget);
         label_StatusText->setObjectName(QStringLiteral("label_StatusText"));
 
         verticalLayout->addWidget(label_StatusText);
@@ -78,7 +109,9 @@ public:
     void retranslateUi(QWidget *clientwindow)
     {
         clientwindow->setWindowTitle(QApplication::translate("clientwindow", "Form", nullptr));
-        label->setText(QApplication::translate("clientwindow", "Join a Game", nullptr));
+        label_JoinGame->setText(QApplication::translate("clientwindow", "Join a Game", nullptr));
+        label_HostAddress->setText(QApplication::translate("clientwindow", "Host Address", nullptr));
+        label_HostPort->setText(QApplication::translate("clientwindow", "Host Port", nullptr));
         pushButton_Join->setText(QApplication::translate("clientwindow", "Join", nullptr));
         label_Status->setText(QApplication::translate("clientwindow", "Status", nullptr));
         label_StatusText->setText(QApplication::translate("clientwindow", "Status", nullptr));

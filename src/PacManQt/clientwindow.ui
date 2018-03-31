@@ -13,25 +13,50 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>120</x>
-     <y>100</y>
-     <width>135</width>
-     <height>108</height>
+     <x>30</x>
+     <y>101</y>
+     <width>207</width>
+     <height>138</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="label_JoinGame">
       <property name="text">
        <string>Join a Game</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit"/>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label_HostAddress">
+        <property name="text">
+         <string>Host Address</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_HostAddressText"/>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_HostPort">
+        <property name="text">
+         <string>Host Port</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_HostPortText"/>
+      </item>
+     </layout>
     </item>
     <item>
      <widget class="QPushButton" name="pushButton_Join">
