@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_clientwindow_t {
     QByteArrayData data[5];
-    char stringdata0[65];
+    char stringdata0[70];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,11 +35,11 @@ QT_MOC_LITERAL(0, 0, 12), // "clientwindow"
 QT_MOC_LITERAL(1, 13, 15), // "setActiveWidget"
 QT_MOC_LITERAL(2, 29, 0), // ""
 QT_MOC_LITERAL(3, 30, 12), // "activeWidget"
-QT_MOC_LITERAL(4, 43, 21) // "on_pushButton_clicked"
+QT_MOC_LITERAL(4, 43, 26) // "on_pushButton_Join_clicked"
 
     },
     "clientwindow\0setActiveWidget\0\0"
-    "activeWidget\0on_pushButton_clicked"
+    "activeWidget\0on_pushButton_Join_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -78,7 +78,7 @@ void clientwindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->setActiveWidget((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 1: _t->on_pushButton_clicked(); break;
+        case 1: _t->on_pushButton_Join_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {

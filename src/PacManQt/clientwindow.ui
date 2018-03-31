@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -34,7 +34,7 @@
      <widget class="QLineEdit" name="lineEdit"/>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pushButton_Join">
       <property name="text">
        <string>Join</string>
       </property>

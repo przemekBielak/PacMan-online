@@ -28,6 +28,7 @@ void serverWindow::on_pushButton_host_clicked()
     else
     {
         qDebug() << "Server started!";
+        ui->label_StatusText->setText("Waiting for connection...");
     }
 }
 

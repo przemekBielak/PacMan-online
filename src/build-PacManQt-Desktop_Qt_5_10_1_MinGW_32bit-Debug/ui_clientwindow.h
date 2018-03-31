@@ -25,11 +25,11 @@ QT_BEGIN_NAMESPACE
 class Ui_clientwindow
 {
 public:
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QLineEdit *lineEdit;
-    QPushButton *pushButton;
+    QPushButton *pushButton_Join;
     QLabel *label_Status;
     QLabel *label_StatusText;
 
@@ -38,33 +38,33 @@ public:
         if (clientwindow->objectName().isEmpty())
             clientwindow->setObjectName(QStringLiteral("clientwindow"));
         clientwindow->resize(400, 300);
-        widget = new QWidget(clientwindow);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(120, 100, 135, 108));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(clientwindow);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(120, 100, 135, 108));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QStringLiteral("label"));
 
         verticalLayout->addWidget(label);
 
-        lineEdit = new QLineEdit(widget);
+        lineEdit = new QLineEdit(layoutWidget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
 
         verticalLayout->addWidget(lineEdit);
 
-        pushButton = new QPushButton(widget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton_Join = new QPushButton(layoutWidget);
+        pushButton_Join->setObjectName(QStringLiteral("pushButton_Join"));
 
-        verticalLayout->addWidget(pushButton);
+        verticalLayout->addWidget(pushButton_Join);
 
-        label_Status = new QLabel(widget);
+        label_Status = new QLabel(layoutWidget);
         label_Status->setObjectName(QStringLiteral("label_Status"));
 
         verticalLayout->addWidget(label_Status);
 
-        label_StatusText = new QLabel(widget);
+        label_StatusText = new QLabel(layoutWidget);
         label_StatusText->setObjectName(QStringLiteral("label_StatusText"));
 
         verticalLayout->addWidget(label_StatusText);
@@ -79,7 +79,7 @@ public:
     {
         clientwindow->setWindowTitle(QApplication::translate("clientwindow", "Form", nullptr));
         label->setText(QApplication::translate("clientwindow", "Join a Game", nullptr));
-        pushButton->setText(QApplication::translate("clientwindow", "Join", nullptr));
+        pushButton_Join->setText(QApplication::translate("clientwindow", "Join", nullptr));
         label_Status->setText(QApplication::translate("clientwindow", "Status", nullptr));
         label_StatusText->setText(QApplication::translate("clientwindow", "Status", nullptr));
     } // retranslateUi
