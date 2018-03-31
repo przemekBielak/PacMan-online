@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     setCentralWidget(stackedWidget);
     stackedWidget->setCurrentIndex(GAME_OPTION_WIDGET);
 
+
     /* connect signals/slots for window change */
     connect(gameOptionsWidget, SIGNAL(setActiveWidget(int)), stackedWidget, SLOT(setCurrentIndex(int)));
     connect(clientwindowWidget, SIGNAL(setActiveWidget(int)), stackedWidget, SLOT(setCurrentIndex(int)));
@@ -37,11 +38,18 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::stackedWidgetChanged(int widget)
+void MainWindow::stackedWidgetChanged(int widgetNum)
 {
-    if (widget == GAME_WIDGET)
+    qDebug() << widgetNum;
+
+    if (widgetNum == GAME_WIDGET)
     {
         gameWindowWidget->startGame();
+    }
+    else if(widgetNum == SERVER_WIDGET)
+    {
+//        serverWindowWidget->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+//        stackedWidget->adjustSize();
     }
 }
 

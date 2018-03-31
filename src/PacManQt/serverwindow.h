@@ -1,8 +1,12 @@
 #ifndef SERVERWINDOW_H
 #define SERVERWINDOW_H
 
-#include <QWidget>
 #include "globaltypes.h"
+
+#include <QWidget>
+#include <QDebug>
+#include <QTcpServer>
+#include <QTcpSocket>
 
 namespace Ui {
 class serverWindow;
@@ -20,10 +24,13 @@ signals:
     void setActiveWidget(int activeWidget);
 
 private slots:
-    void on_pushButton_clicked();
+    void on_pushButton_host_clicked();
+    void newConnection();
 
 private:
     Ui::serverWindow *ui;
+    QTcpServer *tcpServer;
+
 };
 
 #endif // SERVERWINDOW_H

@@ -6,6 +6,7 @@ serverWindow::serverWindow(QWidget *parent) :
     ui(new Ui::serverWindow)
 {
     ui->setupUi(this);
+
 }
 
 serverWindow::~serverWindow()
@@ -13,7 +14,33 @@ serverWindow::~serverWindow()
     delete ui;
 }
 
-void serverWindow::on_pushButton_clicked()
+void serverWindow::on_pushButton_host_clicked()
 {
+    tcpServer = new QTcpServer(this);
+
+    connect(tcpServer, SIGNAL(newConnection()), this, SLOT(newConnection()));
+
+    if(!tcpServer->listen(QHostAddress::Any, 1234))
+    {
+        qDebug() << "Server could not start!";
+    }
+    else
+    {
+        qDebug() << "Server started!";
+    }
+}
+
+void serverWindow::newConnection()
+{
+    QTcpSocket *socket = tcpServer->nextPendingConnection();
+    socket->write("hello new client!\r\n");
+    socket->flush();
+    socket->close();
+    qDebug() << "New connection!";
+
+    /* When conenction established, start the game */
     emit setActiveWidget(GAME_WIDGET);
 }
+
+
+

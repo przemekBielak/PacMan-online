@@ -25,7 +25,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void stackedWidgetChanged(int widget);
+    void stackedWidgetChanged(int widgetNum);
 
 private:
     Ui::MainWindow *ui;

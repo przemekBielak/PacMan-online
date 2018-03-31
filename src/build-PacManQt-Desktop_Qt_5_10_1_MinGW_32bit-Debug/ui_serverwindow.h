@@ -16,6 +16,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,20 +24,44 @@ QT_BEGIN_NAMESPACE
 class Ui_serverWindow
 {
 public:
-    QLabel *label;
-    QPushButton *pushButton;
+    QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout;
+    QLabel *label_Host;
+    QPushButton *pushButton_host;
+    QLabel *label_Status;
+    QLabel *label_StatusText;
 
     void setupUi(QWidget *serverWindow)
     {
         if (serverWindow->objectName().isEmpty())
             serverWindow->setObjectName(QStringLiteral("serverWindow"));
-        serverWindow->resize(400, 300);
-        label = new QLabel(serverWindow);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(170, 110, 91, 31));
-        pushButton = new QPushButton(serverWindow);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(170, 190, 75, 23));
+        serverWindow->resize(308, 233);
+        layoutWidget = new QWidget(serverWindow);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(50, 50, 211, 131));
+        verticalLayout = new QVBoxLayout(layoutWidget);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        label_Host = new QLabel(layoutWidget);
+        label_Host->setObjectName(QStringLiteral("label_Host"));
+
+        verticalLayout->addWidget(label_Host);
+
+        pushButton_host = new QPushButton(layoutWidget);
+        pushButton_host->setObjectName(QStringLiteral("pushButton_host"));
+
+        verticalLayout->addWidget(pushButton_host);
+
+        label_Status = new QLabel(layoutWidget);
+        label_Status->setObjectName(QStringLiteral("label_Status"));
+
+        verticalLayout->addWidget(label_Status);
+
+        label_StatusText = new QLabel(layoutWidget);
+        label_StatusText->setObjectName(QStringLiteral("label_StatusText"));
+
+        verticalLayout->addWidget(label_StatusText);
+
 
         retranslateUi(serverWindow);
 
@@ -46,8 +71,10 @@ public:
     void retranslateUi(QWidget *serverWindow)
     {
         serverWindow->setWindowTitle(QApplication::translate("serverWindow", "Form", nullptr));
-        label->setText(QApplication::translate("serverWindow", "Server Widget", nullptr));
-        pushButton->setText(QApplication::translate("serverWindow", "Start Game", nullptr));
+        label_Host->setText(QApplication::translate("serverWindow", "The server is running on port 1234", nullptr));
+        pushButton_host->setText(QApplication::translate("serverWindow", "Host", nullptr));
+        label_Status->setText(QApplication::translate("serverWindow", "Status", nullptr));
+        label_StatusText->setText(QApplication::translate("serverWindow", "Status", nullptr));
     } // retranslateUi
 
 };
