@@ -13,9 +13,11 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -24,11 +26,13 @@ QT_BEGIN_NAMESPACE
 class Ui_serverWindow
 {
 public:
-    QWidget *layoutWidget;
+    QWidget *widget;
     QVBoxLayout *verticalLayout;
     QLabel *label_Host;
     QPushButton *pushButton_host;
+    QHBoxLayout *horizontalLayout;
     QLabel *label_Status;
+    QSpacerItem *horizontalSpacer;
     QLabel *label_StatusText;
 
     void setupUi(QWidget *serverWindow)
@@ -36,31 +40,40 @@ public:
         if (serverWindow->objectName().isEmpty())
             serverWindow->setObjectName(QStringLiteral("serverWindow"));
         serverWindow->resize(308, 233);
-        layoutWidget = new QWidget(serverWindow);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(50, 50, 211, 131));
-        verticalLayout = new QVBoxLayout(layoutWidget);
+        widget = new QWidget(serverWindow);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(41, 51, 231, 141));
+        verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label_Host = new QLabel(layoutWidget);
+        label_Host = new QLabel(widget);
         label_Host->setObjectName(QStringLiteral("label_Host"));
 
         verticalLayout->addWidget(label_Host);
 
-        pushButton_host = new QPushButton(layoutWidget);
+        pushButton_host = new QPushButton(widget);
         pushButton_host->setObjectName(QStringLiteral("pushButton_host"));
 
         verticalLayout->addWidget(pushButton_host);
 
-        label_Status = new QLabel(layoutWidget);
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        label_Status = new QLabel(widget);
         label_Status->setObjectName(QStringLiteral("label_Status"));
 
-        verticalLayout->addWidget(label_Status);
+        horizontalLayout->addWidget(label_Status);
 
-        label_StatusText = new QLabel(layoutWidget);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        label_StatusText = new QLabel(widget);
         label_StatusText->setObjectName(QStringLiteral("label_StatusText"));
 
-        verticalLayout->addWidget(label_StatusText);
+        horizontalLayout->addWidget(label_StatusText);
+
+
+        verticalLayout->addLayout(horizontalLayout);
 
 
         retranslateUi(serverWindow);

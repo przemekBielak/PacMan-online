@@ -130,7 +130,7 @@ gameWindow::gameWindow(QWidget *parent) :
     ghostBlue = new Ghost(":/Images/ghostBlueRight.png", 200, 400);
     scene->addItem(ghostBlue->getPixmapItem());
 
-    ghostYellow = new Ghost(":/Images/ghostYellowRight.png", 20, 80);
+    ghostYellow = new Ghost(":/Images/ghostYellowRight.png", 400, 80);
     scene->addItem(ghostYellow->getPixmapItem());
 
     ghostGreen = new Ghost(":/Images/ghostGreenRight.png", 400, 100);

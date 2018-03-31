@@ -6,6 +6,7 @@ serverWindow::serverWindow(QWidget *parent) :
     ui(new Ui::serverWindow)
 {
     ui->setupUi(this);
+    ui->label_StatusText->setText("Not Connected");
 
 }
 
@@ -38,8 +39,10 @@ void serverWindow::newConnection()
     socket->close();
     qDebug() << "New connection!";
 
+
     /* When conenction established, start the game */
     emit setActiveWidget(GAME_WIDGET);
+    ui->label_StatusText->setText("Connected");
 }
 
 
