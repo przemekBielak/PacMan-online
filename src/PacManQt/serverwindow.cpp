@@ -21,7 +21,9 @@ void serverWindow::on_pushButton_host_clicked()
 
     connect(tcpServer, SIGNAL(newConnection()), this, SLOT(newConnection()));
 
-    if(!tcpServer->listen(QHostAddress::Any, 1234))
+    qint16 hostPort = ui->lineEdit_HostPortEdit->text().toInt();
+
+    if(!tcpServer->listen(QHostAddress::Any, hostPort))
     {
         qDebug() << "Server could not start!";
     }

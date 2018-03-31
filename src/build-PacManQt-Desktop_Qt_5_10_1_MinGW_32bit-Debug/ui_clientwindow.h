@@ -18,6 +18,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -36,7 +37,9 @@ public:
     QLabel *label_HostPort;
     QLineEdit *lineEdit_HostPortText;
     QPushButton *pushButton_Join;
+    QHBoxLayout *horizontalLayout_3;
     QLabel *label_Status;
+    QSpacerItem *horizontalSpacer;
     QLabel *label_StatusText;
 
     void setupUi(QWidget *clientwindow)
@@ -46,7 +49,7 @@ public:
         clientwindow->resize(400, 300);
         widget = new QWidget(clientwindow);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(30, 101, 207, 138));
+        widget->setGeometry(QRect(31, 102, 207, 128));
         verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -90,15 +93,24 @@ public:
 
         verticalLayout->addWidget(pushButton_Join);
 
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         label_Status = new QLabel(widget);
         label_Status->setObjectName(QStringLiteral("label_Status"));
 
-        verticalLayout->addWidget(label_Status);
+        horizontalLayout_3->addWidget(label_Status);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer);
 
         label_StatusText = new QLabel(widget);
         label_StatusText->setObjectName(QStringLiteral("label_StatusText"));
 
-        verticalLayout->addWidget(label_StatusText);
+        horizontalLayout_3->addWidget(label_StatusText);
+
+
+        verticalLayout->addLayout(horizontalLayout_3);
 
 
         retranslateUi(clientwindow);

@@ -16,19 +16,26 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>41</x>
-     <y>51</y>
-     <width>231</width>
-     <height>141</height>
+     <x>30</x>
+     <y>70</y>
+     <width>188</width>
+     <height>81</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QLabel" name="label_Host">
-      <property name="text">
-       <string>The server is running on port 1234</string>
-      </property>
-     </widget>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="label_HostPort">
+        <property name="text">
+         <string>Host Port</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_HostPortEdit"/>
+      </item>
+     </layout>
     </item>
     <item>
      <widget class="QPushButton" name="pushButton_host">

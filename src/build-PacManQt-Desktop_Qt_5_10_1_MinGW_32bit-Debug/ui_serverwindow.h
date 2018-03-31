@@ -16,6 +16,7 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
@@ -28,7 +29,9 @@ class Ui_serverWindow
 public:
     QWidget *widget;
     QVBoxLayout *verticalLayout;
-    QLabel *label_Host;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_HostPort;
+    QLineEdit *lineEdit_HostPortEdit;
     QPushButton *pushButton_host;
     QHBoxLayout *horizontalLayout;
     QLabel *label_Status;
@@ -42,14 +45,24 @@ public:
         serverWindow->resize(308, 233);
         widget = new QWidget(serverWindow);
         widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(41, 51, 231, 141));
+        widget->setGeometry(QRect(30, 70, 188, 81));
         verticalLayout = new QVBoxLayout(widget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label_Host = new QLabel(widget);
-        label_Host->setObjectName(QStringLiteral("label_Host"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        label_HostPort = new QLabel(widget);
+        label_HostPort->setObjectName(QStringLiteral("label_HostPort"));
 
-        verticalLayout->addWidget(label_Host);
+        horizontalLayout_2->addWidget(label_HostPort);
+
+        lineEdit_HostPortEdit = new QLineEdit(widget);
+        lineEdit_HostPortEdit->setObjectName(QStringLiteral("lineEdit_HostPortEdit"));
+
+        horizontalLayout_2->addWidget(lineEdit_HostPortEdit);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
 
         pushButton_host = new QPushButton(widget);
         pushButton_host->setObjectName(QStringLiteral("pushButton_host"));
@@ -84,7 +97,7 @@ public:
     void retranslateUi(QWidget *serverWindow)
     {
         serverWindow->setWindowTitle(QApplication::translate("serverWindow", "Form", nullptr));
-        label_Host->setText(QApplication::translate("serverWindow", "The server is running on port 1234", nullptr));
+        label_HostPort->setText(QApplication::translate("serverWindow", "Host Port", nullptr));
         pushButton_host->setText(QApplication::translate("serverWindow", "Host", nullptr));
         label_Status->setText(QApplication::translate("serverWindow", "Status", nullptr));
         label_StatusText->setText(QApplication::translate("serverWindow", "Status", nullptr));
