@@ -7,7 +7,8 @@ typedef enum widgetType_
     ,   GAME_WIDGET
     ,   SERVER_WIDGET
     ,   CLIENT_WIDGET
-
 }widgetType;
+
+#define TCP_CMD_START_GAME  "START_GAME"
 
 #endif // GLOBALTYPES_H

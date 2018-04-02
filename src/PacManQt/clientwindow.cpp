@@ -7,6 +7,8 @@ clientwindow::clientwindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->label_StatusText->setText("Not Connected");
+    tcpClient = new QTcpSocket(this);
+    connect(tcpClient, SIGNAL(readyRead()), this, SLOT(readyRead()));
 }
 
 clientwindow::~clientwindow()
@@ -17,23 +19,32 @@ clientwindow::~clientwindow()
 
 void clientwindow::on_pushButton_Join_clicked()
 {
-    connect();
+    connectToServer();
 }
 
-void clientwindow::connect()
+void clientwindow::readyRead()
+{
+    QByteArray receivedData = tcpClient->readAll();
+    qDebug() << "Received data " << receivedData;
+
+    if(receivedData == TCP_CMD_START_GAME)
+    {
+       emit setActiveWidget(GAME_WIDGET);
+    }
+}
+
+
+void clientwindow::connectToServer()
 {
     ui->label_StatusText->setText("Connecting");
-    tcpClient = new QTcpSocket(this);
 
     QString hostAddress = ui->lineEdit_HostAddressText->text();
     qint16 hostPort = (ui->lineEdit_HostPortText->text()).toInt();
-    tcpClient->connectToHost(hostAddress, hostPort);
+    tcpClient->connectToHost("127.0.0.1", 1234);
 
     if(tcpClient->waitForConnected(3000))
     {
-        qDebug() << "Connected!";
-        tcpClient->close();
-        emit setActiveWidget(GAME_WIDGET);
+//        qDebug() << "Connected!";
     }
     else
     {

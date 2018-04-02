@@ -26,8 +26,11 @@ signals:
 private slots:
     void on_pushButton_Join_clicked();
 
+public slots:
+    void readyRead();
+
 private:
-    void connect();
+    void connectToServer();
 
     Ui::clientwindow *ui;
     QTcpSocket *tcpClient;

@@ -23,7 +23,7 @@ void serverWindow::on_pushButton_host_clicked()
 
     qint16 hostPort = ui->lineEdit_HostPortEdit->text().toInt();
 
-    if(!tcpServer->listen(QHostAddress::Any, hostPort))
+    if(!tcpServer->listen(QHostAddress::Any, 1234))
     {
         qDebug() << "Server could not start!";
     }
@@ -37,11 +37,8 @@ void serverWindow::on_pushButton_host_clicked()
 void serverWindow::newConnection()
 {
     QTcpSocket *socket = tcpServer->nextPendingConnection();
-    socket->write("hello new client!\r\n");
+    socket->write(TCP_CMD_START_GAME);
     socket->flush();
-    socket->close();
-    qDebug() << "New connection!";
-
 
     /* When conenction established, start the game */
     emit setActiveWidget(GAME_WIDGET);
