@@ -22,6 +22,8 @@ public:
     void sendData(QByteArray string);
 
 
+    QByteArray getReceivedData() const;
+
 signals:
     void setActiveWidget(int activeWidget);
 
@@ -34,6 +36,7 @@ private:
     Ui::serverWindow *ui;
     QTcpServer *tcpServer;
     QTcpSocket *serverSocket;
+    QByteArray receivedData;
 };
 
 #endif // SERVERWINDOW_H

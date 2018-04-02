@@ -164,23 +164,45 @@ gameWindow::~gameWindow()
 
 void gameWindow::keyPressEvent(QKeyEvent *event)
 {
-    if(event->key() == Qt::Key_A)
+//    sendGameDataToClient("from_server");
+    if(connectionRole == SERVER_ROLE)
     {
-        pacman->setDirection(DIRECTION_LEFT);
-        sendGameDataToClient("from_server");
+        if(event->key() == Qt::Key_A)
+        {
+            pacman->setDirection(DIRECTION_LEFT);
+        }
+        else if(event->key() == Qt::Key_D)
+        {
+            pacman->setDirection(DIRECTION_RIGHT);
+        }
+        else if(event->key() == Qt::Key_W)
+        {
+            pacman->setDirection(DIRECTION_UP);
+        }
+        else if(event->key() == Qt::Key_S)
+        {
+            pacman->setDirection(DIRECTION_DOWN);
+        }
     }
-    else if(event->key() == Qt::Key_D)
+    else if(connectionRole == CLIENT_ROLE)
     {
-        pacman->setDirection(DIRECTION_RIGHT);
-        sendGameDataToServer("from_client");
-    }
-    else if(event->key() == Qt::Key_W)
-    {
-        pacman->setDirection(DIRECTION_UP);
-    }
-    else if(event->key() == Qt::Key_S)
-    {
-        pacman->setDirection(DIRECTION_DOWN);
+//        sendGameDataToServer("from_client");
+        if(event->key() == Qt::Key_A)
+        {
+            pacman2->setDirection(DIRECTION_LEFT);
+        }
+        else if(event->key() == Qt::Key_D)
+        {
+            pacman2->setDirection(DIRECTION_RIGHT);
+        }
+        else if(event->key() == Qt::Key_W)
+        {
+            pacman2->setDirection(DIRECTION_UP);
+        }
+        else if(event->key() == Qt::Key_S)
+        {
+            pacman2->setDirection(DIRECTION_DOWN);
+        }
     }
 }
 
@@ -188,19 +210,19 @@ void gameWindow::rotateImage(Actor *act)
 {
     if(act->getDirection() == DIRECTION_LEFT)
     {
-        pacman->setPixmap(":/Images/pacmanLeft.png");
+        act->setPixmap(":/Images/pacmanLeft.png");
     }
     else if(act->getDirection() == DIRECTION_RIGHT)
     {
-        pacman->setPixmap(":/Images/pacmanRight.png");
+        act->setPixmap(":/Images/pacmanRight.png");
     }
     else if(act->getDirection() == DIRECTION_UP)
     {
-        pacman->setPixmap(":/Images/pacmanUp.png");
+        act->setPixmap(":/Images/pacmanUp.png");
     }
     else if(act->getDirection() == DIRECTION_DOWN)
     {
-        pacman->setPixmap(":/Images/pacmanDown.png");
+        act->setPixmap(":/Images/pacmanDown.png");
     }
 }
 
@@ -353,6 +375,16 @@ void gameWindow::sendGameDataToServer(QByteArray string)
     gameClient->sendData(string);
 }
 
+connectionRoleType gameWindow::getConnectionRole() const
+{
+    return connectionRole;
+}
+
+void gameWindow::setConnectionRole(const connectionRoleType &value)
+{
+    connectionRole = value;
+}
+
 serverWindow *gameWindow::getGameServer() const
 {
     return gameServer;
@@ -378,6 +410,18 @@ void gameWindow::checkIfDead(Pacman *pac)
 
 void gameWindow::gameLoop(void)
 {
+    if(connectionRole == SERVER_ROLE)
+    {
+        QByteArray arr;
+        arr.resize(1);
+
+        arr = gameServer->getReceivedData();
+        qDebug() << arr;
+        qDebug() << "arr[0]" << static_cast<quint8>(arr[0]);
+        pacman2->setDirection(static_cast<quint8>(arr[0]));
+
+    }
+
     /* Update game loop counters of each actor */
     gameLoopCounterPacman++;
     gameLoopCounterPacman2++;
@@ -417,8 +461,8 @@ void gameWindow::gameLoop(void)
     if(gameLoopCounterPacman > pacman->getSpeed())
     {
         moveActor(pacman);
-        pacman->updatePos();
         pacman->setDirection(DONT_MOVE);
+        pacman->updatePos();
         pacman->setLastTile(pacman->getCurrTile());
         gameLoopCounterPacman = 0;
     }
@@ -427,7 +471,6 @@ void gameWindow::gameLoop(void)
     if(gameLoopCounterPacman2 > pacman2->getSpeed())
     {
         moveActor(pacman2);
-        pacman2->setDirection(DONT_MOVE);
         pacman2->updatePos();
         pacman2->setLastTile(pacman->getCurrTile());
         gameLoopCounterPacman2 = 0;
@@ -460,6 +503,15 @@ void gameWindow::gameLoop(void)
      * [] reset game state - reinitialize the map
      */
 
+    if(connectionRole == CLIENT_ROLE)
+    {
+        QByteArray arr;
+        arr.resize(1);
+        arr[0] = pacman2->getDirection();
+        sendGameDataToServer(arr);
+
+//        pacman2->setDirection(DONT_MOVE);
+    }
 
     scene->update();
 }

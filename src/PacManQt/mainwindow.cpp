@@ -43,10 +43,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::stackedWidgetChanged(int widgetNum)
 {
-    qDebug() << widgetNum;
+//    qDebug() << widgetNum;
 
     if (widgetNum == GAME_WIDGET)
     {
+        gameWindowWidget->setConnectionRole(gameOptionsWidget->getConnectionRole());
+        qDebug() << gameWindowWidget->getConnectionRole();
         gameWindowWidget->startGame();
     }
     else if(widgetNum == SERVER_WIDGET)

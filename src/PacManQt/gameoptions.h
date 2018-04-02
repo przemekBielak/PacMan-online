@@ -17,6 +17,8 @@ public:
     explicit gameOptions(QWidget *parent = 0);
     ~gameOptions();
 
+    connectionRoleType getConnectionRole() const;
+
 signals:
     void setActiveWidget(int activeWidget);
 
@@ -28,6 +30,7 @@ private slots:
 
 private:
     Ui::gameOptions *ui;
+    connectionRoleType connectionRole;
 };
 
 #endif // GAMEOPTIONS_H

@@ -14,6 +14,7 @@
 #include <QGraphicsPixmapItem>
 #include <QKeyEvent>
 #include <QTimer>
+#include <QByteArray>
 
 #include "game_cfg.h"
 #include "tile.h"
@@ -23,16 +24,7 @@
 #include "globaltypes.h"
 #include "serverwindow.h"
 #include "clientwindow.h"
-
-typedef enum directionType_
-{
-        DIRECTION_LEFT = 0
-    ,   DIRECTION_RIGHT
-    ,   DIRECTION_UP
-    ,   DIRECTION_DOWN
-    ,   DONT_MOVE
-}directionType;
-
+#include "gameoptions.h"
 
 
 namespace Ui {
@@ -53,6 +45,9 @@ public:
 
     clientwindow *getGameClient() const;
     void setGameClient(clientwindow *value);
+
+    connectionRoleType getConnectionRole() const;
+    void setConnectionRole(const connectionRoleType &value);
 
 public slots:
     void gameLoop(void);
@@ -87,6 +82,8 @@ private:
     clientwindow *gameClient;
     void sendGameDataToClient(QByteArray string);
     void sendGameDataToServer(QByteArray string);
+
+    connectionRoleType connectionRole;
 
 protected:
     QGraphicsScene *scene;

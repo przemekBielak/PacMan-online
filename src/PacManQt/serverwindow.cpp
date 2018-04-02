@@ -52,8 +52,13 @@ void serverWindow::newConnection()
 
 void serverWindow::readyRead()
 {
-    QByteArray receivedData = serverSocket->readAll();
+    receivedData = serverSocket->readAll();
     qDebug() << "Received data " << receivedData;
+}
+
+QByteArray serverWindow::getReceivedData() const
+{
+    return receivedData;
 }
 
 

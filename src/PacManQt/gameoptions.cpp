@@ -22,9 +22,17 @@ gameOptions::~gameOptions()
 void gameOptions::on_pushButtonClient_clicked()
 {
     emit setActiveWidget(CLIENT_WIDGET);
+    connectionRole = CLIENT_ROLE;
 }
 
 void gameOptions::on_pushButtonServer_clicked()
 {
     emit setActiveWidget(SERVER_WIDGET);
+    connectionRole = SERVER_ROLE;
 }
+
+connectionRoleType gameOptions::getConnectionRole() const
+{
+    return connectionRole;
+}
+
