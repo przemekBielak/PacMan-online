@@ -413,15 +413,37 @@ void gameWindow::gameLoop(void)
     if(connectionRole == SERVER_ROLE)
     {
         QByteArray arr;
-        arr.resize(1);
 
+        /* Server receive */
+        arr.resize(1);
         arr = gameServer->getReceivedData();
         qDebug() << arr;
         pacman2->setDirection(static_cast<quint8>(arr[0]));
 
-        arr.resize(1);
-        arr[0] = pacman->getDirection();
+        /* Data to send:
+         * quint16 data = static_cast<quint16>(pacman->getxPos())
+         * [0] - data << 8;
+         * [1] - data;
+         */
+
+        /* Server send */
+        arr.resize(9);
+        quint16 pacmanxpos = static_cast<quint16>(pacman->getXPos());
+        quint16 pacmanypos = static_cast<quint16>(pacman->getYPos());
+        quint16 pacman2xpos = static_cast<quint16>(pacman2->getXPos());
+        quint16 pacman2ypos = static_cast<quint16>(pacman2->getYPos());
+
+        arr[0] = 1;
+        arr[1] = pacmanxpos >> 8;
+        arr[2] = static_cast<quint8>(pacmanxpos);
+        arr[3] = pacmanypos >> 8;
+        arr[4] = static_cast<quint8>(pacmanypos);
+        arr[5] = pacman2xpos >> 8;
+        arr[6] = static_cast<quint8>(pacman2xpos);
+        arr[7] = pacman2ypos >> 8;
+        arr[8] = static_cast<quint8>(pacman2ypos);
         sendGameDataToClient(arr);
+
     }
 
     /* Update game loop counters of each actor */
@@ -462,7 +484,10 @@ void gameWindow::gameLoop(void)
     /* Pacman game loop */
     if(gameLoopCounterPacman > pacman->getSpeed())
     {
-        moveActor(pacman);
+        if(connectionRole == SERVER_ROLE)
+        {
+            moveActor(pacman);
+        }
 //        pacman->setDirection(DONT_MOVE);
         pacman->updatePos();
         pacman->setLastTile(pacman->getCurrTile());
@@ -472,7 +497,10 @@ void gameWindow::gameLoop(void)
     /* Pacman2 game loop */
     if(gameLoopCounterPacman2 > pacman2->getSpeed())
     {
-        moveActor(pacman2);
+        if(connectionRole == SERVER_ROLE)
+        {
+            moveActor(pacman2);
+        }
         pacman2->updatePos();
         pacman2->setLastTile(pacman->getCurrTile());
         gameLoopCounterPacman2 = 0;
@@ -500,27 +528,40 @@ void gameWindow::gameLoop(void)
     }
 
     checkLevelFinish();
-    /*
-     * TODO:
-     * [] reset game state - reinitialize the map
-     */
 
     if(connectionRole == CLIENT_ROLE)
     {
         QByteArray arr;
-        arr.resize(1);
 
+        /* Client receive */
+        arr.resize(5);
         arr = gameClient->getReceivedData();
-        qDebug() << arr;
-        qDebug() << "arr[0]" << static_cast<quint8>(arr[0]);
-        pacman->setDirection(static_cast<quint8>(arr[0]));
+
+        quint16 recPacmanxPos = 0;
+        recPacmanxPos |= static_cast<quint8>(arr[1]) << 8;
+        recPacmanxPos |= static_cast<quint8>(arr[2]);
+        pacman->setXPos(recPacmanxPos);
+
+        quint16 recPacmanyPos = 0;
+        recPacmanyPos |= static_cast<quint8>(arr[3]) << 8;
+        recPacmanyPos |= static_cast<quint8>(arr[4]);
+        pacman->setYPos(recPacmanyPos);
+
+        quint16 recPacman2xPos = 0;
+        recPacman2xPos |= static_cast<quint8>(arr[5]) << 8;
+        recPacman2xPos |= static_cast<quint8>(arr[6]);
+        pacman2->setXPos(recPacman2xPos);
+
+        quint16 recPacman2yPos = 0;
+        recPacman2yPos |= static_cast<quint8>(arr[7]) << 8;
+        recPacman2yPos |= static_cast<quint8>(arr[8]);
+        pacman2->setYPos(recPacman2yPos);
 
 
+        /* Client send */
+        arr.resize(1);
         arr[0] = pacman2->getDirection();
         sendGameDataToServer(arr);
-
-
-//        pacman2->setDirection(DONT_MOVE);
     }
 
     scene->update();
