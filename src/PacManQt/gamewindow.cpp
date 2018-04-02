@@ -433,7 +433,7 @@ void gameWindow::gameLoop(void)
         quint16 pacman2xpos = static_cast<quint16>(pacman2->getXPos());
         quint16 pacman2ypos = static_cast<quint16>(pacman2->getYPos());
 
-        arr[0] = 1;
+        arr[0] = pacman->getDirection();
         arr[1] = pacmanxpos >> 8;
         arr[2] = static_cast<quint8>(pacmanxpos);
         arr[3] = pacmanypos >> 8;
@@ -488,7 +488,7 @@ void gameWindow::gameLoop(void)
         {
             moveActor(pacman);
         }
-//        pacman->setDirection(DONT_MOVE);
+        pacman->setDirection(DONT_MOVE);
         pacman->updatePos();
         pacman->setLastTile(pacman->getCurrTile());
         gameLoopCounterPacman = 0;
@@ -501,6 +501,7 @@ void gameWindow::gameLoop(void)
         {
             moveActor(pacman2);
         }
+        pacman2->setDirection(DONT_MOVE);
         pacman2->updatePos();
         pacman2->setLastTile(pacman->getCurrTile());
         gameLoopCounterPacman2 = 0;
@@ -536,6 +537,8 @@ void gameWindow::gameLoop(void)
         /* Client receive */
         arr.resize(5);
         arr = gameClient->getReceivedData();
+
+        pacman->setDirection(static_cast<quint8>(arr[0]));
 
         quint16 recPacmanxPos = 0;
         recPacmanxPos |= static_cast<quint8>(arr[1]) << 8;
