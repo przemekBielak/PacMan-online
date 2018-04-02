@@ -8,6 +8,8 @@ serverWindow::serverWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->label_StatusText->setText("Not Connected");
 
+    tcpServer = new QTcpServer(this);
+    connect(tcpServer, SIGNAL(newConnection()), this, SLOT(newConnection()));
 }
 
 serverWindow::~serverWindow()
@@ -15,12 +17,14 @@ serverWindow::~serverWindow()
     delete ui;
 }
 
+void serverWindow::sendData()
+{
+    serverSocket->write("gameloop");
+    serverSocket->flush();
+}
+
 void serverWindow::on_pushButton_host_clicked()
 {
-    tcpServer = new QTcpServer(this);
-
-    connect(tcpServer, SIGNAL(newConnection()), this, SLOT(newConnection()));
-
     qint16 hostPort = ui->lineEdit_HostPortEdit->text().toInt();
 
     if(!tcpServer->listen(QHostAddress::Any, 1234))
@@ -36,9 +40,9 @@ void serverWindow::on_pushButton_host_clicked()
 
 void serverWindow::newConnection()
 {
-    QTcpSocket *socket = tcpServer->nextPendingConnection();
-    socket->write(TCP_CMD_START_GAME);
-    socket->flush();
+    serverSocket = tcpServer->nextPendingConnection();
+    serverSocket->write(TCP_CMD_START_GAME);
+    serverSocket->flush();
 
     /* When conenction established, start the game */
     emit setActiveWidget(GAME_WIDGET);

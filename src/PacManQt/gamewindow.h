@@ -21,6 +21,8 @@
 #include "pacman.h"
 #include "ghost.h"
 #include "globaltypes.h"
+#include "serverwindow.h"
+#include "clientwindow.h"
 
 typedef enum directionType_
 {
@@ -46,6 +48,8 @@ public:
     ~gameWindow();
     void startGame(void);
 
+    serverWindow *getGameServer() const;
+    void setGameServer(serverWindow *value);
 
 public slots:
     void gameLoop(void);
@@ -75,6 +79,9 @@ private:
     int gameLoopCounterPacman;
     int gameLoopCounterPacman2;
     int gameLevel;
+
+    serverWindow *gameServer;
+    void sendGameData(void);
 
 protected:
     QGraphicsScene *scene;

@@ -31,6 +31,10 @@ void clientwindow::readyRead()
     {
        emit setActiveWidget(GAME_WIDGET);
     }
+//    else if(receivedData == "gameloop")
+//    {
+//        qDebug() << "Received from gameloop";
+//    }
 }
 
 
@@ -44,11 +48,11 @@ void clientwindow::connectToServer()
 
     if(tcpClient->waitForConnected(3000))
     {
-//        qDebug() << "Connected!";
+        qDebug() << "Client Connected!";
     }
     else
     {
-        qDebug() << "Not connected!";
+        qDebug() << "Client Not connected!";
         ui->label_StatusText->setText("Not Connected");
     }
 

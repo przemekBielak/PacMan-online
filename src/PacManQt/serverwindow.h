@@ -19,6 +19,8 @@ class serverWindow : public QWidget
 public:
     explicit serverWindow(QWidget *parent = 0);
     ~serverWindow();
+    void sendData();
+
 
 signals:
     void setActiveWidget(int activeWidget);
@@ -30,7 +32,7 @@ private slots:
 private:
     Ui::serverWindow *ui;
     QTcpServer *tcpServer;
-
+    QTcpSocket *serverSocket;
 };
 
 #endif // SERVERWINDOW_H

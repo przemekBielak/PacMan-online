@@ -167,6 +167,7 @@ void gameWindow::keyPressEvent(QKeyEvent *event)
     if(event->key() == Qt::Key_A)
     {
         pacman->setDirection(DIRECTION_LEFT);
+        sendGameData();
     }
     else if(event->key() == Qt::Key_D)
     {
@@ -331,12 +332,26 @@ void gameWindow::checkLevelFinish()
     }
 }
 
+void gameWindow::sendGameData()
+{
+    gameServer->sendData();
+}
+
+serverWindow *gameWindow::getGameServer() const
+{
+    return gameServer;
+}
+
+void gameWindow::setGameServer(serverWindow *value)
+{
+    gameServer = value;
+}
 
 
 void gameWindow::checkIfDead(Pacman *pac)
 {
     if( (pac->getCurrTile() == ghostRed->getCurrTile() ) ||
-        (pac->getCurrTile() == ghostBlue->getCurrTile() ) ||
+            (pac->getCurrTile() == ghostBlue->getCurrTile() ) ||
         (pac->getCurrTile() == ghostGreen->getCurrTile() ) ||
         (pac->getCurrTile() == ghostYellow->getCurrTile() ) )
     {
