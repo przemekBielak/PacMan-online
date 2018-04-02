@@ -31,17 +31,14 @@ void clientwindow::sendData(QByteArray string)
 
 void clientwindow::readyRead()
 {
-    QByteArray receivedData = tcpClient->readAll();
+    receivedData = tcpClient->readAll();
     qDebug() << "Received data " << receivedData;
 
     if(receivedData == TCP_CMD_START_GAME)
     {
        emit setActiveWidget(GAME_WIDGET);
     }
-//    else if(receivedData == "gameloop")
-//    {
-//        qDebug() << "Received from gameloop";
-//    }
+
 }
 
 void clientwindow::disconnected()
@@ -69,3 +66,9 @@ void clientwindow::connectToServer()
     }
 
 }
+
+QByteArray clientwindow::getReceivedData() const
+{
+    return receivedData;
+}
+

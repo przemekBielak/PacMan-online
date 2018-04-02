@@ -417,9 +417,11 @@ void gameWindow::gameLoop(void)
 
         arr = gameServer->getReceivedData();
         qDebug() << arr;
-        qDebug() << "arr[0]" << static_cast<quint8>(arr[0]);
         pacman2->setDirection(static_cast<quint8>(arr[0]));
 
+        arr.resize(1);
+        arr[0] = pacman->getDirection();
+        sendGameDataToClient(arr);
     }
 
     /* Update game loop counters of each actor */
@@ -461,7 +463,7 @@ void gameWindow::gameLoop(void)
     if(gameLoopCounterPacman > pacman->getSpeed())
     {
         moveActor(pacman);
-        pacman->setDirection(DONT_MOVE);
+//        pacman->setDirection(DONT_MOVE);
         pacman->updatePos();
         pacman->setLastTile(pacman->getCurrTile());
         gameLoopCounterPacman = 0;
@@ -507,8 +509,16 @@ void gameWindow::gameLoop(void)
     {
         QByteArray arr;
         arr.resize(1);
+
+        arr = gameClient->getReceivedData();
+        qDebug() << arr;
+        qDebug() << "arr[0]" << static_cast<quint8>(arr[0]);
+        pacman->setDirection(static_cast<quint8>(arr[0]));
+
+
         arr[0] = pacman2->getDirection();
         sendGameDataToServer(arr);
+
 
 //        pacman2->setDirection(DONT_MOVE);
     }

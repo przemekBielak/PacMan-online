@@ -21,6 +21,8 @@ public:
     ~clientwindow();
     void sendData(QByteArray string);
 
+    QByteArray getReceivedData() const;
+
 signals:
     void setActiveWidget(int activeWidget);
 
@@ -36,6 +38,7 @@ private:
 
     Ui::clientwindow *ui;
     QTcpSocket *tcpClient;
+    QByteArray receivedData;
 };
 
 #endif // CLIENTWINDOW_H

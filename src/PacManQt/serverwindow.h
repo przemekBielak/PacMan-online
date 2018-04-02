@@ -37,6 +37,7 @@ private:
     QTcpServer *tcpServer;
     QTcpSocket *serverSocket;
     QByteArray receivedData;
+    int executeOnce = 0;
 };
 
 #endif // SERVERWINDOW_H
