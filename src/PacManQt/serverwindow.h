@@ -19,7 +19,7 @@ class serverWindow : public QWidget
 public:
     explicit serverWindow(QWidget *parent = 0);
     ~serverWindow();
-    void sendData();
+    void sendData(QByteArray string);
 
 
 signals:
@@ -28,6 +28,7 @@ signals:
 private slots:
     void on_pushButton_host_clicked();
     void newConnection();
+    void readyRead();
 
 private:
     Ui::serverWindow *ui;

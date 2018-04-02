@@ -22,6 +22,12 @@ void clientwindow::on_pushButton_Join_clicked()
     connectToServer();
 }
 
+void clientwindow::sendData(QByteArray string)
+{
+    tcpClient->write(string);
+    tcpClient->flush();
+}
+
 void clientwindow::readyRead()
 {
     QByteArray receivedData = tcpClient->readAll();

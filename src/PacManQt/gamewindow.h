@@ -81,7 +81,7 @@ private:
     int gameLevel;
 
     serverWindow *gameServer;
-    void sendGameData(void);
+    void sendGameData(QByteArray string);
 
 protected:
     QGraphicsScene *scene;

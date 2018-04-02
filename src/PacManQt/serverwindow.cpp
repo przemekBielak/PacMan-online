@@ -17,9 +17,9 @@ serverWindow::~serverWindow()
     delete ui;
 }
 
-void serverWindow::sendData()
+void serverWindow::sendData(QByteArray string)
 {
-    serverSocket->write("gameloop");
+    serverSocket->write(string);
     serverSocket->flush();
 }
 
@@ -41,12 +41,19 @@ void serverWindow::on_pushButton_host_clicked()
 void serverWindow::newConnection()
 {
     serverSocket = tcpServer->nextPendingConnection();
-    serverSocket->write(TCP_CMD_START_GAME);
-    serverSocket->flush();
+    connect(serverSocket, SIGNAL(readyRead()), this, SLOT(readyRead()));
+
+    sendData(TCP_CMD_START_GAME);
 
     /* When conenction established, start the game */
     emit setActiveWidget(GAME_WIDGET);
     ui->label_StatusText->setText("Connected");
+}
+
+void serverWindow::readyRead()
+{
+    QByteArray receivedData = serverSocket->readAll();
+    qDebug() << "Received data " << receivedData;
 }
 
 

@@ -19,6 +19,7 @@ class clientwindow : public QWidget
 public:
     explicit clientwindow(QWidget *parent = 0);
     ~clientwindow();
+    void sendData(QByteArray string);
 
 signals:
     void setActiveWidget(int activeWidget);

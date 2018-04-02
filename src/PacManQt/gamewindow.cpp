@@ -167,7 +167,7 @@ void gameWindow::keyPressEvent(QKeyEvent *event)
     if(event->key() == Qt::Key_A)
     {
         pacman->setDirection(DIRECTION_LEFT);
-        sendGameData();
+        sendGameData("gameloop");
     }
     else if(event->key() == Qt::Key_D)
     {
@@ -332,9 +332,9 @@ void gameWindow::checkLevelFinish()
     }
 }
 
-void gameWindow::sendGameData()
+void gameWindow::sendGameData(QByteArray string)
 {
-    gameServer->sendData();
+    gameServer->sendData(string);
 }
 
 serverWindow *gameWindow::getGameServer() const
