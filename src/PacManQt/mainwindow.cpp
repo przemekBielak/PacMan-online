@@ -12,7 +12,9 @@ MainWindow::MainWindow(QWidget *parent) :
     gameWindowWidget = new gameWindow;
     serverWindowWidget = new serverWindow;
     clientwindowWidget = new clientwindow;
+
     gameWindowWidget->setGameServer(serverWindowWidget);
+    gameWindowWidget->setGameClient(clientwindowWidget);
 
     QStackedWidget *stackedWidget = new QStackedWidget;
     stackedWidget->addWidget(gameOptionsWidget);

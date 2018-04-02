@@ -51,6 +51,9 @@ public:
     serverWindow *getGameServer() const;
     void setGameServer(serverWindow *value);
 
+    clientwindow *getGameClient() const;
+    void setGameClient(clientwindow *value);
+
 public slots:
     void gameLoop(void);
 
@@ -81,7 +84,9 @@ private:
     int gameLevel;
 
     serverWindow *gameServer;
-    void sendGameData(QByteArray string);
+    clientwindow *gameClient;
+    void sendGameDataToClient(QByteArray string);
+    void sendGameDataToServer(QByteArray string);
 
 protected:
     QGraphicsScene *scene;

@@ -29,6 +29,7 @@ private slots:
 
 public slots:
     void readyRead();
+    void disconnected();
 
 private:
     void connectToServer();

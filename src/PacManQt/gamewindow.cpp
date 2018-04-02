@@ -167,11 +167,12 @@ void gameWindow::keyPressEvent(QKeyEvent *event)
     if(event->key() == Qt::Key_A)
     {
         pacman->setDirection(DIRECTION_LEFT);
-        sendGameData("gameloop");
+        sendGameDataToClient("from_server");
     }
     else if(event->key() == Qt::Key_D)
     {
         pacman->setDirection(DIRECTION_RIGHT);
+        sendGameDataToServer("from_client");
     }
     else if(event->key() == Qt::Key_W)
     {
@@ -332,9 +333,24 @@ void gameWindow::checkLevelFinish()
     }
 }
 
-void gameWindow::sendGameData(QByteArray string)
+clientwindow *gameWindow::getGameClient() const
+{
+    return gameClient;
+}
+
+void gameWindow::setGameClient(clientwindow *value)
+{
+    gameClient = value;
+}
+
+void gameWindow::sendGameDataToClient(QByteArray string)
 {
     gameServer->sendData(string);
+}
+
+void gameWindow::sendGameDataToServer(QByteArray string)
+{
+    gameClient->sendData(string);
 }
 
 serverWindow *gameWindow::getGameServer() const

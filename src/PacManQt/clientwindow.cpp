@@ -7,15 +7,16 @@ clientwindow::clientwindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->label_StatusText->setText("Not Connected");
-    tcpClient = new QTcpSocket(this);
+
+    tcpClient = new QTcpSocket();
     connect(tcpClient, SIGNAL(readyRead()), this, SLOT(readyRead()));
+    connect(tcpClient, SIGNAL(disconnected()), this, SLOT(disconnected()));
 }
 
 clientwindow::~clientwindow()
 {
     delete ui;
 }
-
 
 void clientwindow::on_pushButton_Join_clicked()
 {
@@ -41,6 +42,11 @@ void clientwindow::readyRead()
 //    {
 //        qDebug() << "Received from gameloop";
 //    }
+}
+
+void clientwindow::disconnected()
+{
+
 }
 
 
