@@ -83,6 +83,11 @@ private:
     void sendGameDataToClient(QByteArray string);
     void sendGameDataToServer(QByteArray string);
 
+    void PackDataServerToClient(void);
+    void UnpackDataServerToClient(void);
+    void PackDataClientToServer(void);
+    void UnpackDataClientToServer(void);
+
     connectionRoleType connectionRole;
 
 protected:
