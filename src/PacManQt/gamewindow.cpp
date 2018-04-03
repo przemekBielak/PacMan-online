@@ -452,6 +452,9 @@ void gameWindow::PackDataServerToClient()
     arr[22] = static_cast<quint8>(ghostYellowxpos);
     arr[23] = ghostYellowypos >> 8;
     arr[24] = static_cast<quint8>(ghostYellowypos);
+    arr[25] = pacman->getNumOfLifes();
+    arr[26] = pacman2->getNumOfLifes();
+
 
     sendGameDataToClient(arr);
 }
@@ -525,6 +528,9 @@ void gameWindow::UnpackDataServerToClient()
     ghostYellowyPos |= static_cast<quint8>(arr[23]) << 8;
     ghostYellowyPos |= static_cast<quint8>(arr[24]);
     ghostYellow->setYPos(ghostYellowyPos);
+
+    pacman->setNumOfLifes(static_cast<quint8>(arr[25]));
+    pacman2->setNumOfLifes(static_cast<quint8>(arr[26]));
 }
 
 void gameWindow::PackDataClientToServer()
@@ -577,8 +583,11 @@ void gameWindow::gameLoop(void)
     ui->label_points_2->setText(QString::number(pacman2->getPoints()));
 
     /* Check ghost tile */
-    checkIfDead(pacman);
-    checkIfDead(pacman2);
+    if(connectionRole == SERVER_ROLE)
+    {
+        checkIfDead(pacman);
+        checkIfDead(pacman2);
+    }
 
     /* Check points tile */
     checkDot(pacman);
