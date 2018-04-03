@@ -64,6 +64,7 @@ private:
     void checkDot(Pacman *pac);
     void checkSuperDot(Pacman *pac);
     void checkLevelFinish(void);
+    void updateTileGraphics(Pacman *pac);
 
     QTimer *gameLoopTimer;
 
@@ -87,6 +88,7 @@ private:
     void UnpackDataServerToClient(void);
     void PackDataClientToServer(void);
     void UnpackDataClientToServer(void);
+
 
     connectionRoleType connectionRole;
 

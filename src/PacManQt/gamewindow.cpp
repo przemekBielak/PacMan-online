@@ -321,20 +321,17 @@ void gameWindow::checkDot(Pacman *pac)
     if( (tileArr[pac->getCurrTile()].getTileType() == 17) && (pac->getLastTile() != pac->getCurrTile()) )
     {
         pac->setPoints(pac->getPoints() + 1);
-        tileArr[pac->getCurrTile()].setTileType(0);
-        tileArr[pac->getCurrTile()].setPixmap(":/Images/white.png");
     }
 }
 
 void gameWindow::checkSuperDot(Pacman *pac)
 {
-    if( (tileArr[pac->getCurrTile()].getTileType() == 18) && (pac->getLastTile() != pac->getCurrTile()) )
+    if( (tileArr[pac->getCurrTile()].getTileType() == 17) && (pac->getLastTile() != pac->getCurrTile()) )
     {
-        pac->setSpeed(pacman->getSpeed() - 20);
-        tileArr[pac->getCurrTile()].setTileType(0);
-        tileArr[pac->getCurrTile()].setPixmap(":/Images/white.png");
+        pac->setPoints(pac->getPoints() + 1);
     }
 }
+
 
 void gameWindow::checkLevelFinish()
 {
@@ -352,6 +349,21 @@ void gameWindow::checkLevelFinish()
     {
         ui->label_game_level_num->setText(QString::number(ui->label_game_level_num->text().toInt() + 1));
         endCounter == 0;
+    }
+}
+
+void gameWindow::updateTileGraphics(Pacman *pac)
+{
+    if( (tileArr[pac->getCurrTile()].getTileType() == 17) && (pac->getLastTile() != pac->getCurrTile()) )
+    {
+        tileArr[pac->getCurrTile()].setTileType(0);
+        tileArr[pac->getCurrTile()].setPixmap(":/Images/white.png");
+    }
+
+    if( (tileArr[pac->getCurrTile()].getTileType() == 17) && (pac->getLastTile() != pac->getCurrTile()) )
+    {
+        tileArr[pac->getCurrTile()].setTileType(0);
+        tileArr[pac->getCurrTile()].setPixmap(":/Images/white.png");
     }
 }
 
@@ -412,7 +424,7 @@ void gameWindow::PackDataServerToClient()
 {
     /* Server send */
     QByteArray arr;
-    arr.resize(24);
+    arr.resize(28);
 
     quint16 pacmanxpos = static_cast<quint16>(pacman->getXPos());
     quint16 pacmanypos = static_cast<quint16>(pacman->getYPos());
@@ -454,6 +466,8 @@ void gameWindow::PackDataServerToClient()
     arr[24] = static_cast<quint8>(ghostYellowypos);
     arr[25] = pacman->getNumOfLifes();
     arr[26] = pacman2->getNumOfLifes();
+    arr[27] = pacman->getPoints();
+    arr[28] = pacman2->getPoints();
 
 
     sendGameDataToClient(arr);
@@ -463,7 +477,7 @@ void gameWindow::UnpackDataServerToClient()
 {
     /* Client receive */
     QByteArray arr;
-    arr.resize(24);
+    arr.resize(28);
 
     arr = gameClient->getReceivedData();
 
@@ -531,6 +545,9 @@ void gameWindow::UnpackDataServerToClient()
 
     pacman->setNumOfLifes(static_cast<quint8>(arr[25]));
     pacman2->setNumOfLifes(static_cast<quint8>(arr[26]));
+
+    pacman->setPoints(static_cast<quint8>(arr[27]));
+    pacman2->setPoints(static_cast<quint8>(arr[28]));
 }
 
 void gameWindow::PackDataClientToServer()
@@ -582,16 +599,19 @@ void gameWindow::gameLoop(void)
     ui->label_lifes_num_2->setText(QString::number(pacman2->getNumOfLifes()));
     ui->label_points_2->setText(QString::number(pacman2->getPoints()));
 
-    /* Check ghost tile */
     if(connectionRole == SERVER_ROLE)
     {
+        /* Check ghost tile */
         checkIfDead(pacman);
         checkIfDead(pacman2);
+
+        /* Check points tile */
+        checkDot(pacman);
+        checkDot(pacman2);
     }
 
-    /* Check points tile */
-    checkDot(pacman);
-    checkDot(pacman2);
+    updateTileGraphics(pacman);
+    updateTileGraphics(pacman2);
 
     /* Check speed tile */
     checkSuperDot(pacman);
