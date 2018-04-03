@@ -399,7 +399,7 @@ void gameWindow::setGameServer(serverWindow *value)
 void gameWindow::checkIfDead(Pacman *pac)
 {
     if( (pac->getCurrTile() == ghostRed->getCurrTile() ) ||
-            (pac->getCurrTile() == ghostBlue->getCurrTile() ) ||
+        (pac->getCurrTile() == ghostBlue->getCurrTile() ) ||
         (pac->getCurrTile() == ghostGreen->getCurrTile() ) ||
         (pac->getCurrTile() == ghostYellow->getCurrTile() ) )
     {
@@ -410,40 +410,81 @@ void gameWindow::checkIfDead(Pacman *pac)
 
 void gameWindow::gameLoop(void)
 {
-    if(connectionRole == SERVER_ROLE)
+    if(connectionRole == CLIENT_ROLE)
     {
         QByteArray arr;
 
-        /* Server receive */
+        /* Client receive */
+        arr.resize(24);
+        arr = gameClient->getReceivedData();
+
+        pacman->setDirection(static_cast<quint8>(arr[0]));
+
+        quint16 recPacmanxPos = 0;
+        recPacmanxPos |= static_cast<quint8>(arr[1]) << 8;
+        recPacmanxPos |= static_cast<quint8>(arr[2]);
+        pacman->setXPos(recPacmanxPos);
+
+        quint16 recPacmanyPos = 0;
+        recPacmanyPos |= static_cast<quint8>(arr[3]) << 8;
+        recPacmanyPos |= static_cast<quint8>(arr[4]);
+        pacman->setYPos(recPacmanyPos);
+
+        quint16 recPacman2xPos = 0;
+        recPacman2xPos |= static_cast<quint8>(arr[5]) << 8;
+        recPacman2xPos |= static_cast<quint8>(arr[6]);
+        pacman2->setXPos(recPacman2xPos);
+
+        quint16 recPacman2yPos = 0;
+        recPacman2yPos |= static_cast<quint8>(arr[7]) << 8;
+        recPacman2yPos |= static_cast<quint8>(arr[8]);
+        pacman2->setYPos(recPacman2yPos);
+
+        quint16 ghostRedxPos = 0;
+        ghostRedxPos |= static_cast<quint8>(arr[9]) << 8;
+        ghostRedxPos |= static_cast<quint8>(arr[10]);
+        ghostRed->setXPos(ghostRedxPos);
+
+        quint16 ghostRedyPos = 0;
+        ghostRedyPos |= static_cast<quint8>(arr[11]) << 8;
+        ghostRedyPos |= static_cast<quint8>(arr[12]);
+        ghostRed->setYPos(ghostRedyPos);
+
+        quint16 ghostBluexPos = 0;
+        ghostBluexPos |= static_cast<quint8>(arr[13]) << 8;
+        ghostBluexPos |= static_cast<quint8>(arr[14]);
+        ghostBlue->setXPos(ghostBluexPos);
+
+        quint16 ghostBlueyPos = 0;
+        ghostBlueyPos |= static_cast<quint8>(arr[15]) << 8;
+        ghostBlueyPos |= static_cast<quint8>(arr[16]);
+        ghostBlue->setYPos(ghostBlueyPos);
+
+        quint16 ghostGreenxPos = 0;
+        ghostGreenxPos |= static_cast<quint8>(arr[17]) << 8;
+        ghostGreenxPos |= static_cast<quint8>(arr[18]);
+        ghostGreen->setXPos(ghostGreenxPos);
+
+        quint16 ghostGreenyPos = 0;
+        ghostGreenyPos |= static_cast<quint8>(arr[19]) << 8;
+        ghostGreenyPos |= static_cast<quint8>(arr[20]);
+        ghostGreen->setYPos(ghostGreenyPos);
+
+        quint16 ghostYellowxPos = 0;
+        ghostYellowxPos |= static_cast<quint8>(arr[21]) << 8;
+        ghostYellowxPos |= static_cast<quint8>(arr[22]);
+        ghostYellow->setXPos(ghostYellowxPos);
+
+        quint16 ghostYellowyPos = 0;
+        ghostYellowyPos |= static_cast<quint8>(arr[23]) << 8;
+        ghostYellowyPos |= static_cast<quint8>(arr[24]);
+        ghostYellow->setYPos(ghostYellowyPos);
+
+
+        /* Client send */
         arr.resize(1);
-        arr = gameServer->getReceivedData();
-        qDebug() << arr;
-        pacman2->setDirection(static_cast<quint8>(arr[0]));
-
-        /* Data to send:
-         * quint16 data = static_cast<quint16>(pacman->getxPos())
-         * [0] - data << 8;
-         * [1] - data;
-         */
-
-        /* Server send */
-        arr.resize(9);
-        quint16 pacmanxpos = static_cast<quint16>(pacman->getXPos());
-        quint16 pacmanypos = static_cast<quint16>(pacman->getYPos());
-        quint16 pacman2xpos = static_cast<quint16>(pacman2->getXPos());
-        quint16 pacman2ypos = static_cast<quint16>(pacman2->getYPos());
-
-        arr[0] = pacman->getDirection();
-        arr[1] = pacmanxpos >> 8;
-        arr[2] = static_cast<quint8>(pacmanxpos);
-        arr[3] = pacmanypos >> 8;
-        arr[4] = static_cast<quint8>(pacmanypos);
-        arr[5] = pacman2xpos >> 8;
-        arr[6] = static_cast<quint8>(pacman2xpos);
-        arr[7] = pacman2ypos >> 8;
-        arr[8] = static_cast<quint8>(pacman2ypos);
-        sendGameDataToClient(arr);
-
+        arr[0] = pacman2->getDirection();
+        sendGameDataToServer(arr);
     }
 
     /* Update game loop counters of each actor */
@@ -517,10 +558,13 @@ void gameWindow::gameLoop(void)
         setGhostDirection(ghostYellow);
 
         /* Move ghost */
-        moveActor(ghostRed);
-        moveActor(ghostBlue);
-        moveActor(ghostGreen);
-        moveActor(ghostYellow);
+        if(connectionRole == SERVER_ROLE)
+        {
+            moveActor(ghostRed);
+            moveActor(ghostBlue);
+            moveActor(ghostGreen);
+            moveActor(ghostYellow);
+        }
         ghostRed->updatePos();
         ghostBlue->updatePos();
         ghostGreen->updatePos();
@@ -530,41 +574,64 @@ void gameWindow::gameLoop(void)
 
     checkLevelFinish();
 
-    if(connectionRole == CLIENT_ROLE)
+    if(connectionRole == SERVER_ROLE)
     {
         QByteArray arr;
 
-        /* Client receive */
-        arr.resize(5);
-        arr = gameClient->getReceivedData();
-
-        pacman->setDirection(static_cast<quint8>(arr[0]));
-
-        quint16 recPacmanxPos = 0;
-        recPacmanxPos |= static_cast<quint8>(arr[1]) << 8;
-        recPacmanxPos |= static_cast<quint8>(arr[2]);
-        pacman->setXPos(recPacmanxPos);
-
-        quint16 recPacmanyPos = 0;
-        recPacmanyPos |= static_cast<quint8>(arr[3]) << 8;
-        recPacmanyPos |= static_cast<quint8>(arr[4]);
-        pacman->setYPos(recPacmanyPos);
-
-        quint16 recPacman2xPos = 0;
-        recPacman2xPos |= static_cast<quint8>(arr[5]) << 8;
-        recPacman2xPos |= static_cast<quint8>(arr[6]);
-        pacman2->setXPos(recPacman2xPos);
-
-        quint16 recPacman2yPos = 0;
-        recPacman2yPos |= static_cast<quint8>(arr[7]) << 8;
-        recPacman2yPos |= static_cast<quint8>(arr[8]);
-        pacman2->setYPos(recPacman2yPos);
-
-
-        /* Client send */
+        /* Server receive */
         arr.resize(1);
-        arr[0] = pacman2->getDirection();
-        sendGameDataToServer(arr);
+        arr = gameServer->getReceivedData();
+        qDebug() << arr;
+        pacman2->setDirection(static_cast<quint8>(arr[0]));
+
+        /* Data to send:
+         * quint16 data = static_cast<quint16>(pacman->getxPos())
+         * [0] - data << 8;
+         * [1] - data;
+         */
+
+        /* Server send */
+        arr.resize(24);
+        quint16 pacmanxpos = static_cast<quint16>(pacman->getXPos());
+        quint16 pacmanypos = static_cast<quint16>(pacman->getYPos());
+        quint16 pacman2xpos = static_cast<quint16>(pacman2->getXPos());
+        quint16 pacman2ypos = static_cast<quint16>(pacman2->getYPos());
+        quint16 ghostRedxpos = static_cast<quint16>(ghostRed->getXPos());
+        quint16 ghostRedypos = static_cast<quint16>(ghostRed->getYPos());
+        quint16 ghostBluexpos = static_cast<quint16>(ghostBlue->getXPos());
+        quint16 ghostBlueypos = static_cast<quint16>(ghostBlue->getYPos());
+        quint16 ghostGreenxpos = static_cast<quint16>(ghostGreen->getXPos());
+        quint16 ghostGreenypos = static_cast<quint16>(ghostGreen->getYPos());
+        quint16 ghostYellowxpos = static_cast<quint16>(ghostYellow->getXPos());
+        quint16 ghostYellowypos = static_cast<quint16>(ghostYellow->getYPos());
+
+        arr[0] = pacman->getDirection();
+        arr[1] = pacmanxpos >> 8;
+        arr[2] = static_cast<quint8>(pacmanxpos);
+        arr[3] = pacmanypos >> 8;
+        arr[4] = static_cast<quint8>(pacmanypos);
+        arr[5] = pacman2xpos >> 8;
+        arr[6] = static_cast<quint8>(pacman2xpos);
+        arr[7] = pacman2ypos >> 8;
+        arr[8] = static_cast<quint8>(pacman2ypos);
+        arr[9] = ghostRedxpos >> 8;
+        arr[10] = static_cast<quint8>(ghostRedxpos);
+        arr[11] = ghostRedypos >> 8;
+        arr[12] = static_cast<quint8>(ghostRedypos);
+        arr[13] = ghostBluexpos >> 8;
+        arr[14] = static_cast<quint8>(ghostBluexpos);
+        arr[15] = ghostBlueypos >> 8;
+        arr[16] = static_cast<quint8>(ghostBlueypos);
+        arr[17] = ghostGreenxpos >> 8;
+        arr[18] = static_cast<quint8>(ghostGreenxpos);
+        arr[19] = ghostGreenypos >> 8;
+        arr[20] = static_cast<quint8>(ghostGreenypos);
+        arr[21] = ghostYellowxpos >> 8;
+        arr[22] = static_cast<quint8>(ghostYellowxpos);
+        arr[23] = ghostYellowypos >> 8;
+        arr[24] = static_cast<quint8>(ghostYellowypos);
+        sendGameDataToClient(arr);
+
     }
 
     scene->update();
