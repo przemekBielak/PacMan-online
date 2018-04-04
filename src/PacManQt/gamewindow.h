@@ -66,21 +66,11 @@ private:
     void checkLevelFinish(void);
     void updateTileGraphics(Pacman *pac);
 
-    QTimer *gameLoopTimer;
-
-    Ghost *ghostRed;
-    Ghost *ghostYellow;
-    Ghost *ghostGreen;
-    Ghost *ghostBlue;
-    Pacman *pacman;
-    Pacman *pacman2;
     int gameLoopCounterGhost;
     int gameLoopCounterPacman;
     int gameLoopCounterPacman2;
     int gameLevel;
 
-    serverWindow *gameServer;
-    clientwindow *gameClient;
     void sendGameDataToClient(QByteArray string);
     void sendGameDataToServer(QByteArray string);
 
@@ -88,11 +78,65 @@ private:
     void UnpackDataServerToClient(void);
     void PackDataClientToServer(void);
     void UnpackDataClientToServer(void);
+    
+    /**
+     * @var QTimer *gameLoopTimer
+     * @brief Game loop timer - game is updated after each overflow.
+     */
+    QTimer *gameLoopTimer;
 
+    /**
+     * @var Ghost *ghostRed
+     * @brief Red ghost object.
+     */
+    Ghost *ghostRed;
+    /**
+     * @var Ghost *ghostYellow
+     * @brief Yellow ghost object.
+     */
+    Ghost *ghostYellow;
+    /**
+     * @var Ghost *ghostGreen
+     * @brief Green ghost object.
+     */
+    Ghost *ghostGreen;
+    /**
+     * @var Ghost *ghostBlue
+     * @brief Blue ghost object.
+     */
+    Ghost *ghostBlue;
+    /**
+     * @var Pacman *pacman
+     * @brief Servers pacman object.
+     */
+    Pacman *pacman;
+    /**
+     * @var Pacman *pacman2
+     * @brief Clients pacman object.
+     */
+    Pacman *pacman2;
 
+    /**
+     * @var serverWindow *gameServer
+     * @brief server object which is communicating with client.
+     */
+    serverWindow *gameServer;
+    /**
+     * @var clientwindow *gameClient
+     * @brief client object which is communicating with server.
+     */
+    clientwindow *gameClient;
+    /**
+     * @var connectionRoleType connectionRole
+     * @brief Specifies if game was started as server or as client role.
+     */
     connectionRoleType connectionRole;
 
 protected:
+    /**
+     * @var QGraphicsScene *scene
+     * @brief Game images are drawn on this scene.
+     */
     QGraphicsScene *scene;
 };
 

@@ -1,10 +1,25 @@
 #include "pacman.h"
 
+
+/**
+ * @fn Pacman()
+ * @brief Empty actor class constructor.
+ * @param void
+ * @return void
+ */
 Pacman::Pacman()
 {
     /* */
 }
 
+/**
+ * @fn Pacman()
+ * @brief Overloaded actor class constructor.
+ * @details Updates Pacman graphics, sets x and y positions,
+ * sets initial number of lives and points.
+ * @param QString pixmapPath, int x, int y
+ * @return void
+ */
 Pacman::Pacman(QString pixmapPath, int x, int y)
 {
     pixmap = new QPixmap(pixmapPath);
@@ -16,6 +31,10 @@ Pacman::Pacman(QString pixmapPath, int x, int y)
     points = 0;
 }
 
+/**
+ * @fn int getNumOfLifes() const
+ * @brief numOfLifes getter.
+ */
 int Pacman::getNumOfLifes() const
 {
     return numOfLifes;

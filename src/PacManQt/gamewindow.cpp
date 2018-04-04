@@ -1,14 +1,32 @@
 #include "gamewindow.h"
 #include "ui_gamewindow.h"
 
-/* tileArr is storing all tiles */
+/**
+ * @var Tile $tileArr[]
+ * @brief Stores tile type of specific array element.
+ */
 Tile tileArr[MAP_TILES_WIDTH * MAP_TILES_HEIGHT];
+
+/**
+ * @var int nonWalkableMapTiles[]
+ * @brief Stores all tile numbers on which actor can't be placed.
+ * @details Actor can't be placed on any wall tile type.
+ */
 int nonWalkableMapTiles[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
 
+/**
+ * @fn gameWindow(QWidget *parent = 0)
+ * @brief gameWindow class constructor.
+ * @details Constructor initializs graphics elements of game board,
+ * initializes map tiles and adds actors to the board.
+ * @param QWidget *parentnonWalkableMapTiles
+ * @retval void
+ */
 gameWindow::gameWindow(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::gameWindow)
 {
+    /* ui setup */
     ui->setupUi(this);
     scene = new QGraphicsScene(this);
     ui->graphicsView->setScene(scene);
@@ -110,6 +128,7 @@ gameWindow::gameWindow(QWidget *parent) :
                 break;
         }
 
+        /* Add all tiles (with images) to the board */
         int x = i % MAP_TILES_WIDTH;
         int y = i / MAP_TILES_WIDTH;
         Tile currTile(pathImage, x * TILE_WIDTH, y * TILE_WIDTH);
@@ -118,6 +137,7 @@ gameWindow::gameWindow(QWidget *parent) :
         scene->addItem(currTile.getPixmapItem());
     }
 
+    /* Add all actors to the board */
     pacman = new Pacman(":/Images/pacmanRight.png", 20, 20);
     scene->addItem(pacman->getPixmapItem());
 
@@ -136,6 +156,7 @@ gameWindow::gameWindow(QWidget *parent) :
     ghostGreen = new Ghost(":/Images/ghostGreenRight.png", 400, 100);
     scene->addItem(ghostGreen->getPixmapItem());
 
+    /* Set speed of each actor */
     pacman->setSpeed(10);
     pacman2->setSpeed(10);
     ghostBlue->setSpeed(30);
@@ -144,7 +165,12 @@ gameWindow::gameWindow(QWidget *parent) :
 
 }
 
-
+/**
+ * @fn void startGame(void)
+ * @brief Start game timer.
+ * @param void
+ * @return void
+ */
 void gameWindow::startGame()
 {
     /* Setup game timer */
@@ -156,15 +182,27 @@ void gameWindow::startGame()
 
 }
 
-
+/**
+ * @fn ~gameWindow()
+ * @brief gameWindow class deconstructor
+ * @param void
+ * @return void
+ */
 gameWindow::~gameWindow()
 {
     delete ui;
 }
 
+/**
+ * @fn keyPressEvent(QKeyEvent *event)
+ * @brief Reads keyboard presses and sets pacman direction.
+ * @details Based on connectionRole parameter (if player started game as host
+ * or as client), keyboard presses will set direction of pacman or pacman2.
+ * @param QKeyEvent *event
+ * @return void
+ */
 void gameWindow::keyPressEvent(QKeyEvent *event)
 {
-//    sendGameDataToClient("from_server");
     if(connectionRole == SERVER_ROLE)
     {
         if(event->key() == Qt::Key_A)
@@ -186,7 +224,6 @@ void gameWindow::keyPressEvent(QKeyEvent *event)
     }
     else if(connectionRole == CLIENT_ROLE)
     {
-//        sendGameDataToServer("from_client");
         if(event->key() == Qt::Key_A)
         {
             pacman2->setDirection(DIRECTION_LEFT);
@@ -206,6 +243,12 @@ void gameWindow::keyPressEvent(QKeyEvent *event)
     }
 }
 
+/**
+ * @fn void rotateImage(Actor *act)
+ * @brief Rotate actor image based on direction paramter.
+ * @param Actor *act
+ * @return void
+ */
 void gameWindow::rotateImage(Actor *act)
 {
     if(act->getDirection() == DIRECTION_LEFT)
@@ -226,6 +269,15 @@ void gameWindow::rotateImage(Actor *act)
     }
 }
 
+/**
+ * @fn int checkIfMoveIsPossible(Actor *act, directionType direction)
+ * @brief Checks if Actors move can be performed.
+ * @details Checks if move in specified direction won't result in moving
+ * Actor to the non-walkable field (for example wall).
+ * @param Actor *act
+ * @return int  - 0 - move not possible
+ *                1 - move possible
+ */
 int gameWindow::checkIfMoveIsPossible(Actor *act, directionType direction)
 {
     int currentTile;
@@ -256,6 +308,12 @@ int gameWindow::checkIfMoveIsPossible(Actor *act, directionType direction)
     }
 }
 
+/**
+ * @fn void setGhostDirection(Ghost *ghost)
+ * @brief Updated ghost direction to follow pacman or pacman2.
+ * @param Ghost *ghost
+ * @return void
+ */
 void gameWindow::setGhostDirection(Ghost *ghost)
 {
     if( (ghost->getYPos() == pacman->getYPos()) || (ghost->getYPos() == pacman2->getYPos()) )
@@ -282,6 +340,14 @@ void gameWindow::setGhostDirection(Ghost *ghost)
     }
 }
 
+/**
+ * @fn void moveActor(Actor *ghost)
+ * @brief Moves actor on the boards if move is possible.
+ * @details If Actors move is possible, it will be moved in the
+ * specified direction. Actors x and y position will be updated.
+ * @param Actor *actor
+ * @return void
+ */
 void gameWindow::moveActor(Actor *actor)
 {
     switch(actor->getDirection())
@@ -315,7 +381,14 @@ void gameWindow::moveActor(Actor *actor)
     }
 }
 
-
+/**
+ * @fn void checkDot(Pacman *pac)
+ * @brief Checks if pacman has collected the dot.
+ * @details If specified pacmans current tile is dot tile, pacmans score
+ * will be incremented by one.
+ * @param Pacman *pac
+ * @return void
+ */
 void gameWindow::checkDot(Pacman *pac)
 {
     if( (tileArr[pac->getCurrTile()].getTileType() == 17) && (pac->getLastTile() != pac->getCurrTile()) )
@@ -324,6 +397,14 @@ void gameWindow::checkDot(Pacman *pac)
     }
 }
 
+/**
+ * @fn void checkSuperDot(Pacman *pac)
+ * @brief Checks if pacman has collected the super dot.
+ * @details If specified pacmans current tile is super dot tile, pacmans speed
+ * will be incremented.
+ * @param Pacman *pac
+ * @return void
+ */
 void gameWindow::checkSuperDot(Pacman *pac)
 {
     if( (tileArr[pac->getCurrTile()].getTileType() == 17) && (pac->getLastTile() != pac->getCurrTile()) )
@@ -332,7 +413,12 @@ void gameWindow::checkSuperDot(Pacman *pac)
     }
 }
 
-
+/**
+ * @fn void checkLevelFinish(void)
+ * @brief Checks if all dots were collected from board.
+ * @param void
+ * @return void
+ */
 void gameWindow::checkLevelFinish()
 {
     int endCounter = 0;
@@ -352,6 +438,12 @@ void gameWindow::checkLevelFinish()
     }
 }
 
+/**
+ * @fn void checkLevelFinish(void)
+ * @brief Updates board graphics tile images when specified pacman eats dot.
+ * @param Pacman *pac
+ * @return void
+ */
 void gameWindow::updateTileGraphics(Pacman *pac)
 {
     if( (tileArr[pac->getCurrTile()].getTileType() == 17) && (pac->getLastTile() != pac->getCurrTile()) )
@@ -367,47 +459,90 @@ void gameWindow::updateTileGraphics(Pacman *pac)
     }
 }
 
+/**
+ * @fn clientwindow *getGameClient() const
+ * @brief gameClient getter.
+ */
 clientwindow *gameWindow::getGameClient() const
 {
     return gameClient;
 }
 
+/**
+ * @fn void setGameClient(clientwindow *value)
+ * @brief gameClient setter.
+ */
 void gameWindow::setGameClient(clientwindow *value)
 {
     gameClient = value;
 }
 
+/**
+ * @fn void sendGameDataToClient(QByteArray string)
+ * @brief Sends data from Server to Client using Servers sendData function.
+ * @param QByteArray string
+ * @return void
+ */
 void gameWindow::sendGameDataToClient(QByteArray string)
 {
     gameServer->sendData(string);
 }
 
+/**
+ * @fn void sendGameDataToServer(QByteArray string);
+ * @brief Sends data from Client to Server using Clients sendData function.
+ * @param QByteArray string
+ * @return void
+ */
 void gameWindow::sendGameDataToServer(QByteArray string)
 {
     gameClient->sendData(string);
 }
 
+/**
+ * @fn connectionRoleType getConnectionRole() const
+ * @brief connectionRole getter.
+ */
 connectionRoleType gameWindow::getConnectionRole() const
 {
     return connectionRole;
 }
 
+/**
+ * @fn void setConnectionRole(const connectionRoleType &value)
+ * @brief connectionRole setter.
+ */
 void gameWindow::setConnectionRole(const connectionRoleType &value)
 {
     connectionRole = value;
 }
 
+/**
+ * @fn serverWindow *getGameServer() const;
+ * @brief gameServer getter.
+ */
 serverWindow *gameWindow::getGameServer() const
 {
     return gameServer;
 }
 
+/**
+ * @fn void setGameServer(serverWindow *value);
+ * @brief gameServer setter.
+ */
 void gameWindow::setGameServer(serverWindow *value)
 {
     gameServer = value;
 }
 
-
+/**
+ * @fn void checkIfDead(Pacman *pac)
+ * @brief Check if specified pacman is dead.
+ * @details Checks if specified pacman position is the same as ghost position.
+ * If so, pacman number of lives is decremented and is setup to start position on board.
+ * @param Pacman *pac
+ * @return void
+ */
 void gameWindow::checkIfDead(Pacman *pac)
 {
     if( (pac->getCurrTile() == ghostRed->getCurrTile() ) ||
@@ -420,12 +555,22 @@ void gameWindow::checkIfDead(Pacman *pac)
     }
 }
 
+/**
+ * @fn void PackDataServerToClient(void)
+ * @brief Prepares and sends data from server to client.
+ * @details Function initializes QByteArray array with all game details which
+ * have to be sent from server to client. Server is responsible for updating
+ * game logic, which is sent to client.
+ * @param void
+ * @return void
+ */
 void gameWindow::PackDataServerToClient()
 {
     /* Server send */
     QByteArray arr;
     arr.resize(28);
 
+    /* Store all data to be sent */
     quint16 pacmanxpos = static_cast<quint16>(pacman->getXPos());
     quint16 pacmanypos = static_cast<quint16>(pacman->getYPos());
     quint16 pacman2xpos = static_cast<quint16>(pacman2->getXPos());
@@ -439,6 +584,7 @@ void gameWindow::PackDataServerToClient()
     quint16 ghostYellowxpos = static_cast<quint16>(ghostYellow->getXPos());
     quint16 ghostYellowypos = static_cast<quint16>(ghostYellow->getYPos());
 
+    /* Update array */
     arr[0] = pacman->getDirection();
     arr[1] = pacmanxpos >> 8;
     arr[2] = static_cast<quint8>(pacmanxpos);
@@ -469,10 +615,17 @@ void gameWindow::PackDataServerToClient()
     arr[27] = pacman->getPoints();
     arr[28] = pacman2->getPoints();
 
-
+    /* Send data to client */
     sendGameDataToClient(arr);
 }
 
+/**
+ * @fn void UnpackDataServerToClient(void);
+ * @brief Unpacks data sent from server.
+ * @details Updates clients data based on received data from server.
+ * @param void
+ * @return void
+ */
 void gameWindow::UnpackDataServerToClient()
 {
     /* Client receive */
@@ -550,6 +703,12 @@ void gameWindow::UnpackDataServerToClient()
     pacman2->setPoints(static_cast<quint8>(arr[28]));
 }
 
+/**
+ * @fn void PackDataClientToServer(void);
+ * @brief Function sends pacman2 direction to server.
+ * @param void
+ * @return void
+ */
 void gameWindow::PackDataClientToServer()
 {
     /* Client send */
@@ -560,6 +719,12 @@ void gameWindow::PackDataClientToServer()
     sendGameDataToServer(arr);
 }
 
+/**
+ * @fn void UnpackDataClientToServer(void)
+ * @brief Function updates servers pacman2 direction from client data.
+ * @param void
+ * @return void
+ */
 void gameWindow::UnpackDataClientToServer()
 {
     /* Server receive */
@@ -570,9 +735,21 @@ void gameWindow::UnpackDataClientToServer()
     pacman2->setDirection(static_cast<quint8>(arr[0]));
 }
 
-
+/**
+ * @fn void gameLoop(void);
+ * @brief Game loop - updates game states and variables.
+ * @details This function is a slot for Timer. This
+ * function is called after each Timer overflow.
+ * Game logic is based on connectionRole.
+ * Part of the gameloop is executed on server and part on client side.
+ * @param void
+ * @return void
+ */
 void gameWindow::gameLoop(void)
 {
+    /* On client side, unpack and update game state based on server data
+     * and send data to server.
+     */
     if(connectionRole == CLIENT_ROLE)
     {
         UnpackDataServerToClient();
@@ -599,6 +776,7 @@ void gameWindow::gameLoop(void)
     ui->label_lifes_num_2->setText(QString::number(pacman2->getNumOfLifes()));
     ui->label_points_2->setText(QString::number(pacman2->getPoints()));
 
+    /* On server side, check if any pacman has died or has collected points. */
     if(connectionRole == SERVER_ROLE)
     {
         /* Check ghost tile */
@@ -610,13 +788,15 @@ void gameWindow::gameLoop(void)
         checkDot(pacman2);
     }
 
+    /* Update tile graphics based on both pacmans behaviours */
     updateTileGraphics(pacman);
     updateTileGraphics(pacman2);
 
-    /* Check speed tile */
+    /* Check super dot tile */
     checkSuperDot(pacman);
     checkSuperDot(pacman2);
 
+    /* Rotate pacmans */
     rotateImage(pacman);
     rotateImage(pacman2);
 
@@ -672,12 +852,14 @@ void gameWindow::gameLoop(void)
 
     checkLevelFinish();
 
+    /* On server side, receive pacman2 direction and send all game data to client. */
     if(connectionRole == SERVER_ROLE)
     {
         UnpackDataClientToServer();
         PackDataServerToClient();
     }
 
+    /* Update QGraphicsScene object */
     scene->update();
 }
 

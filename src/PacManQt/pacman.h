@@ -21,7 +21,15 @@ public:
     void setPoints(int value);
 
 private:
+    /**
+     * @var numOfLifes
+     * @brief Current number of lifes of pacman.
+     */
     int numOfLifes;
+    /**
+     * @var points
+     * @brief Current number of points of pacman.
+     */
     int points;
 };
 

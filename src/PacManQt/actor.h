@@ -37,13 +37,45 @@ public:
     void setDirection(int value);
 
 private:
+    /**
+     * @var currTile
+     * @brief Tile on which currently stays Actor.
+     */
     int currTile;
+    /**
+     * @var lastTile
+     * @brief Tile on which Actor stayed last time.
+     */
     int lastTile;
+    /**
+     * @var tileIndexLeft
+     * @brief Tile index to the left of Actor.
+     */
     int tileIndexLeft;
+    /**
+     * @var tileIndexRight
+     * @brief Tile index to the right of Actor.
+     */
     int tileIndexRight;
+    /**
+     * @var tileIndexUp
+     * @brief Tile index upward of Actor.
+     */
     int tileIndexUp;
+    /**
+     * @var tileIndexDown
+     * @brief Tile index downward of Actor.
+     */
     int tileIndexDown;
+    /**
+     * @var speed
+     * @brief Speed of Actor.
+     */
     int speed;
+    /**
+     * @var direction
+     * @brief Set direction of Actor.
+     */
     int direction;
 };
 
