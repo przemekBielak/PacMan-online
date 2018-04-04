@@ -19,7 +19,7 @@ int nonWalkableMapTiles[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 
  * @brief gameWindow class constructor.
  * @details Constructor initializs graphics elements of game board,
  * initializes map tiles and adds actors to the board.
- * @param QWidget *parentnonWalkableMapTiles
+ * @param QWidget *parent
  * @retval void
  */
 gameWindow::gameWindow(QWidget *parent) :

@@ -21,7 +21,6 @@ public:
     ~serverWindow();
     void sendData(QByteArray string);
 
-
     QByteArray getReceivedData() const;
 
 signals:

@@ -30,6 +30,10 @@ private slots:
 
 private:
     Ui::gameOptions *ui;
+    /**
+     * @var connectionRoleType connectionRole
+     * @brief Specifies if game was started as a server or as a client.
+     */
     connectionRoleType connectionRole;
 };
 

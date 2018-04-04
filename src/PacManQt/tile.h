@@ -17,6 +17,11 @@ public:
     void setTileType(int value);
 
 private:
+
+    /**
+     * @var int tileType
+     * @brief tileType stores type of tile, like wall, dot etc.
+     */
     int tileType;
 };
 

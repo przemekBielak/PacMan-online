@@ -28,9 +28,25 @@ public:
     void setYPos(int value);
 
 protected:
+    /**
+     * @var QPixmap *pixmap
+     * @brief pixmap is storing image.
+     */
     QPixmap *pixmap;
+    /**
+     * @var QGraphicsPixmapItem *pixmapItem
+     * @brief pixmap is storing image - used on QGraphicsScene.
+     */
     QGraphicsPixmapItem *pixmapItem;
+    /**
+     * @var int xPos
+     * @brief x position.
+     */
     int xPos;
+    /**
+     * @var int yPos
+     * @brief y position.
+     */
     int yPos;
 };
 

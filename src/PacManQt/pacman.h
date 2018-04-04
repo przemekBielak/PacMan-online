@@ -22,12 +22,12 @@ public:
 
 private:
     /**
-     * @var numOfLifes
+     * @var int numOfLifes
      * @brief Current number of lifes of pacman.
      */
     int numOfLifes;
     /**
-     * @var points
+     * @var int points
      * @brief Current number of points of pacman.
      */
     int points;
