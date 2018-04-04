@@ -31,6 +31,10 @@ namespace Ui {
 class gameWindow;
 }
 
+/**
+ * gameWindow controlls game logic, creates all actors and
+ * maintains connection and data flow between server and client.
+ */
 class gameWindow : public QWidget
 {
     Q_OBJECT

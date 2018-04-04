@@ -7,6 +7,7 @@
 
 #include "game_cfg.h"
 
+/** Painter class is responsible for drawing all images. */
 class Painter
 {
 public:

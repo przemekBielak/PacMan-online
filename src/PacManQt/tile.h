@@ -7,6 +7,10 @@
 #include "game_cfg.h"
 #include "painter.h"
 
+/**
+ * Tile class transforms x/y coordinates into tiles.
+ * Each tile has its own type.
+ */
 class Tile : public Painter
 {
 public:

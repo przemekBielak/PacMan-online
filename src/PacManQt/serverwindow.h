@@ -12,6 +12,10 @@ namespace Ui {
 class serverWindow;
 }
 
+/**
+ * serverWindow class is responsible listening to any incoming connection.
+ * Class is sending/receiving data over tcp protocol.
+ */
 class serverWindow : public QWidget
 {
     Q_OBJECT
@@ -33,10 +37,21 @@ private slots:
 
 private:
     Ui::serverWindow *ui;
+    /**
+     * @var QTcpServer *tcpServer
+     * @brief Server instance.
+     */
     QTcpServer *tcpServer;
+    /**
+     * @var QTcpSocket *serverSocket
+     * @brief Server socket - used to send data.
+     */
     QTcpSocket *serverSocket;
+    /**
+     * @var QByteArray receivedData
+     * @brief Used to store received data from client.
+     */
     QByteArray receivedData;
-    int executeOnce = 0;
 };
 
 #endif // SERVERWINDOW_H

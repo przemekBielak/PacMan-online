@@ -7,6 +7,10 @@
 #include "game_cfg.h"
 #include "painter.h"
 
+/**
+ * Actor class is responsible for moving and controlling all
+ * Actors (Pacman or Ghost).
+ */
 class Actor : public Painter
 {
 public:

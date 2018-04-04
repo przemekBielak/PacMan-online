@@ -8,6 +8,10 @@
 #include "game_cfg.h"
 #include "actor.h"
 
+/**
+ * Ghost class inherits Actor class.
+ * Class is responsible for controlling Ghosts.
+ */
 class Ghost : public Actor
 {
 public:

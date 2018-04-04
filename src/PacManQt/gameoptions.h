@@ -9,6 +9,10 @@ namespace Ui {
 class gameOptions;
 }
 
+/**
+ * gameOptions class creates a welcome screen, where user can select
+ * to start a game in server or client mode.
+ */
 class gameOptions : public QWidget
 {
     Q_OBJECT

@@ -16,6 +16,9 @@ namespace Ui {
 class MainWindow;
 }
 
+/**
+ * MainWindow class is responsible for switching between active windows.
+ */
 class MainWindow : public QMainWindow
 {
     Q_OBJECT

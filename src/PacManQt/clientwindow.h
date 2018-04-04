@@ -12,6 +12,10 @@ namespace Ui {
 class clientwindow;
 }
 
+/**
+ * clientwindow class is responsible for estabilishing connection with server.
+ * Class is sending/receiving data over tcp protocol.
+ */
 class clientwindow : public QWidget
 {
     Q_OBJECT
@@ -31,13 +35,20 @@ private slots:
 
 public slots:
     void readyRead();
-    void disconnected();
 
 private:
     void connectToServer();
 
     Ui::clientwindow *ui;
+    /**
+     * @var QTcpSocket *tcpClient
+     * @brief Client socket - used to send data.
+     */
     QTcpSocket *tcpClient;
+    /**
+     * @var QByteArray receivedData
+     * @brief Used to store received data from client.
+     */
     QByteArray receivedData;
 };
 

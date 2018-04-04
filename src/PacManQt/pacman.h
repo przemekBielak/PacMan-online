@@ -8,6 +8,10 @@
 #include "game_cfg.h"
 #include "actor.h"
 
+/**
+ * Pacman class inherits Actor class.
+ * Class is responsible for controlling Ghosts.
+ */
 class Pacman : public Actor
 {
 public:
