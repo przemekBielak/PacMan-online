@@ -65,7 +65,9 @@ private:
     void rotateImage(Actor *act);
     void moveActor(Actor *ghost);
     void checkIfDead(Pacman *pac);
-    void checkDot(Pacman *pac);
+
+    template <typename T>
+    void checkDot(T *pac);
     void checkSuperDot(Pacman *pac);
     void checkLevelFinish(void);
     void updateTileGraphics(Pacman *pac);

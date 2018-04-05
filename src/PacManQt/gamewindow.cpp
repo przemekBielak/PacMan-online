@@ -162,7 +162,6 @@ gameWindow::gameWindow(QWidget *parent) :
     ghostBlue->setSpeed(30);
 
     ui->label_game_level_num->setText(QString::number(1));
-
 }
 
 /**
@@ -382,14 +381,15 @@ void gameWindow::moveActor(Actor *actor)
 }
 
 /**
- * @fn void checkDot(Pacman *pac)
+ * @fn void checkDot(T *pac)
  * @brief Checks if pacman has collected the dot.
  * @details If specified pacmans current tile is dot tile, pacmans score
  * will be incremented by one.
  * @param Pacman *pac
  * @return void
  */
-void gameWindow::checkDot(Pacman *pac)
+template <typename T>
+void gameWindow::checkDot(T *pac)
 {
     if( (tileArr[pac->getCurrTile()].getTileType() == 17) && (pac->getLastTile() != pac->getCurrTile()) )
     {
