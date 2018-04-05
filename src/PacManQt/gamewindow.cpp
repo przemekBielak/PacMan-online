@@ -407,9 +407,9 @@ void gameWindow::checkDot(T *pac)
  */
 void gameWindow::checkSuperDot(Pacman *pac)
 {
-    if( (tileArr[pac->getCurrTile()].getTileType() == 17) && (pac->getLastTile() != pac->getCurrTile()) )
+    if( (tileArr[pac->getCurrTile()].getTileType() == 18) && (pac->getLastTile() != pac->getCurrTile()) )
     {
-        pac->setPoints(pac->getPoints() + 1);
+        pac->setSpeed(pac->getSpeed() - 5);
     }
 }
 
@@ -446,13 +446,13 @@ void gameWindow::checkLevelFinish()
  */
 void gameWindow::updateTileGraphics(Pacman *pac)
 {
-    if( (tileArr[pac->getCurrTile()].getTileType() == 17) && (pac->getLastTile() != pac->getCurrTile()) )
+    if(tileArr[pac->getCurrTile()].getTileType() == 17)
     {
         tileArr[pac->getCurrTile()].setTileType(0);
         tileArr[pac->getCurrTile()].setPixmap(":/Images/white.png");
     }
 
-    if( (tileArr[pac->getCurrTile()].getTileType() == 17) && (pac->getLastTile() != pac->getCurrTile()) )
+    if(tileArr[pac->getCurrTile()].getTileType() == 18)
     {
         tileArr[pac->getCurrTile()].setTileType(0);
         tileArr[pac->getCurrTile()].setPixmap(":/Images/white.png");
@@ -786,15 +786,16 @@ void gameWindow::gameLoop(void)
         /* Check points tile */
         checkDot(pacman);
         checkDot(pacman2);
+
+        /* Check super dot tile */
+        checkSuperDot(pacman);
+        checkSuperDot(pacman2);
     }
 
     /* Update tile graphics based on both pacmans behaviours */
     updateTileGraphics(pacman);
     updateTileGraphics(pacman2);
 
-    /* Check super dot tile */
-    checkSuperDot(pacman);
-    checkSuperDot(pacman2);
 
     /* Rotate pacmans */
     rotateImage(pacman);

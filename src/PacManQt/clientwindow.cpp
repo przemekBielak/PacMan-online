@@ -17,7 +17,6 @@ clientwindow::clientwindow(QWidget *parent) :
 
     tcpClient = new QTcpSocket();
     connect(tcpClient, SIGNAL(readyRead()), this, SLOT(readyRead()));
-    connect(tcpClient, SIGNAL(disconnected()), this, SLOT(disconnected()));
 }
 
 /**
