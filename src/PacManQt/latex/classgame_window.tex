@@ -1,0 +1,139 @@
+\hypertarget{classgame_window}{}\section{game\+Window Class Reference}
+\label{classgame_window}\index{game\+Window@{game\+Window}}
+
+
+{\ttfamily \#include $<$gamewindow.\+h$>$}
+
+Inheritance diagram for game\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classgame_window}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classgame_window_a2aeb402950ac1faa754288a9e7464563}{game\+Loop}} (void)
+\begin{DoxyCompactList}\small\item\em Game loop -\/ updates game states and variables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classgame_window_af31e4cb1c92ed36e03ef264c8d4efa51}{game\+Window}} (Q\+Widget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classgame_window}{game\+Window}} class constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classgame_window_a13773b6a92bc1d9a7e0067ed99fa4e20}{$\sim$game\+Window}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classgame_window}{game\+Window}} class deconstructor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgame_window_a790233fd0316f05a1fd35738d383349b}{start\+Game}} (void)
+\begin{DoxyCompactList}\small\item\em Start game timer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_window_a53a82990ddc2c819e3570ad52b340a90}\label{classgame_window_a53a82990ddc2c819e3570ad52b340a90}} 
+\mbox{\hyperlink{classserver_window}{server\+Window}} $\ast$ \mbox{\hyperlink{classgame_window_a53a82990ddc2c819e3570ad52b340a90}{get\+Game\+Server}} () const
+\begin{DoxyCompactList}\small\item\em game\+Server getter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_window_a488fb57d2d073817325f8128dee0f85d}\label{classgame_window_a488fb57d2d073817325f8128dee0f85d}} 
+void \mbox{\hyperlink{classgame_window_a488fb57d2d073817325f8128dee0f85d}{set\+Game\+Server}} (\mbox{\hyperlink{classserver_window}{server\+Window}} $\ast$value)
+\begin{DoxyCompactList}\small\item\em game\+Server setter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_window_a69e38c52ddea9d76beea2b7ad38b399e}\label{classgame_window_a69e38c52ddea9d76beea2b7ad38b399e}} 
+\mbox{\hyperlink{classclientwindow}{clientwindow}} $\ast$ \mbox{\hyperlink{classgame_window_a69e38c52ddea9d76beea2b7ad38b399e}{get\+Game\+Client}} () const
+\begin{DoxyCompactList}\small\item\em game\+Client getter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_window_ad9fdccffaca852e5f7ad31ec54c0c619}\label{classgame_window_ad9fdccffaca852e5f7ad31ec54c0c619}} 
+void \mbox{\hyperlink{classgame_window_ad9fdccffaca852e5f7ad31ec54c0c619}{set\+Game\+Client}} (\mbox{\hyperlink{classclientwindow}{clientwindow}} $\ast$value)
+\begin{DoxyCompactList}\small\item\em game\+Client setter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_window_ad597375ea2f848cf27da3eb725219c53}\label{classgame_window_ad597375ea2f848cf27da3eb725219c53}} 
+connection\+Role\+Type \mbox{\hyperlink{classgame_window_ad597375ea2f848cf27da3eb725219c53}{get\+Connection\+Role}} () const
+\begin{DoxyCompactList}\small\item\em connection\+Role getter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_window_ad00607412c93c7b157ef7e3ec1a2e7df}\label{classgame_window_ad00607412c93c7b157ef7e3ec1a2e7df}} 
+void \mbox{\hyperlink{classgame_window_ad00607412c93c7b157ef7e3ec1a2e7df}{set\+Connection\+Role}} (const connection\+Role\+Type \&value)
+\begin{DoxyCompactList}\small\item\em connection\+Role setter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgame_window_a22f5b5b08120edb4eb1e15845efd07ec}\label{classgame_window_a22f5b5b08120edb4eb1e15845efd07ec}} 
+Q\+Graphics\+Scene $\ast$ \mbox{\hyperlink{classgame_window_a22f5b5b08120edb4eb1e15845efd07ec}{scene}}
+\begin{DoxyCompactList}\small\item\em Game images are drawn on this scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{classgame_window}{game\+Window}} controlls game logic, creates all actors and maintains connection and data flow between server and client. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classgame_window_af31e4cb1c92ed36e03ef264c8d4efa51}\label{classgame_window_af31e4cb1c92ed36e03ef264c8d4efa51}} 
+\index{game\+Window@{game\+Window}!game\+Window@{game\+Window}}
+\index{game\+Window@{game\+Window}!game\+Window@{game\+Window}}
+\subsubsection{\texorpdfstring{game\+Window()}{gameWindow()}}
+{\footnotesize\ttfamily game\+Window\+::game\+Window (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\mbox{\hyperlink{classgame_window}{game\+Window}} class constructor. 
+
+Constructor initializs graphics elements of game board, initializes map tiles and adds actors to the board. 
+\begin{DoxyParams}{Parameters}
+{\em Q\+Widget} & $\ast$parent \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em void} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{classgame_window_a13773b6a92bc1d9a7e0067ed99fa4e20}\label{classgame_window_a13773b6a92bc1d9a7e0067ed99fa4e20}} 
+\index{game\+Window@{game\+Window}!````~game\+Window@{$\sim$game\+Window}}
+\index{````~game\+Window@{$\sim$game\+Window}!game\+Window@{game\+Window}}
+\subsubsection{\texorpdfstring{$\sim$game\+Window()}{~gameWindow()}}
+{\footnotesize\ttfamily game\+Window\+::$\sim$game\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classgame_window}{game\+Window}} class deconstructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classgame_window_a2aeb402950ac1faa754288a9e7464563}\label{classgame_window_a2aeb402950ac1faa754288a9e7464563}} 
+\index{game\+Window@{game\+Window}!game\+Loop@{game\+Loop}}
+\index{game\+Loop@{game\+Loop}!game\+Window@{game\+Window}}
+\subsubsection{\texorpdfstring{game\+Loop}{gameLoop}}
+{\footnotesize\ttfamily void game\+Window\+::game\+Loop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Game loop -\/ updates game states and variables. 
+
+This function is a slot for Timer. This function is called after each Timer overflow. Game logic is based on connection\+Role. Part of the gameloop is executed on server and part on client side. 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgame_window_a790233fd0316f05a1fd35738d383349b}\label{classgame_window_a790233fd0316f05a1fd35738d383349b}} 
+\index{game\+Window@{game\+Window}!start\+Game@{start\+Game}}
+\index{start\+Game@{start\+Game}!game\+Window@{game\+Window}}
+\subsubsection{\texorpdfstring{start\+Game()}{startGame()}}
+{\footnotesize\ttfamily void game\+Window\+::start\+Game (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Start game timer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+gamewindow.\+h\item 
+\mbox{\hyperlink{gamewindow_8cpp}{gamewindow.\+cpp}}\end{DoxyCompactItemize}

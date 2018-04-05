@@ -1,0 +1,141 @@
+\hypertarget{classclientwindow}{}\section{clientwindow Class Reference}
+\label{classclientwindow}\index{clientwindow@{clientwindow}}
+
+
+{\ttfamily \#include $<$clientwindow.\+h$>$}
+
+Inheritance diagram for clientwindow\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classclientwindow}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classclientwindow_a0b2358b8e187213e045381ed2d582e3e}{ready\+Read}} ()
+\begin{DoxyCompactList}\small\item\em Slot stores all received data from client to received\+Data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classclientwindow_a9770acc31c02f795535190e795e616da}\label{classclientwindow_a9770acc31c02f795535190e795e616da}} 
+void {\bfseries set\+Active\+Widget} (int active\+Widget)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classclientwindow_a9ea65c58093430993fc64bedab0ee6e3}{clientwindow}} (Q\+Widget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em clientwindow class constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classclientwindow_a53333bf0d133c70836f94ba20242fd36}{$\sim$clientwindow}} ()
+\begin{DoxyCompactList}\small\item\em clientwindow class deconstructor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classclientwindow_af4fa9df47a939b45246e7686d0f8c569}{send\+Data}} (Q\+Byte\+Array string)
+\begin{DoxyCompactList}\small\item\em sends data from server\+Socket \end{DoxyCompactList}\item 
+Q\+Byte\+Array \mbox{\hyperlink{classclientwindow_aef46aaa18fbaff0c95db9ae6c24a8847}{get\+Received\+Data}} () const
+\begin{DoxyCompactList}\small\item\em received\+Data getter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+clientwindow class is responsible for estabilishing connection with server. Class is sending/receiving data over tcp protocol. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classclientwindow_a9ea65c58093430993fc64bedab0ee6e3}\label{classclientwindow_a9ea65c58093430993fc64bedab0ee6e3}} 
+\index{clientwindow@{clientwindow}!clientwindow@{clientwindow}}
+\index{clientwindow@{clientwindow}!clientwindow@{clientwindow}}
+\subsubsection{\texorpdfstring{clientwindow()}{clientwindow()}}
+{\footnotesize\ttfamily clientwindow\+::clientwindow (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+clientwindow class constructor. 
+
+Creates new tcp client. 
+\begin{DoxyParams}{Parameters}
+{\em Q\+Widget} & $\ast$parent \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em void} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{classclientwindow_a53333bf0d133c70836f94ba20242fd36}\label{classclientwindow_a53333bf0d133c70836f94ba20242fd36}} 
+\index{clientwindow@{clientwindow}!````~clientwindow@{$\sim$clientwindow}}
+\index{````~clientwindow@{$\sim$clientwindow}!clientwindow@{clientwindow}}
+\subsubsection{\texorpdfstring{$\sim$clientwindow()}{~clientwindow()}}
+{\footnotesize\ttfamily clientwindow\+::$\sim$clientwindow (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+clientwindow class deconstructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classclientwindow_aef46aaa18fbaff0c95db9ae6c24a8847}\label{classclientwindow_aef46aaa18fbaff0c95db9ae6c24a8847}} 
+\index{clientwindow@{clientwindow}!get\+Received\+Data@{get\+Received\+Data}}
+\index{get\+Received\+Data@{get\+Received\+Data}!clientwindow@{clientwindow}}
+\subsubsection{\texorpdfstring{get\+Received\+Data()}{getReceivedData()}}
+{\footnotesize\ttfamily Q\+Byte\+Array clientwindow\+::get\+Received\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+received\+Data getter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+Byte\+Array received\+Data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classclientwindow_a0b2358b8e187213e045381ed2d582e3e}\label{classclientwindow_a0b2358b8e187213e045381ed2d582e3e}} 
+\index{clientwindow@{clientwindow}!ready\+Read@{ready\+Read}}
+\index{ready\+Read@{ready\+Read}!clientwindow@{clientwindow}}
+\subsubsection{\texorpdfstring{ready\+Read}{readyRead}}
+{\footnotesize\ttfamily void clientwindow\+::ready\+Read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [slot]}}
+
+
+
+Slot stores all received data from client to received\+Data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classclientwindow_af4fa9df47a939b45246e7686d0f8c569}\label{classclientwindow_af4fa9df47a939b45246e7686d0f8c569}} 
+\index{clientwindow@{clientwindow}!send\+Data@{send\+Data}}
+\index{send\+Data@{send\+Data}!clientwindow@{clientwindow}}
+\subsubsection{\texorpdfstring{send\+Data()}{sendData()}}
+{\footnotesize\ttfamily void clientwindow\+::send\+Data (\begin{DoxyParamCaption}\item[{Q\+Byte\+Array}]{string }\end{DoxyParamCaption})}
+
+
+
+sends data from server\+Socket 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Q\+Byte\+Array} & string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+clientwindow.\+h\item 
+\mbox{\hyperlink{clientwindow_8cpp}{clientwindow.\+cpp}}\end{DoxyCompactItemize}

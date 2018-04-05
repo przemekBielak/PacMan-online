@@ -1,8 +1,10 @@
 #include "serverwindow.h"
 #include "ui_serverwindow.h"
 
+/** @file serverwindow.h */
+
 /**
- * @fn serverWindow(QWidget *parent = 0)
+ * @fn serverWindow::serverWindow(QWidget *parent)
  * @brief serverWindow class constructor.
  * @details Creates new tcpServer.
  * @param QWidget *parent
@@ -20,7 +22,7 @@ serverWindow::serverWindow(QWidget *parent) :
 }
 
 /**
- * @fn ~serverWindow()
+ * @fn serverWindow::~serverWindow()
  * @brief serverWindow class deconstructor
  * @param void
  * @return void
@@ -31,7 +33,7 @@ serverWindow::~serverWindow()
 }
 
 /**
- * @fn void sendData(QByteArray string)
+ * @fn void serverWindow::sendData(QByteArray string)
  * @brief sends data from serverSocket
  * @param QByteArray string
  * @return void
@@ -43,7 +45,7 @@ void serverWindow::sendData(QByteArray string)
 }
 
 /**
- * @fn void on_pushButton_host_clicked()
+ * @fn void serverWindow::on_pushButton_host_clicked()
  * @brief Slot starts server.
  * @details Server is listening for any incomming connection.
  * @param void
@@ -65,7 +67,7 @@ void serverWindow::on_pushButton_host_clicked()
 }
 
 /**
- * @fn void newConnection()
+ * @fn void serverWindow::newConnection()
  * @brief Slot starts connection with the newest incoming request.
  * @details Server sends TCP_CMD_START_GAME to Client - as a game start request.
  * @param void
@@ -84,7 +86,7 @@ void serverWindow::newConnection()
 }
 
 /**
- * @fn void readyRead()
+ * @fn void serverWindow::readyRead()
  * @brief Slot stores all received data from client to receivedData
  * @param void
  * @return void
@@ -96,7 +98,7 @@ void serverWindow::readyRead()
 }
 
 /**
- * @fn QByteArray getReceivedData() const
+ * @fn QByteArray serverWindow::getReceivedData() const
  * @brief receivedData getter.
  */
 QByteArray serverWindow::getReceivedData() const

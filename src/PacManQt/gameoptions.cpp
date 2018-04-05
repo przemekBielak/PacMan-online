@@ -1,9 +1,12 @@
+
 #include "gameoptions.h"
 #include "ui_gameoptions.h"
 #include <QDebug>
 
+/** @file gameoptions.cpp */
+
 /**
- * @fn explicit gameOptions(QWidget *parent = 0)
+ * @fn gameOptions::gameOptions(QWidget *parent)
  * @brief gameOptions class constructor.
  * @details Sets up windows widget ui.
  * @param QWidget *parent
@@ -17,7 +20,7 @@ gameOptions::gameOptions(QWidget *parent) :
 }
 
 /**
- * @fn ~gameOptions()
+ * @fn gameOptions::~gameOptions()
  * @brief gameOptions class deconstructor.
  * @param void
  * @return void
@@ -28,7 +31,7 @@ gameOptions::~gameOptions()
 }
 
 /**
- * @fn void on_pushButtonClient_clicked()
+ * @fn void gameOptions::on_pushButtonClient_clicked()
  * @brief This slot, when called emits signal setActiveWidget(CLIENT_WIDGET)
  * and sets connectionRole as CLIENT_ROLE.
  * @param void
@@ -41,7 +44,7 @@ void gameOptions::on_pushButtonClient_clicked()
 }
 
 /**
- * @fn void on_pushButtonServer_clicked()
+ * @fn void gameOptions::on_pushButtonServer_clicked()
  * @brief This slot, when called emits signal setActiveWidget(SERVER_WIDGET)
  * and sets connectionRole as SERVER_ROLE.
  * @param void
@@ -56,6 +59,8 @@ void gameOptions::on_pushButtonServer_clicked()
 /**
  * @fn connectionRoleType getConnectionRole() const
  * @brief connectionRole getter.
+ * @param void
+ * @return connectionRoleType connectionRole
  */
 connectionRoleType gameOptions::getConnectionRole() const
 {

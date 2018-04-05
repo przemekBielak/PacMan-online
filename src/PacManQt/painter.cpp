@@ -1,7 +1,9 @@
 #include "painter.h"
 
+/** @file painter.cpp */
+
 /**
- * @fn Painter()
+ * @fn Painter::Painter()
  * @brief Empty Painter class constructor.
  * @param void
  * @return void
@@ -12,7 +14,7 @@ Painter::Painter()
 }
 
 /**
- * @fn Painter()
+ * @fn Painter::Painter(QString pixmapPath, int x, int y)
  * @brief Overloaded Painter class constructor.
  * @details Updates graphics, sets x and y positions.
  * @param QString pixmapPath, int x, int y
@@ -28,7 +30,7 @@ Painter::Painter(QString pixmapPath, int x, int y)
 }
 
 /**
- * @fn void updatePos(void)
+ * @fn void Painter::updatePos(void)
  * @brief Updates graphics
  * @details Updates pixmap location based on x and y coordinates.
  * @param void
@@ -40,7 +42,7 @@ void Painter::updatePos(void)
 }
 
 /**
- * @fn void setLocation(void)
+ * @fn void Painter::setLocation(int x, int y)
  * @brief Sets x and y position.
  * @param int x, int y
  * @return void
@@ -52,7 +54,7 @@ void Painter::setLocation(int x, int y)
 }
 
 /**
- * @fn QPixmap *getPixmap() const
+ * @fn QPixmap *Painter::getPixmap() const
  * @brief pixmap getter.
  */
 QPixmap *Painter::getPixmap() const
@@ -61,7 +63,7 @@ QPixmap *Painter::getPixmap() const
 }
 
 /**
- * @fn void setPixmap(QString value)
+ * @fn void Painter::setPixmap(QString value)
  * @brief pixmap setter.
  */
 void Painter::setPixmap(QString value)
@@ -73,7 +75,7 @@ void Painter::setPixmap(QString value)
 }
 
 /**
- * @fn QGraphicsPixmapItem *getPixmapItem() const
+ * @fn QGraphicsPixmapItem *Painter::getPixmapItem() const
  * @brief pixmapItem getter.
  */
 QGraphicsPixmapItem *Painter::getPixmapItem() const
@@ -82,7 +84,7 @@ QGraphicsPixmapItem *Painter::getPixmapItem() const
 }
 
 /**
- * @fn int getXPos() const
+ * @fn int Painter::getXPos() const
  * @brief xPos getter.
  */
 int Painter::getXPos() const
@@ -91,7 +93,7 @@ int Painter::getXPos() const
 }
 
 /**
- * @fn void setXPos(int value)
+ * @fn void Painter::setXPos(int value)
  * @brief xPos setter.
  */
 void Painter::setXPos(int value)
@@ -100,7 +102,7 @@ void Painter::setXPos(int value)
 }
 
 /**
- * @fn int getYPos() const
+ * @fn int Painter::getYPos() const
  * @brief yPos getter.
  */
 int Painter::getYPos() const
@@ -109,7 +111,7 @@ int Painter::getYPos() const
 }
 
 /**
- * @fn void setYPos(int value)
+ * @fn void Painter::setYPos(int value)
  * @brief yPos setter.
  */
 void Painter::setYPos(int value)

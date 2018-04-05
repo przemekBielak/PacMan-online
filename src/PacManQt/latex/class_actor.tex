@@ -1,0 +1,391 @@
+\hypertarget{class_actor}{}\section{Actor Class Reference}
+\label{class_actor}\index{Actor@{Actor}}
+
+
+{\ttfamily \#include $<$actor.\+h$>$}
+
+Inheritance diagram for Actor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_actor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_actor_a2a0ff4335a1ee9096df90f288c026c8b}{Actor}} ()
+\begin{DoxyCompactList}\small\item\em Empty actor class constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_actor_a651899b4ab39be662d785c298a2a2fae}{Actor}} (Q\+String pixmap\+Path, int x, int y)
+\begin{DoxyCompactList}\small\item\em Overloaded actor class constructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_actor_aa24a5fe0a46ca8274d993f7fe2954aa5}{get\+Curr\+Tile}} () const
+\begin{DoxyCompactList}\small\item\em curr\+Tile getter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_actor_a0e9374b0779e9b79af21278a4698a138}{update\+Curr\+Tile}} (void)
+\begin{DoxyCompactList}\small\item\em updates curr\+Tile (current tile) based on x and y positions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_actor_a66e25276468e157b822c9df798eb3e6a}{move\+Left}} (void)
+\begin{DoxyCompactList}\small\item\em Changes \mbox{\hyperlink{class_actor}{Actor}} x position by T\+I\+L\+E\+\_\+\+W\+I\+D\+TH to the left. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_actor_a66a756cd694913854af20352d4f0bedd}{move\+Right}} (void)
+\begin{DoxyCompactList}\small\item\em Changes \mbox{\hyperlink{class_actor}{Actor}} x position by T\+I\+L\+E\+\_\+\+W\+I\+D\+TH to the right. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_actor_a096be226cbfb42f7595283703742da89}{move\+Up}} (void)
+\begin{DoxyCompactList}\small\item\em Changes \mbox{\hyperlink{class_actor}{Actor}} y position by T\+I\+L\+E\+\_\+\+H\+E\+I\+G\+HT upwords. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_actor_abc0ed5cc187310fef30b4b9a94252e17}{move\+Down}} (void)
+\begin{DoxyCompactList}\small\item\em Changes \mbox{\hyperlink{class_actor}{Actor}} y position by T\+I\+L\+E\+\_\+\+H\+E\+I\+G\+HT downwards. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_actor_a0f751e7ea9030b58a8db19ccc62214f3}{get\+Tile\+Index\+Left}} () const
+\begin{DoxyCompactList}\small\item\em Returns position of the tile left to the \mbox{\hyperlink{class_actor}{Actor}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_actor_ac54394e212a1a1f51ae82202a8144421}{get\+Tile\+Index\+Right}} () const
+\begin{DoxyCompactList}\small\item\em Returns position of the tile right to the \mbox{\hyperlink{class_actor}{Actor}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_actor_a92a718240f1b2b51e2f0dee763435f58}{get\+Tile\+Index\+Up}} () const
+\begin{DoxyCompactList}\small\item\em Returns position of the tile upwards to the \mbox{\hyperlink{class_actor}{Actor}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_actor_a78388b58a561143504ff722a6625b564}{get\+Tile\+Index\+Down}} () const
+\begin{DoxyCompactList}\small\item\em Returns position of the tile downwards to the \mbox{\hyperlink{class_actor}{Actor}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_actor_a7867adac1be8ea6273808dda395a4170}{get\+Last\+Tile}} () const
+\begin{DoxyCompactList}\small\item\em last\+Tile getter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_actor_a4d708f5e042cd6558947820f33520d61}{set\+Last\+Tile}} (int value)
+\begin{DoxyCompactList}\small\item\em last\+Tile setter. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_actor_ab50ceeaf6192f75be8ed9b41d8c585fb}{get\+Speed}} () const
+\begin{DoxyCompactList}\small\item\em speed getter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_actor_aa678f8ed8724d19bd309e88b1e130840}{set\+Speed}} (int value)
+\begin{DoxyCompactList}\small\item\em speed setter. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_actor_a20bb92df0514cc00b31cb1a046548964}{get\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em direction getter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_actor_ad0049dcc53c477e38400b0c41536c51a}{set\+Direction}} (int value)
+\begin{DoxyCompactList}\small\item\em direction setter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_actor}{Actor}} class is responsible for moving and controlling all Actors (\mbox{\hyperlink{class_pacman}{Pacman}} or \mbox{\hyperlink{class_ghost}{Ghost}}). 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_actor_a2a0ff4335a1ee9096df90f288c026c8b}\label{class_actor_a2a0ff4335a1ee9096df90f288c026c8b}} 
+\index{Actor@{Actor}!Actor@{Actor}}
+\index{Actor@{Actor}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{Actor()}{Actor()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Actor\+::\+Actor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Empty actor class constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_a651899b4ab39be662d785c298a2a2fae}\label{class_actor_a651899b4ab39be662d785c298a2a2fae}} 
+\index{Actor@{Actor}!Actor@{Actor}}
+\index{Actor@{Actor}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{Actor()}{Actor()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Actor\+::\+Actor (\begin{DoxyParamCaption}\item[{Q\+String}]{pixmap\+Path,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Overloaded actor class constructor. 
+
+Updates Actors graphics and sets x and y positions. 
+\begin{DoxyParams}{Parameters}
+{\em Q\+String} & pixmap\+Path, int x, int y \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_actor_aa24a5fe0a46ca8274d993f7fe2954aa5}\label{class_actor_aa24a5fe0a46ca8274d993f7fe2954aa5}} 
+\index{Actor@{Actor}!get\+Curr\+Tile@{get\+Curr\+Tile}}
+\index{get\+Curr\+Tile@{get\+Curr\+Tile}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{get\+Curr\+Tile()}{getCurrTile()}}
+{\footnotesize\ttfamily int Actor\+::get\+Curr\+Tile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+curr\+Tile getter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int curr\+Tile 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_a20bb92df0514cc00b31cb1a046548964}\label{class_actor_a20bb92df0514cc00b31cb1a046548964}} 
+\index{Actor@{Actor}!get\+Direction@{get\+Direction}}
+\index{get\+Direction@{get\+Direction}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{get\+Direction()}{getDirection()}}
+{\footnotesize\ttfamily int Actor\+::get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+direction getter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int direction 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_a7867adac1be8ea6273808dda395a4170}\label{class_actor_a7867adac1be8ea6273808dda395a4170}} 
+\index{Actor@{Actor}!get\+Last\+Tile@{get\+Last\+Tile}}
+\index{get\+Last\+Tile@{get\+Last\+Tile}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{get\+Last\+Tile()}{getLastTile()}}
+{\footnotesize\ttfamily int Actor\+::get\+Last\+Tile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+last\+Tile getter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int last\+Tile 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_ab50ceeaf6192f75be8ed9b41d8c585fb}\label{class_actor_ab50ceeaf6192f75be8ed9b41d8c585fb}} 
+\index{Actor@{Actor}!get\+Speed@{get\+Speed}}
+\index{get\+Speed@{get\+Speed}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{get\+Speed()}{getSpeed()}}
+{\footnotesize\ttfamily int Actor\+::get\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+speed getter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int speed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_a78388b58a561143504ff722a6625b564}\label{class_actor_a78388b58a561143504ff722a6625b564}} 
+\index{Actor@{Actor}!get\+Tile\+Index\+Down@{get\+Tile\+Index\+Down}}
+\index{get\+Tile\+Index\+Down@{get\+Tile\+Index\+Down}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{get\+Tile\+Index\+Down()}{getTileIndexDown()}}
+{\footnotesize\ttfamily int Actor\+::get\+Tile\+Index\+Down (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns position of the tile downwards to the \mbox{\hyperlink{class_actor}{Actor}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return curr\+Tile + M\+A\+P\+\_\+\+T\+I\+L\+E\+S\+\_\+\+W\+I\+D\+TH 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_a0f751e7ea9030b58a8db19ccc62214f3}\label{class_actor_a0f751e7ea9030b58a8db19ccc62214f3}} 
+\index{Actor@{Actor}!get\+Tile\+Index\+Left@{get\+Tile\+Index\+Left}}
+\index{get\+Tile\+Index\+Left@{get\+Tile\+Index\+Left}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{get\+Tile\+Index\+Left()}{getTileIndexLeft()}}
+{\footnotesize\ttfamily int Actor\+::get\+Tile\+Index\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns position of the tile left to the \mbox{\hyperlink{class_actor}{Actor}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int curr\+Tile -\/ 1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_ac54394e212a1a1f51ae82202a8144421}\label{class_actor_ac54394e212a1a1f51ae82202a8144421}} 
+\index{Actor@{Actor}!get\+Tile\+Index\+Right@{get\+Tile\+Index\+Right}}
+\index{get\+Tile\+Index\+Right@{get\+Tile\+Index\+Right}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{get\+Tile\+Index\+Right()}{getTileIndexRight()}}
+{\footnotesize\ttfamily int Actor\+::get\+Tile\+Index\+Right (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns position of the tile right to the \mbox{\hyperlink{class_actor}{Actor}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int curr\+Tile + 1 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_a92a718240f1b2b51e2f0dee763435f58}\label{class_actor_a92a718240f1b2b51e2f0dee763435f58}} 
+\index{Actor@{Actor}!get\+Tile\+Index\+Up@{get\+Tile\+Index\+Up}}
+\index{get\+Tile\+Index\+Up@{get\+Tile\+Index\+Up}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{get\+Tile\+Index\+Up()}{getTileIndexUp()}}
+{\footnotesize\ttfamily int Actor\+::get\+Tile\+Index\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns position of the tile upwards to the \mbox{\hyperlink{class_actor}{Actor}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int curr\+Tile -\/ M\+A\+P\+\_\+\+T\+I\+L\+E\+S\+\_\+\+W\+I\+D\+TH 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_abc0ed5cc187310fef30b4b9a94252e17}\label{class_actor_abc0ed5cc187310fef30b4b9a94252e17}} 
+\index{Actor@{Actor}!move\+Down@{move\+Down}}
+\index{move\+Down@{move\+Down}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{move\+Down()}{moveDown()}}
+{\footnotesize\ttfamily void Actor\+::move\+Down (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Changes \mbox{\hyperlink{class_actor}{Actor}} y position by T\+I\+L\+E\+\_\+\+H\+E\+I\+G\+HT downwards. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_a66e25276468e157b822c9df798eb3e6a}\label{class_actor_a66e25276468e157b822c9df798eb3e6a}} 
+\index{Actor@{Actor}!move\+Left@{move\+Left}}
+\index{move\+Left@{move\+Left}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{move\+Left()}{moveLeft()}}
+{\footnotesize\ttfamily void Actor\+::move\+Left (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Changes \mbox{\hyperlink{class_actor}{Actor}} x position by T\+I\+L\+E\+\_\+\+W\+I\+D\+TH to the left. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_a66a756cd694913854af20352d4f0bedd}\label{class_actor_a66a756cd694913854af20352d4f0bedd}} 
+\index{Actor@{Actor}!move\+Right@{move\+Right}}
+\index{move\+Right@{move\+Right}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{move\+Right()}{moveRight()}}
+{\footnotesize\ttfamily void Actor\+::move\+Right (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Changes \mbox{\hyperlink{class_actor}{Actor}} x position by T\+I\+L\+E\+\_\+\+W\+I\+D\+TH to the right. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_a096be226cbfb42f7595283703742da89}\label{class_actor_a096be226cbfb42f7595283703742da89}} 
+\index{Actor@{Actor}!move\+Up@{move\+Up}}
+\index{move\+Up@{move\+Up}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{move\+Up()}{moveUp()}}
+{\footnotesize\ttfamily void Actor\+::move\+Up (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Changes \mbox{\hyperlink{class_actor}{Actor}} y position by T\+I\+L\+E\+\_\+\+H\+E\+I\+G\+HT upwords. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_ad0049dcc53c477e38400b0c41536c51a}\label{class_actor_ad0049dcc53c477e38400b0c41536c51a}} 
+\index{Actor@{Actor}!set\+Direction@{set\+Direction}}
+\index{set\+Direction@{set\+Direction}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{set\+Direction()}{setDirection()}}
+{\footnotesize\ttfamily void Actor\+::set\+Direction (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+direction setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_a4d708f5e042cd6558947820f33520d61}\label{class_actor_a4d708f5e042cd6558947820f33520d61}} 
+\index{Actor@{Actor}!set\+Last\+Tile@{set\+Last\+Tile}}
+\index{set\+Last\+Tile@{set\+Last\+Tile}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{set\+Last\+Tile()}{setLastTile()}}
+{\footnotesize\ttfamily void Actor\+::set\+Last\+Tile (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+last\+Tile setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & last\+Tile \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_aa678f8ed8724d19bd309e88b1e130840}\label{class_actor_aa678f8ed8724d19bd309e88b1e130840}} 
+\index{Actor@{Actor}!set\+Speed@{set\+Speed}}
+\index{set\+Speed@{set\+Speed}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{set\+Speed()}{setSpeed()}}
+{\footnotesize\ttfamily void Actor\+::set\+Speed (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+speed setter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_actor_a0e9374b0779e9b79af21278a4698a138}\label{class_actor_a0e9374b0779e9b79af21278a4698a138}} 
+\index{Actor@{Actor}!update\+Curr\+Tile@{update\+Curr\+Tile}}
+\index{update\+Curr\+Tile@{update\+Curr\+Tile}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{update\+Curr\+Tile()}{updateCurrTile()}}
+{\footnotesize\ttfamily void Actor\+::update\+Curr\+Tile (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+updates curr\+Tile (current tile) based on x and y positions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+actor.\+h\item 
+\mbox{\hyperlink{actor_8cpp}{actor.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['scene',['scene',['../classgame_window.html#a22f5b5b08120edb4eb1e15845efd07ec',1,'gameWindow']]],
+  ['senddata',['sendData',['../classclientwindow.html#af4fa9df47a939b45246e7686d0f8c569',1,'clientwindow::sendData()'],['../classserver_window.html#a802818e2dd4970c8240efa96bce4c909',1,'serverWindow::sendData()']]],
+  ['serverwindow',['serverWindow',['../classserver_window.html',1,'serverWindow'],['../classserver_window.html#a73c38568b8be85b06a301947250c8b58',1,'serverWindow::serverWindow()']]],
+  ['serverwindow_2eh',['serverwindow.h',['../serverwindow_8h.html',1,'']]],
+  ['setconnectionrole',['setConnectionRole',['../classgame_window.html#ad00607412c93c7b157ef7e3ec1a2e7df',1,'gameWindow']]],
+  ['setdirection',['setDirection',['../class_actor.html#ad0049dcc53c477e38400b0c41536c51a',1,'Actor']]],
+  ['setgameclient',['setGameClient',['../classgame_window.html#ad9fdccffaca852e5f7ad31ec54c0c619',1,'gameWindow']]],
+  ['setgameserver',['setGameServer',['../classgame_window.html#a488fb57d2d073817325f8128dee0f85d',1,'gameWindow']]],
+  ['setlasttile',['setLastTile',['../class_actor.html#a4d708f5e042cd6558947820f33520d61',1,'Actor']]],
+  ['setlocation',['setLocation',['../class_painter.html#a37b3c5e56ec8ae79c781a4f022082c5f',1,'Painter']]],
+  ['setnumoflifes',['setNumOfLifes',['../class_pacman.html#a648f2e202abf2b944d1981865a957ed9',1,'Pacman']]],
+  ['setpixmap',['setPixmap',['../class_painter.html#a6439d816409cc7fbf3aa751a94e6771f',1,'Painter']]],
+  ['setpoints',['setPoints',['../class_pacman.html#a33eb0d7039987984eaf35ce623af9d83',1,'Pacman']]],
+  ['setspeed',['setSpeed',['../class_actor.html#aa678f8ed8724d19bd309e88b1e130840',1,'Actor']]],
+  ['settiletype',['setTileType',['../class_tile.html#a987377bd877d64a1d4827638efdd7bfa',1,'Tile']]],
+  ['setxpos',['setXPos',['../class_painter.html#a6160fe9c0b29ea1d463d25d52b171b98',1,'Painter']]],
+  ['setypos',['setYPos',['../class_painter.html#a6707d7f9bd221764a08f4b5ecb859bba',1,'Painter']]],
+  ['startgame',['startGame',['../classgame_window.html#a790233fd0316f05a1fd35738d383349b',1,'gameWindow']]]
+];

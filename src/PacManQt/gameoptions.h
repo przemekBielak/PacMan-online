@@ -20,16 +20,13 @@ class gameOptions : public QWidget
 public:
     explicit gameOptions(QWidget *parent = 0);
     ~gameOptions();
-
     connectionRoleType getConnectionRole() const;
 
 signals:
     void setActiveWidget(int activeWidget);
 
-
 private slots:
     void on_pushButtonClient_clicked();
-
     void on_pushButtonServer_clicked();
 
 private:

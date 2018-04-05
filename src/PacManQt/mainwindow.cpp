@@ -1,8 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+/** @file mainwindow.cpp */
+
 /**
- * @fn MainWindow(QWidget *parent = 0)
+ * @fn MainWindow::MainWindow(QWidget *parent)
  * @brief MainWindow class constructor.
  * @details Initializes all game widget windows, setsup stackedWidget view.
  * @param QWidget *parent
@@ -45,7 +47,7 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 /**
- * @fn ~MainWindow()
+ * @fn MainWindow::~MainWindow()
  * @brief MainWindow class deconstructor
  * @param void
  * @return void
@@ -56,7 +58,7 @@ MainWindow::~MainWindow()
 }
 
 /**
- * @fn void stackedWidgetChanged(int widgetNum);
+ * @fn void MainWindow::stackedWidgetChanged(int widgetNum)
  * @brief Slot starts game when player selected server or client role.
  * @param int widgetNum
  * @return void

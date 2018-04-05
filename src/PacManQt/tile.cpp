@@ -1,7 +1,9 @@
 #include "tile.h"
 
+/** @file tile.cpp */
+
 /**
- * @fn Tile()
+ * @fn Tile::Tile()
  * @brief Empty Tile class constructor.
  * @param void
  * @return void
@@ -12,7 +14,7 @@ Tile::Tile()
 }
 
 /**
- * @fn Tile()
+ * @fn Tile::Tile(QString pixmapPath, int x, int y)
  * @brief Overloaded Tile class constructor.
  * @details Updates graphics, sets x and y positions.
  * @param QString pixmapPath, int x, int y
@@ -28,7 +30,7 @@ Tile::Tile(QString pixmapPath, int x, int y)
 }
 
 /**
- * @fn int getTileType() const
+ * @fn int Tile::getTileType() const
  * @brief tileType getter.
  */
 int Tile::getTileType() const
@@ -37,7 +39,7 @@ int Tile::getTileType() const
 }
 
 /**
- * @fn void setTileType(int value)
+ * @fn void Tile::setTileType(int value)
  * @brief tileType setter..
  */
 void Tile::setTileType(int value)

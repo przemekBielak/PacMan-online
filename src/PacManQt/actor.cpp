@@ -1,7 +1,9 @@
 #include "actor.h"
 
+/** @file actor.cpp */
+
 /**
- * @fn Actor()
+ * @fn Actor::Actor()
  * @brief Empty actor class constructor.
  * @param void
  * @return void
@@ -12,7 +14,7 @@ Actor::Actor()
 }
 
 /**
- * @fn Actor()
+ * @fn Actor::Actor(QString pixmapPath, int x, int y)
  * @brief Overloaded actor class constructor.
  * @details Updates Actors graphics and sets x and y positions.
  * @param QString pixmapPath, int x, int y
@@ -28,8 +30,10 @@ Actor::Actor(QString pixmapPath, int x, int y)
 }
 
 /**
- * @fn int getCurrTile() const
+ * @fn int Actor::getCurrTile() const
  * @brief currTile getter.
+ * @param void
+ * @return int currTile
  */
 int Actor::getCurrTile() const
 {
@@ -37,7 +41,7 @@ int Actor::getCurrTile() const
 }
 
 /**
- * @fn void updateCurrTile(void)
+ * @fn void Actor::updateCurrTile(void)
  * @brief updates currTile (current tile) based on x and y positions.
  * @param void
  * @return void
@@ -48,7 +52,7 @@ void Actor::updateCurrTile(void)
 }
 
 /**
- * @fn void moveLeft(void)
+ * @fn void void Actor::moveLeft()
  * @brief Changes Actor x position by TILE_WIDTH to the left.
  * @param void
  * @return void
@@ -59,7 +63,7 @@ void Actor::moveLeft()
 }
 
 /**
- * @fn void moveRight(void)
+ * @fn void Actor::moveRight()
  * @brief Changes Actor x position by TILE_WIDTH to the right.
  * @param void
  * @return void
@@ -70,7 +74,7 @@ void Actor::moveRight()
 }
 
 /**
- * @fn void moveUp(void)
+ * @fn void Actor::moveUp()
  * @brief Changes Actor y position by TILE_HEIGHT upwords.
  * @param void
  * @return void
@@ -81,7 +85,7 @@ void Actor::moveUp()
 }
 
 /**
- * @fn void moveDown(void)
+ * @fn void Actor::moveDown()
  * @brief Changes Actor y position by TILE_HEIGHT downwards.
  * @param void
  * @return void
@@ -92,10 +96,10 @@ void Actor::moveDown()
 }
 
 /**
- * @fn int getTileIndexLeft() const
+ * @fn int Actor::getTileIndexLeft() const
  * @brief Returns position of the tile left to the Actor.
- * @param int
- * @return void
+ * @param void
+ * @return int currTile - 1
  */
 int Actor::getTileIndexLeft() const
 {
@@ -103,10 +107,10 @@ int Actor::getTileIndexLeft() const
 }
 
 /**
- * @fn int getTileIndexRight() const
+ * @fn int Actor::getTileIndexRight() const
  * @brief Returns position of the tile right to the Actor.
- * @param int
- * @return void
+ * @param void
+ * @return int currTile + 1
  */
 int Actor::getTileIndexRight() const
 {
@@ -114,10 +118,10 @@ int Actor::getTileIndexRight() const
 }
 
 /**
- * @fn int getTileIndexUp() const
+ * @fn int Actor::getTileIndexUp() const
  * @brief Returns position of the tile upwards to the Actor.
- * @param int
- * @return void
+ * @param void
+ * @return int currTile - MAP_TILES_WIDTH
  */
 int Actor::getTileIndexUp() const
 {
@@ -125,10 +129,10 @@ int Actor::getTileIndexUp() const
 }
 
 /**
- * @fn int getTileIndexDown() const
+ * @fn int Actor::getTileIndexDown() const
  * @brief Returns position of the tile downwards to the Actor.
- * @param int
- * @return void
+ * @param void
+ * @return return currTile + MAP_TILES_WIDTH
  */
 int Actor::getTileIndexDown() const
 {
@@ -136,8 +140,10 @@ int Actor::getTileIndexDown() const
 }
 
 /**
- * @fn int getLastTile() const
+ * @fn int Actor::getLastTile() const
  * @brief lastTile getter.
+ * @param void
+ * @return int lastTile
  */
 int Actor::getLastTile() const
 {
@@ -145,8 +151,10 @@ int Actor::getLastTile() const
 }
 
 /**
- * @fn void setLastTile(int value)
+ * @fn void Actor::setLastTile(int value)
  * @brief lastTile setter.
+ * @param int lastTile
+ * @return void
  */
 void Actor::setLastTile(int value)
 {
@@ -154,8 +162,10 @@ void Actor::setLastTile(int value)
 }
 
 /**
- * @fn int getSpeed() const
+ * @fn int Actor::getSpeed() const
  * @brief speed getter.
+ * @param void
+ * @return int speed
  */
 int Actor::getSpeed() const
 {
@@ -163,8 +173,10 @@ int Actor::getSpeed() const
 }
 
 /**
- * @fn int setSpeed() const
+ * @fn void Actor::setSpeed(int value)
  * @brief speed setter.
+ * @param int value
+ * @return void
  */
 void Actor::setSpeed(int value)
 {
@@ -172,8 +184,10 @@ void Actor::setSpeed(int value)
 }
 
 /**
- * @fn int getDirection() const
+ * @fn int Actor::getDirection() const
  * @brief direction getter.
+ * @param void
+ * @return int direction
  */
 int Actor::getDirection() const
 {
@@ -181,8 +195,10 @@ int Actor::getDirection() const
 }
 
 /**
- * @fn int setDirection() const
+ * @fn void Actor::setDirection(int value)
  * @brief direction setter.
+ * @param int value
+ * @return void
  */
 void Actor::setDirection(int value)
 {

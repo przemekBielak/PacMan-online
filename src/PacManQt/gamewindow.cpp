@@ -1,8 +1,10 @@
 #include "gamewindow.h"
 #include "ui_gamewindow.h"
 
+/** @file gamewindow.cpp */
+
 /**
- * @var Tile $tileArr[]
+ * @var Tile tileArr[MAP_TILES_WIDTH * MAP_TILES_HEIGHT]
  * @brief Stores tile type of specific array element.
  */
 Tile tileArr[MAP_TILES_WIDTH * MAP_TILES_HEIGHT];
@@ -15,7 +17,7 @@ Tile tileArr[MAP_TILES_WIDTH * MAP_TILES_HEIGHT];
 int nonWalkableMapTiles[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
 
 /**
- * @fn gameWindow(QWidget *parent = 0)
+ * @fn gameWindow::gameWindow(QWidget *parent)
  * @brief gameWindow class constructor.
  * @details Constructor initializs graphics elements of game board,
  * initializes map tiles and adds actors to the board.
@@ -165,7 +167,7 @@ gameWindow::gameWindow(QWidget *parent) :
 }
 
 /**
- * @fn void startGame(void)
+ * @fn void gameWindow::startGame()
  * @brief Start game timer.
  * @param void
  * @return void
@@ -182,7 +184,7 @@ void gameWindow::startGame()
 }
 
 /**
- * @fn ~gameWindow()
+ * @fn gameWindow::~gameWindow()
  * @brief gameWindow class deconstructor
  * @param void
  * @return void
@@ -193,7 +195,7 @@ gameWindow::~gameWindow()
 }
 
 /**
- * @fn keyPressEvent(QKeyEvent *event)
+ * @fn void gameWindow::keyPressEvent(QKeyEvent *event)
  * @brief Reads keyboard presses and sets pacman direction.
  * @details Based on connectionRole parameter (if player started game as host
  * or as client), keyboard presses will set direction of pacman or pacman2.
@@ -243,7 +245,7 @@ void gameWindow::keyPressEvent(QKeyEvent *event)
 }
 
 /**
- * @fn void rotateImage(Actor *act)
+ * @fn void gameWindow::rotateImage(Actor *act)
  * @brief Rotate actor image based on direction paramter.
  * @param Actor *act
  * @return void
@@ -269,7 +271,7 @@ void gameWindow::rotateImage(Actor *act)
 }
 
 /**
- * @fn int checkIfMoveIsPossible(Actor *act, directionType direction)
+ * @fn int gameWindow::checkIfMoveIsPossible(Actor *act, directionType direction)
  * @brief Checks if Actors move can be performed.
  * @details Checks if move in specified direction won't result in moving
  * Actor to the non-walkable field (for example wall).
@@ -308,7 +310,7 @@ int gameWindow::checkIfMoveIsPossible(Actor *act, directionType direction)
 }
 
 /**
- * @fn void setGhostDirection(Ghost *ghost)
+ * @fn void gameWindow::setGhostDirection(Ghost *ghost)
  * @brief Updated ghost direction to follow pacman or pacman2.
  * @param Ghost *ghost
  * @return void
@@ -340,7 +342,7 @@ void gameWindow::setGhostDirection(Ghost *ghost)
 }
 
 /**
- * @fn void moveActor(Actor *ghost)
+ * @fn void gameWindow::moveActor(Actor *actor)
  * @brief Moves actor on the boards if move is possible.
  * @details If Actors move is possible, it will be moved in the
  * specified direction. Actors x and y position will be updated.
@@ -381,7 +383,7 @@ void gameWindow::moveActor(Actor *actor)
 }
 
 /**
- * @fn void checkDot(T *pac)
+ * @fn void gameWindow::checkDot(T *pac)
  * @brief Checks if pacman has collected the dot.
  * @details If specified pacmans current tile is dot tile, pacmans score
  * will be incremented by one.
@@ -398,7 +400,7 @@ void gameWindow::checkDot(T *pac)
 }
 
 /**
- * @fn void checkSuperDot(Pacman *pac)
+ * @fn void gameWindow::checkSuperDot(Pacman *pac)
  * @brief Checks if pacman has collected the super dot.
  * @details If specified pacmans current tile is super dot tile, pacmans speed
  * will be incremented.
@@ -414,7 +416,7 @@ void gameWindow::checkSuperDot(Pacman *pac)
 }
 
 /**
- * @fn void checkLevelFinish(void)
+ * @fn void gameWindow::checkLevelFinish()
  * @brief Checks if all dots were collected from board.
  * @param void
  * @return void
@@ -439,7 +441,7 @@ void gameWindow::checkLevelFinish()
 }
 
 /**
- * @fn void checkLevelFinish(void)
+ * @fn void gameWindow::updateTileGraphics(Pacman *pac)
  * @brief Updates board graphics tile images when specified pacman eats dot.
  * @param Pacman *pac
  * @return void
@@ -460,7 +462,7 @@ void gameWindow::updateTileGraphics(Pacman *pac)
 }
 
 /**
- * @fn clientwindow *getGameClient() const
+ * @fn clientwindow *gameWindow::getGameClient() const
  * @brief gameClient getter.
  */
 clientwindow *gameWindow::getGameClient() const
@@ -469,7 +471,7 @@ clientwindow *gameWindow::getGameClient() const
 }
 
 /**
- * @fn void setGameClient(clientwindow *value)
+ * @fn void gameWindow::setGameClient(clientwindow *value)
  * @brief gameClient setter.
  */
 void gameWindow::setGameClient(clientwindow *value)
@@ -478,7 +480,7 @@ void gameWindow::setGameClient(clientwindow *value)
 }
 
 /**
- * @fn void sendGameDataToClient(QByteArray string)
+ * @fn void gameWindow::sendGameDataToClient(QByteArray string)
  * @brief Sends data from Server to Client using Servers sendData function.
  * @param QByteArray string
  * @return void
@@ -489,7 +491,7 @@ void gameWindow::sendGameDataToClient(QByteArray string)
 }
 
 /**
- * @fn void sendGameDataToServer(QByteArray string);
+ * @fn void gameWindow::sendGameDataToServer(QByteArray string)
  * @brief Sends data from Client to Server using Clients sendData function.
  * @param QByteArray string
  * @return void
@@ -500,7 +502,7 @@ void gameWindow::sendGameDataToServer(QByteArray string)
 }
 
 /**
- * @fn connectionRoleType getConnectionRole() const
+ * @fn connectionRoleType gameWindow::getConnectionRole() const
  * @brief connectionRole getter.
  */
 connectionRoleType gameWindow::getConnectionRole() const
@@ -509,7 +511,7 @@ connectionRoleType gameWindow::getConnectionRole() const
 }
 
 /**
- * @fn void setConnectionRole(const connectionRoleType &value)
+ * @fn void gameWindow::setConnectionRole(const connectionRoleType &value)
  * @brief connectionRole setter.
  */
 void gameWindow::setConnectionRole(const connectionRoleType &value)
@@ -518,7 +520,7 @@ void gameWindow::setConnectionRole(const connectionRoleType &value)
 }
 
 /**
- * @fn serverWindow *getGameServer() const;
+ * @fn serverWindow *gameWindow::getGameServer() const
  * @brief gameServer getter.
  */
 serverWindow *gameWindow::getGameServer() const
@@ -527,7 +529,7 @@ serverWindow *gameWindow::getGameServer() const
 }
 
 /**
- * @fn void setGameServer(serverWindow *value);
+ * @fn void gameWindow::setGameServer(serverWindow *value)
  * @brief gameServer setter.
  */
 void gameWindow::setGameServer(serverWindow *value)
@@ -536,7 +538,7 @@ void gameWindow::setGameServer(serverWindow *value)
 }
 
 /**
- * @fn void checkIfDead(Pacman *pac)
+ * @fn void gameWindow::checkIfDead(Pacman *pac)
  * @brief Check if specified pacman is dead.
  * @details Checks if specified pacman position is the same as ghost position.
  * If so, pacman number of lives is decremented and is setup to start position on board.
@@ -556,7 +558,7 @@ void gameWindow::checkIfDead(Pacman *pac)
 }
 
 /**
- * @fn void PackDataServerToClient(void)
+ * @fn void gameWindow::PackDataServerToClient()
  * @brief Prepares and sends data from server to client.
  * @details Function initializes QByteArray array with all game details which
  * have to be sent from server to client. Server is responsible for updating
@@ -620,7 +622,7 @@ void gameWindow::PackDataServerToClient()
 }
 
 /**
- * @fn void UnpackDataServerToClient(void);
+ * @fn void gameWindow::UnpackDataServerToClient()
  * @brief Unpacks data sent from server.
  * @details Updates clients data based on received data from server.
  * @param void
@@ -704,7 +706,7 @@ void gameWindow::UnpackDataServerToClient()
 }
 
 /**
- * @fn void PackDataClientToServer(void);
+ * @fn void gameWindow::PackDataClientToServer()
  * @brief Function sends pacman2 direction to server.
  * @param void
  * @return void
@@ -720,7 +722,7 @@ void gameWindow::PackDataClientToServer()
 }
 
 /**
- * @fn void UnpackDataClientToServer(void)
+ * @fn void gameWindow::UnpackDataClientToServer()
  * @brief Function updates servers pacman2 direction from client data.
  * @param void
  * @return void
@@ -736,7 +738,7 @@ void gameWindow::UnpackDataClientToServer()
 }
 
 /**
- * @fn void gameLoop(void);
+ * @fn void gameWindow::gameLoop(void)
  * @brief Game loop - updates game states and variables.
  * @details This function is a slot for Timer. This
  * function is called after each Timer overflow.

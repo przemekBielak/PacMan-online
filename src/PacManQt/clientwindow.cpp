@@ -1,8 +1,10 @@
 #include "clientwindow.h"
 #include "ui_clientwindow.h"
 
+/** @file clientwindow.cpp */
+
 /**
- * @fn clientwindow(QWidget *parent = 0)
+ * @fn clientwindow::clientwindow(QWidget *parent)
  * @brief clientwindow class constructor.
  * @details Creates new tcp client.
  * @param QWidget *parent
@@ -20,7 +22,7 @@ clientwindow::clientwindow(QWidget *parent) :
 }
 
 /**
- * @fn ~clientwindow()
+ * @fn clientwindow::~clientwindow()
  * @brief clientwindow class deconstructor
  * @param void
  * @return void
@@ -31,7 +33,7 @@ clientwindow::~clientwindow()
 }
 
 /**
- * @fn void on_pushButton_Join_clicked()
+ * @fn void clientwindow::on_pushButton_Join_clicked()
  * @brief Slot connects client to server.
  * @param void
  * @return void
@@ -42,7 +44,7 @@ void clientwindow::on_pushButton_Join_clicked()
 }
 
 /**
- * @fn void sendData(QByteArray string)
+ * @fn void clientwindow::sendData(QByteArray string)
  * @brief sends data from serverSocket
  * @param QByteArray string
  * @return void
@@ -54,7 +56,7 @@ void clientwindow::sendData(QByteArray string)
 }
 
 /**
- * @fn void readyRead()
+ * @fn void clientwindow::readyRead()
  * @brief Slot stores all received data from client to receivedData
  * @param void
  * @return void
@@ -71,7 +73,7 @@ void clientwindow::readyRead()
 }
 
 /**
- * @fn void connectToServer()
+ * @fn void clientwindow::connectToServer()
  * @brief Find server by ip and port and establish connection.
  * @param void
  * @return void
@@ -96,8 +98,10 @@ void clientwindow::connectToServer()
 }
 
 /**
- * @fn QByteArray getReceivedData() const
+ * @fn QByteArray clientwindow::getReceivedData() const
  * @brief receivedData getter.
+ * @param void
+ * @return QByteArray receivedData
  */
 QByteArray clientwindow::getReceivedData() const
 {

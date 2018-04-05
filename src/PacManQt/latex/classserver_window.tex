@@ -1,0 +1,101 @@
+\hypertarget{classserver_window}{}\section{server\+Window Class Reference}
+\label{classserver_window}\index{server\+Window@{server\+Window}}
+
+
+{\ttfamily \#include $<$serverwindow.\+h$>$}
+
+Inheritance diagram for server\+Window\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classserver_window}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classserver_window_ac4a17bd27c09f0a64382fa130e6cccf7}\label{classserver_window_ac4a17bd27c09f0a64382fa130e6cccf7}} 
+void {\bfseries set\+Active\+Widget} (int active\+Widget)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classserver_window_a73c38568b8be85b06a301947250c8b58}{server\+Window}} (Q\+Widget $\ast$parent=0)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classserver_window}{server\+Window}} class constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classserver_window_a8690c73305f40b9b8bc4ee0f42833d4a}{$\sim$server\+Window}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classserver_window}{server\+Window}} class deconstructor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classserver_window_a802818e2dd4970c8240efa96bce4c909}{send\+Data}} (Q\+Byte\+Array string)
+\begin{DoxyCompactList}\small\item\em sends data from server\+Socket \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classserver_window_af6f4838dce7cf78130b7aa81b3915595}\label{classserver_window_af6f4838dce7cf78130b7aa81b3915595}} 
+Q\+Byte\+Array \mbox{\hyperlink{classserver_window_af6f4838dce7cf78130b7aa81b3915595}{get\+Received\+Data}} () const
+\begin{DoxyCompactList}\small\item\em received\+Data getter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{classserver_window}{server\+Window}} class is responsible listening to any incoming connection. Class is sending/receiving data over tcp protocol. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classserver_window_a73c38568b8be85b06a301947250c8b58}\label{classserver_window_a73c38568b8be85b06a301947250c8b58}} 
+\index{server\+Window@{server\+Window}!server\+Window@{server\+Window}}
+\index{server\+Window@{server\+Window}!server\+Window@{server\+Window}}
+\subsubsection{\texorpdfstring{server\+Window()}{serverWindow()}}
+{\footnotesize\ttfamily server\+Window\+::server\+Window (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+\mbox{\hyperlink{classserver_window}{server\+Window}} class constructor. 
+
+Creates new tcp\+Server. 
+\begin{DoxyParams}{Parameters}
+{\em Q\+Widget} & $\ast$parent \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em void} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{classserver_window_a8690c73305f40b9b8bc4ee0f42833d4a}\label{classserver_window_a8690c73305f40b9b8bc4ee0f42833d4a}} 
+\index{server\+Window@{server\+Window}!````~server\+Window@{$\sim$server\+Window}}
+\index{````~server\+Window@{$\sim$server\+Window}!server\+Window@{server\+Window}}
+\subsubsection{\texorpdfstring{$\sim$server\+Window()}{~serverWindow()}}
+{\footnotesize\ttfamily server\+Window\+::$\sim$server\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classserver_window}{server\+Window}} class deconstructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classserver_window_a802818e2dd4970c8240efa96bce4c909}\label{classserver_window_a802818e2dd4970c8240efa96bce4c909}} 
+\index{server\+Window@{server\+Window}!send\+Data@{send\+Data}}
+\index{send\+Data@{send\+Data}!server\+Window@{server\+Window}}
+\subsubsection{\texorpdfstring{send\+Data()}{sendData()}}
+{\footnotesize\ttfamily void server\+Window\+::send\+Data (\begin{DoxyParamCaption}\item[{Q\+Byte\+Array}]{string }\end{DoxyParamCaption})}
+
+
+
+sends data from server\+Socket 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Q\+Byte\+Array} & string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{serverwindow_8h}{serverwindow.\+h}}\item 
+serverwindow.\+cpp\end{DoxyCompactItemize}

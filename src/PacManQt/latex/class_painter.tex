@@ -1,0 +1,146 @@
+\hypertarget{class_painter}{}\section{Painter Class Reference}
+\label{class_painter}\index{Painter@{Painter}}
+
+
+{\ttfamily \#include $<$painter.\+h$>$}
+
+Inheritance diagram for Painter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_painter}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_painter_a32e59ad4d0e130f57c419bd9e9c84675}{Painter}} ()
+\begin{DoxyCompactList}\small\item\em Empty \mbox{\hyperlink{class_painter}{Painter}} class constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_painter_a8a03ffdfcd500771584e662c1de2ef25}{Painter}} (Q\+String pixmap\+Path, int x, int y)
+\begin{DoxyCompactList}\small\item\em Overloaded \mbox{\hyperlink{class_painter}{Painter}} class constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_painter_a28975648307f4885c65769088dfc7236}{update\+Pos}} (void)
+\begin{DoxyCompactList}\small\item\em Updates graphics. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_painter_a37b3c5e56ec8ae79c781a4f022082c5f}{set\+Location}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Sets x and y position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_painter_aee846fac5a2a67d71133a9daed1c24fe}\label{class_painter_aee846fac5a2a67d71133a9daed1c24fe}} 
+Q\+Pixmap $\ast$ \mbox{\hyperlink{class_painter_aee846fac5a2a67d71133a9daed1c24fe}{get\+Pixmap}} () const
+\begin{DoxyCompactList}\small\item\em pixmap getter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_painter_a6439d816409cc7fbf3aa751a94e6771f}\label{class_painter_a6439d816409cc7fbf3aa751a94e6771f}} 
+void \mbox{\hyperlink{class_painter_a6439d816409cc7fbf3aa751a94e6771f}{set\+Pixmap}} (Q\+String value)
+\begin{DoxyCompactList}\small\item\em pixmap setter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_painter_a7a3890c8c871315a3eb88a2e170949b3}\label{class_painter_a7a3890c8c871315a3eb88a2e170949b3}} 
+Q\+Graphics\+Pixmap\+Item $\ast$ \mbox{\hyperlink{class_painter_a7a3890c8c871315a3eb88a2e170949b3}{get\+Pixmap\+Item}} () const
+\begin{DoxyCompactList}\small\item\em pixmap\+Item getter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_painter_a0c1b4dff1b51f773f145c373d5e9eef9}\label{class_painter_a0c1b4dff1b51f773f145c373d5e9eef9}} 
+int \mbox{\hyperlink{class_painter_a0c1b4dff1b51f773f145c373d5e9eef9}{get\+X\+Pos}} () const
+\begin{DoxyCompactList}\small\item\em x\+Pos getter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_painter_a6160fe9c0b29ea1d463d25d52b171b98}\label{class_painter_a6160fe9c0b29ea1d463d25d52b171b98}} 
+void \mbox{\hyperlink{class_painter_a6160fe9c0b29ea1d463d25d52b171b98}{set\+X\+Pos}} (int value)
+\begin{DoxyCompactList}\small\item\em x\+Pos setter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_painter_aaf3dc8e9e8a4cc69a6f06d57e4168269}\label{class_painter_aaf3dc8e9e8a4cc69a6f06d57e4168269}} 
+int \mbox{\hyperlink{class_painter_aaf3dc8e9e8a4cc69a6f06d57e4168269}{get\+Y\+Pos}} () const
+\begin{DoxyCompactList}\small\item\em y\+Pos getter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_painter_a6707d7f9bd221764a08f4b5ecb859bba}\label{class_painter_a6707d7f9bd221764a08f4b5ecb859bba}} 
+void \mbox{\hyperlink{class_painter_a6707d7f9bd221764a08f4b5ecb859bba}{set\+Y\+Pos}} (int value)
+\begin{DoxyCompactList}\small\item\em y\+Pos setter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_painter_a1af64c4dbd97392dce9940712463d188}\label{class_painter_a1af64c4dbd97392dce9940712463d188}} 
+Q\+Pixmap $\ast$ \mbox{\hyperlink{class_painter_a1af64c4dbd97392dce9940712463d188}{pixmap}}
+\begin{DoxyCompactList}\small\item\em pixmap is storing image. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_painter_a1f3af3b5da3bea41c3fcffc1ad0d6166}\label{class_painter_a1f3af3b5da3bea41c3fcffc1ad0d6166}} 
+Q\+Graphics\+Pixmap\+Item $\ast$ \mbox{\hyperlink{class_painter_a1f3af3b5da3bea41c3fcffc1ad0d6166}{pixmap\+Item}}
+\begin{DoxyCompactList}\small\item\em pixmap is storing image -\/ used on Q\+Graphics\+Scene. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_painter_aae86011c3335c3d63da42d557938ce7d}\label{class_painter_aae86011c3335c3d63da42d557938ce7d}} 
+int \mbox{\hyperlink{class_painter_aae86011c3335c3d63da42d557938ce7d}{x\+Pos}}
+\begin{DoxyCompactList}\small\item\em x position. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_painter_ad38c8bd94f3561b4ffb490ad06935ff2}\label{class_painter_ad38c8bd94f3561b4ffb490ad06935ff2}} 
+int \mbox{\hyperlink{class_painter_ad38c8bd94f3561b4ffb490ad06935ff2}{y\+Pos}}
+\begin{DoxyCompactList}\small\item\em y position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_painter}{Painter}} class is responsible for drawing all images. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_painter_a32e59ad4d0e130f57c419bd9e9c84675}\label{class_painter_a32e59ad4d0e130f57c419bd9e9c84675}} 
+\index{Painter@{Painter}!Painter@{Painter}}
+\index{Painter@{Painter}!Painter@{Painter}}
+\subsubsection{\texorpdfstring{Painter()}{Painter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Painter\+::\+Painter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Empty \mbox{\hyperlink{class_painter}{Painter}} class constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_painter_a8a03ffdfcd500771584e662c1de2ef25}\label{class_painter_a8a03ffdfcd500771584e662c1de2ef25}} 
+\index{Painter@{Painter}!Painter@{Painter}}
+\index{Painter@{Painter}!Painter@{Painter}}
+\subsubsection{\texorpdfstring{Painter()}{Painter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Painter\+::\+Painter (\begin{DoxyParamCaption}\item[{Q\+String}]{pixmap\+Path,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Overloaded \mbox{\hyperlink{class_painter}{Painter}} class constructor. 
+
+Updates graphics, sets x and y positions. 
+\begin{DoxyParams}{Parameters}
+{\em Q\+String} & pixmap\+Path, int x, int y \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_painter_a37b3c5e56ec8ae79c781a4f022082c5f}\label{class_painter_a37b3c5e56ec8ae79c781a4f022082c5f}} 
+\index{Painter@{Painter}!set\+Location@{set\+Location}}
+\index{set\+Location@{set\+Location}!Painter@{Painter}}
+\subsubsection{\texorpdfstring{set\+Location()}{setLocation()}}
+{\footnotesize\ttfamily void Painter\+::set\+Location (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Sets x and y position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em int} & x, int y \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_painter_a28975648307f4885c65769088dfc7236}\label{class_painter_a28975648307f4885c65769088dfc7236}} 
+\index{Painter@{Painter}!update\+Pos@{update\+Pos}}
+\index{update\+Pos@{update\+Pos}!Painter@{Painter}}
+\subsubsection{\texorpdfstring{update\+Pos()}{updatePos()}}
+{\footnotesize\ttfamily void Painter\+::update\+Pos (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Updates graphics. 
+
+Updates pixmap location based on x and y coordinates. 
+\begin{DoxyParams}{Parameters}
+{\em void} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+painter.\+h\item 
+\mbox{\hyperlink{painter_8cpp}{painter.\+cpp}}\end{DoxyCompactItemize}
