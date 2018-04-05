@@ -36,6 +36,7 @@ public:
     QLabel *label_player1;
     QLabel *label_game_level;
     QGraphicsView *graphicsView;
+    QLabel *label_game_level_2;
 
     void setupUi(QWidget *gameWindow)
     {
@@ -81,6 +82,15 @@ public:
         graphicsView = new QGraphicsView(gameWindow);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
         graphicsView->setGeometry(QRect(10, 10, 620, 620));
+        label_game_level_2 = new QLabel(gameWindow);
+        label_game_level_2->setObjectName(QStringLiteral("label_game_level_2"));
+        label_game_level_2->setGeometry(QRect(630, 210, 141, 51));
+        QFont font;
+        font.setBold(true);
+        font.setItalic(false);
+        font.setUnderline(true);
+        font.setWeight(75);
+        label_game_level_2->setFont(font);
 
         retranslateUi(gameWindow);
 
@@ -102,6 +112,7 @@ public:
         label_lifes_text->setText(QApplication::translate("gameWindow", "Lifes:", nullptr));
         label_player1->setText(QApplication::translate("gameWindow", "Player 1", nullptr));
         label_game_level->setText(QApplication::translate("gameWindow", "Game Level:", nullptr));
+        label_game_level_2->setText(QApplication::translate("gameWindow", "Use WSAD keys to move", nullptr));
     } // retranslateUi
 
 };
