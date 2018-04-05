@@ -82,7 +82,7 @@ void clientwindow::connectToServer()
 
     QString hostAddress = ui->lineEdit_HostAddressText->text();
     qint16 hostPort = (ui->lineEdit_HostPortText->text()).toInt();
-    tcpClient->connectToHost("127.0.0.1", 1234);
+    tcpClient->connectToHost(hostAddress, hostPort);
 
     if(tcpClient->waitForConnected(3000))
     {

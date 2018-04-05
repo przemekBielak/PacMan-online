@@ -53,7 +53,7 @@ void serverWindow::on_pushButton_host_clicked()
 {
     qint16 hostPort = ui->lineEdit_HostPortEdit->text().toInt();
 
-    if(!tcpServer->listen(QHostAddress::Any, 1234))
+    if(!tcpServer->listen(QHostAddress::Any, hostPort))
     {
         qDebug() << "Server could not start!";
     }
