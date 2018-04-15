@@ -65,6 +65,7 @@ private:
     void rotateImage(Actor *act);
     void moveActor(Actor *ghost);
     void checkIfDead(Pacman *pac);
+    void restart(void);
 
     template <typename T>
     void checkDot(T *pac);
@@ -84,7 +85,7 @@ private:
     void UnpackDataServerToClient(void);
     void PackDataClientToServer(void);
     void UnpackDataClientToServer(void);
-    
+
     /**
      * @var QTimer *gameLoopTimer
      * @brief Game loop timer - game is updated after each overflow.

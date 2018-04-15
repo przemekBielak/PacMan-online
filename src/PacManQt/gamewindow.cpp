@@ -183,6 +183,33 @@ void gameWindow::startGame()
 
 }
 
+void gameWindow::restart()
+{
+    tileArr[113].setTileType(17);
+    tileArr[113].setPixmap(":/Images/rosekane_0.png");
+    tileArr[115].setTileType(17);
+    tileArr[115].setPixmap(":/Images/rosekane_0.png");
+    tileArr[124].setTileType(17);
+    tileArr[124].setPixmap(":/Images/rosekane_0.png");
+    tileArr[227].setTileType(17);
+    tileArr[227].setPixmap(":/Images/rosekane_0.png");
+    tileArr[314].setTileType(17);
+    tileArr[314].setPixmap(":/Images/rosekane_0.png");
+    tileArr[331].setTileType(17);
+    tileArr[331].setPixmap(":/Images/rosekane_0.png");
+    tileArr[546].setTileType(17);
+    tileArr[546].setPixmap(":/Images/rosekane_0.png");
+
+
+    pacman->setLocation(20, 20);
+    pacman2->setLocation(500, 500);
+    ghostRed->setLocation(100, 80);
+    ghostBlue->setLocation(200, 400);
+    ghostYellow->setLocation(400, 80);
+    ghostGreen->setLocation(400, 100);
+
+}
+
 /**
  * @fn gameWindow::~gameWindow()
  * @brief gameWindow class deconstructor
@@ -437,6 +464,7 @@ void gameWindow::checkLevelFinish()
     {
         ui->label_game_level_num->setText(QString::number(ui->label_game_level_num->text().toInt() + 1));
         endCounter == 0;
+        restart();
     }
 }
 

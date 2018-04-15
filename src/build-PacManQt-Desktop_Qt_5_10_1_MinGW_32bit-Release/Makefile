@@ -222,6 +222,7 @@ Makefile: ../PacManQt/PacManQt.pro C:/Qt/5.10.1/mingw53_32/mkspecs/win32-g++/qma
 		C:/Qt/5.10.1/mingw53_32/lib/qtmain.prl \
 		C:/Qt/5.10.1/mingw53_32/lib/Qt5Widgets.prl \
 		C:/Qt/5.10.1/mingw53_32/lib/Qt5Gui.prl \
+		C:/Qt/5.10.1/mingw53_32/lib/Qt5Network.prl \
 		C:/Qt/5.10.1/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -o Makefile ..\PacManQt\PacManQt.pro -spec win32-g++
 C:/Qt/5.10.1/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -385,6 +386,7 @@ C:/Qt/5.10.1/mingw53_32/mkspecs/features/lex.prf:
 C:/Qt/5.10.1/mingw53_32/lib/qtmain.prl:
 C:/Qt/5.10.1/mingw53_32/lib/Qt5Widgets.prl:
 C:/Qt/5.10.1/mingw53_32/lib/Qt5Gui.prl:
+C:/Qt/5.10.1/mingw53_32/lib/Qt5Network.prl:
 C:/Qt/5.10.1/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\PacManQt\PacManQt.pro -spec win32-g++
