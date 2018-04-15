@@ -344,9 +344,9 @@ int gameWindow::checkIfMoveIsPossible(Actor *act, directionType direction)
  */
 void gameWindow::setGhostDirection(Ghost *ghost)
 {
-    if( (ghost->getYPos() == pacman->getYPos()) || (ghost->getYPos() == pacman2->getYPos()) )
+    if(ghost->getYPos() == pacman->getYPos())
     {
-        if( (ghost->getXPos() > pacman->getXPos()) || (ghost->getXPos() > pacman2->getXPos()) )
+        if(ghost->getXPos() > pacman->getXPos())
         {
             ghost->setDirection(DIRECTION_LEFT);
         }
@@ -355,9 +355,34 @@ void gameWindow::setGhostDirection(Ghost *ghost)
             ghost->setDirection(DIRECTION_RIGHT);
         }
     }
-    else if( (ghost->getXPos() == pacman->getXPos()) || (ghost->getXPos() == pacman2->getXPos()) )
+
+    if(ghost->getYPos() == pacman2->getYPos())
     {
-        if( (ghost->getYPos() > pacman->getYPos()) || (ghost->getYPos() > pacman2->getYPos()) )
+        if(ghost->getXPos() > pacman2->getXPos())
+        {
+            ghost->setDirection(DIRECTION_LEFT);
+        }
+        else
+        {
+            ghost->setDirection(DIRECTION_RIGHT);
+        }
+    }
+
+    else if(ghost->getXPos() == pacman2->getXPos())
+    {
+        if(ghost->getYPos() > pacman2->getYPos())
+        {
+            ghost->setDirection(DIRECTION_UP);
+        }
+        else
+        {
+            ghost->setDirection(DIRECTION_DOWN);
+        }
+    }
+
+    else if(ghost->getXPos() == pacman->getXPos())
+    {
+        if(ghost->getYPos() > pacman->getYPos())
         {
             ghost->setDirection(DIRECTION_UP);
         }
